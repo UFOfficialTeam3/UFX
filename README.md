@@ -8,6 +8,8 @@ Contact Information:
   
   Kolby O'Malley-Dertien - kolbyomalley@ufl.edu - 757-675-9777 - Backend
   
+  Angelo Paparazzi - apaparazzi0329@ufl.edu - 754-201-6228 - Full Stack (Product Manager)
+  
   Peter Theryo - theryop@ufl.edu - 727-742-9268 - Frontend
   
   Joshua Hew - joshuamhew@ufl.edu - 954-918-3127 - Frontend
