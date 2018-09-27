@@ -1,7 +1,6 @@
 # UFX
 Project
-Contact Information:
-
+PivotalTracker link:  https://www.pivotaltracker.com/projects/2200558
 
                                                  Roles/Members
   Paul Ritaldato - paulritaldato001@ufl.edu - 305-904-9261 - Backend
