@@ -17,3 +17,7 @@ PivotalTracker link:  https://www.pivotaltracker.com/projects/2200558
  
                                                  Meeting Times
   Wednesday: 1:45 PM - 5:00 PM
+  
+  
+  Making my first change and pushing back to repo
+  -	Joshua
