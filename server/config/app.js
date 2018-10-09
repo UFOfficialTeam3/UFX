@@ -8,7 +8,7 @@ module.exports.start = function() {
   //  console.log('App listening on port', config.port);
   //});
   
-  //listen to the port hat Heroku sets
+  //listen to the port that Heroku sets
   app.listen(process.env.PORT || 3000, function(){
     console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
   });
