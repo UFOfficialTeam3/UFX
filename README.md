@@ -18,6 +18,14 @@ PivotalTracker link:  https://www.pivotaltracker.com/projects/2200558
                                                  Meeting Times
   Wednesday: 1:45 PM - 5:00 PM
   
+                                                Project Description & Setup
+  Website will be an adaptation of the Free and for Sale Facebook Page.....
   
-  Making my first change and pushing back to repo
-  -	Joshua
+  Josh:
+  For the base skeleton for the project, I am copying the structure of Bootcamp 4.
+  I will edit it so that it will fresh bootcamp and mark the sections in each file that we will have to fill out with code.
+  I will also uninstall the mongoose module since we will be using PostgreSQL instead of MongoDB.
+
+  
+
+

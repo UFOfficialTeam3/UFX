@@ -1,0 +1,93 @@
+#title {
+  background-image: url("../img/century-tower-orange.png");
+  font-weight: bold;
+}
+
+#searchBar {
+  margin: 15px 10px;
+}
+
+.tableWrapper {
+  max-height: 400px;
+  overflow: auto;
+}
+
+/* Background Imge */
+.bg {
+  /* The image used */
+  background-image: url("../img/century-tower-orange.png"); 
+
+  /*background-color: orange;*/
+
+  /* Full height */
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* Detailed Information Box */
+#infoBox {
+  margin-top: 30px;
+  font-weight: bold;
+  color: silver;
+  
+}
+
+#infoBox .jumbotron {
+  background-color: rgba(0,0,0,0.3);
+}
+
+#detInfo {
+  margin-top: -20px;
+  margin-bottom: 30px;
+}
+
+.form-group {
+  color: white;
+}
+
+.page-footer {
+  margin-top: 5px;
+  padding: 10px;
+  color: white;
+  background:rgba(0,0,0,0.5);
+}
+
+body::-webkit-scrollbar {
+  width: 1em;
+}
+
+body::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
+}
+
+/* Table Styles */
+tableWrapper {
+  border: 2px solid black;
+}
+
+table {
+  background-color: rgba(1,1,1,0.2);
+  
+}
+
+.tableWrapper::-webkit-scrollbar {
+  width: 0.5em;
+}
+
+.tableWrapper::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+
+.tableWrapper::-webkit-scrollbar-thumb {
+  background-color: lightblue;
+    
+}
