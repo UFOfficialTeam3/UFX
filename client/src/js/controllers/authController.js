@@ -1,0 +1,33 @@
+angular.module('listings').controller('AuthController', ['$scope', 'Listings', 
+  function($scope, Listings) {
+    
+    /**The Controller makes functions available to be called from the html 
+     * Add functions that will be used by the website to make calls to the appropriate Factories
+    */
+
+    $scope.login = function(username, password) {
+       /**TODO
+        * Calls authFactory to login user 
+        */
+    };
+
+    $scope.register = function(username, password) {
+       /**TODO
+        * Calls authFactory to register user
+        */
+    };
+    
+
+    $scope.googleLogin = function(SomeGoogleAPIObject) { 
+      /**TODO
+        * Calls authFactory to login user using google auth credinentials
+        */
+    };
+
+    $scope.googleRegister = function(SomeGoogleAPIObject) {
+         /**TODO
+           * Calls authFactory to register user using google auth credinentials
+           */
+    }
+  }
+]);
