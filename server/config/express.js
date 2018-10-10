@@ -3,7 +3,8 @@ var path = require('path'),
     morgan = require('morgan'),
     bodyParser = require('body-parser'),
     config = require('./config'),
-    listingsRouter = require('../routes/listings.server.routes');
+    listingsRouter = require('../routes/listings.server.routes'),
+    authRouter = require('../routes/auth.server.routes');
 
 module.exports.init = function() {
   /** TODO: Connect to PostgreSQL */
@@ -25,8 +26,10 @@ module.exports.init = function() {
   app.use('/', express.static(path.join(__dirname, '/../../client')));
  
   /** Mount the listingsRouter onto the /api/listings route */
-  app.use('/api/listings', listingsRouter); // in the test file it says GET /api/listings
-  
+  app.use('/api/listings', listingsRouter); 
+
+  /** Mount the authenticationRouter onto the /api/authenticate */
+  app.use('/api/authenticate', authRouter);
 
   /** Go to homepage for all routes not specified */ 
   app.use('*', express.static(path.join(__dirname, '/../../client')));

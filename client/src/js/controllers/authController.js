@@ -4,6 +4,8 @@ angular.module('listings').controller('AuthController', ['$scope', 'Listings',
     /**The Controller makes functions available to be called from the html 
      * Add functions that will be used by the website to make calls to the appropriate Factories
     */
+	
+	// Helpful resource: http://jasonwatmore.com/post/2014/05/26/angularjs-basic-http-authentication-example
 
     $scope.login = function(username, password) {
        /**TODO

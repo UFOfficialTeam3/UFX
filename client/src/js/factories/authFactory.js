@@ -5,6 +5,9 @@ angular.module('listings', []).factory('Auth', function($http) {
      * The factory is responsible for making api calls
      * The methods here will be called by the authController
      */
+	 
+	 // Helpful resource: http://jasonwatmore.com/post/2014/05/26/angularjs-basic-http-authentication-example
+	 
     var methods = {
 
       login: function(username, password) {

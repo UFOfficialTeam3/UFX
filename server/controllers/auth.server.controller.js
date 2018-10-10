@@ -1,4 +1,4 @@
-/** This file contains functions that will authenticate user login */
+/** This file contains functions that will authenticate user login and registration */
 
 /** Dependencies */
 // needs to connect to database
@@ -14,9 +14,10 @@ exports.login = function(req, res) {
     //
     //
 
-    // Maybe something like
-    // if (search(req.body.username) == NULL)
-    //      res.body == "Invalid username"      
-    
-    
+}
+
+exports.register = function(req, res) {
+    //
+    //
+    //
 }
