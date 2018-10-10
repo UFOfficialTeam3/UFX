@@ -1,7 +1,8 @@
 /** This file contains functions that will authenticate user login and registration */
 
 /** Dependencies */
-// needs to connect to database
+// connect to database (technically)
+const db = require('../config/config.js');
 
 /*
   In this file, you should use SQL queries in order to authenticate a user's username and password.
@@ -12,7 +13,7 @@
 exports.login = function(req, res) {
     //
     //
-    //
+    // db.query('SELECT * FROM users WHERE id = $1', [id]),    an example of a postgre qeury
 
 }
 

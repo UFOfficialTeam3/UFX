@@ -1,6 +1,7 @@
 
 /* Dependencies */
-const { Pool, Client } = require('pg');
+// connect to database (technically)
+const db = require('../config/config.js');
 
 /*
   In this file, you should use SQL queries in order to retrieve/add/remove/update Free&4Sale listings.
