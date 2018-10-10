@@ -1,6 +1,18 @@
-module.exports = {
-  db: {
-    uri: 'mongodb://CEN3031:CEN3031TA@ds157522.mlab.com:57522/bootcamp-db', //place the URI of your mongo database here.
-  }, 
-  port: 8080
-};
+// This config file should contain all the necessary information to actually connect to the database
+// we will connect() to the database in the express.js file
+
+/** Helpful resources:
+ * Ways to connect to Database: Pool vs Client: https://stackoverflow.com/questions/48751505/how-can-i-choose-between-client-or-pool-for-node-postgres
+ * 
+ * IMPORTANT:
+ * Pooling: https://node-postgres.com/features/pooling
+ */
+
+const { Pool } = require('pg');
+const connectionString = 'insert connection string here.'
+
+const pool = new Pool({
+  connectionString: connectionString,
+})
+
+
