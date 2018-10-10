@@ -1,8 +1,9 @@
-angular.module('listings', []).factory('Auth', function($http) {
+angular.module('listings', []).factory('authFactory', function($http) {
 
     /**Authentication API methods
      * Add any methods that may be neccessary
-     * The factory is responsible for making api calls
+     * The factory is responsible for making api calls that are then routed
+     * to the server-side controllers
      * The methods here will be called by the authController
      */
 	 
@@ -14,14 +15,14 @@ angular.module('listings', []).factory('Auth', function($http) {
         /**TODO
          * Return login credinentials so user can login
          */
-        //Example: return $http.get('http://localhost:8080/api/listings');
+        //Example: return $http.get('http://localhost:8080/api/auth', username, password);
       },
       
       register: function(username, password) {
         /**TODO
          * Return new user login credinentials?
          */
-        //Example: return $http.post('http://localhost:8080/api/listings', listing);
+        //Example: return $http.post('http://localhost:8080/api/auth', username, password);
         
       }, 
 
@@ -35,7 +36,6 @@ angular.module('listings', []).factory('Auth', function($http) {
          /**TODO
           Return login credinentials so user can login
          */
-        //Example: return $http.delete('http://localhost:8080/api/listings/' + id);
   
       }
     };
