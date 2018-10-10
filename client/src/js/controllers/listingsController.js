@@ -1,7 +1,8 @@
-angular.module('listings').controller('ListingsController', ['$scope', 'Listings', 
+angular.module('listings').controller('listingsController', ['$scope', 'Listings', 
   function($scope, Listings) {
     
-    /**The Controller makes functions available to be called from the html 
+    /**The Controller makes functions available to be called from the html and
+     * updates the view if necessary
      * Add functions that will be used by the website to make calls to the appropriate Factories
     */
 
@@ -23,18 +24,6 @@ angular.module('listings').controller('ListingsController', ['$scope', 'Listings
         * Calls listingsFactory to display post details to the Free and For Sale page
         */
     };
-
-    $scope.rateSeller = function(Seller) {
-        /**TODO
-        * Calls listingsFactory to rate the seller
-        */
-    }
-
-    $scope.rateBuyer = function(Seller) {
-      /**TODO
-        * Calls listingsFactory to rate the buyer
-        */
-    }
 
   }
 ]);

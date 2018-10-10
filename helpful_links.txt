@@ -1,5 +1,7 @@
 links.txt
 ------------------------------------------
+Tutorial from bottom up on how to make authenticated angular app with MEAN Stack:
+https://www.youtube.com/watch?v=DQ9pZ2NKXRo&t=617s
 
 Middleware: 
 https://www.safaribooksonline.com/blog/2014/03/10/express-js-middleware-demystified/

@@ -1,7 +1,8 @@
-angular.module('listings').controller('AuthController', ['$scope', 'Listings', 
+angular.module('listings').controller('authController', ['$scope', 'Listings', 
   function($scope, Listings) {
     
-    /**The Controller makes functions available to be called from the html 
+    /**The Controller makes functions available to be called from the html and 
+     * updates the view if neccessary
      * Add functions that will be used by the website to make calls to the appropriate Factories
     */
 	

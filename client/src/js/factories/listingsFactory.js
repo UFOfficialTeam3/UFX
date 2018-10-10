@@ -1,33 +1,35 @@
-angular.module('listings', []).factory('Listings', function($http) {
+angular.module('listings', []).factory('listingsFactory', function($http) {
 
-    /**Map API methods
-     * Add any methods that may be neccessary
-     * The factory is responsible for making api calls
-     * The methods here will be called by the mapController
+    /**Listing API methods
+     *The factory is responsible for making api calls that are then routed
+     * to the server-side controllers
+     * The methods here will be called by the listingsController
      */
     var methods = {
-      loadMap: function() {
+      add: function() {
         /**TODO
-         * Return fresh loaded map
+         * Make http post request
          */
-        //Example: return $http.get('http://localhost:8080/api/listings');
+        //Example: return $http.post('http://localhost:8080/api/listings');
       },
       
-        buyerlocationChoice: function(listing) {
+      delete: function(listingId) {
         /**TODO
-         * Return result of buyer location meetup choice
+         * Make http delete request
          */
-        //Example: return $http.post('http://localhost:8080/api/listings', listing);
+        //Example: return $http.delete('http://localhost:8080/api/listings/' + id);
         
       }, 
   
-      sellerlocationChoice: function(id) {
+      showDetails: function(listingId) {
          /**TODO
-          Return result of seller location meetup choice
+          Make http get request
          */
-        //Example: return $http.delete('http://localhost:8080/api/listings/' + id);
+        //Example: return $http.get('http://localhost:8080/api/listings/' + id);
   
-      }
+      },
+
+
     };
   
     return methods;
