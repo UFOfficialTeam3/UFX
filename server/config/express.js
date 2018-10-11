@@ -7,8 +7,7 @@ var path = require('path'),
     authRouter = require('../routes/auth.server.routes');
 
 module.exports.init = function() {
-  // May or may not need to connect to the database here...
-
+  
   //initialize app
   var app = express();
 

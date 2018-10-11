@@ -9,12 +9,23 @@
  * Pooling: https://node-postgres.com/features/pooling
  */
 
+
 const { Pool } = require('pg');
-const connectionString = 'insert connection string here.'
 
 const pool = new Pool({
-  connectionString: connectionString,
+  user: 'OfficialTeam3Master',
+  host: 'team3postgredb.cwinamzxahdg.us-east-2.rds.amazonaws.com',
+  database: 'OfficialTeam3Master',
+  password: 'SECEN3031!',
+  port: 5432,
 });
+
+
+// test connection to database
+//pool.query('SELECT NOW()', (err, res) => {
+//  console.log(err, res)
+//  pool.end() // Only call pool.end() once application terminates and no longer needs connection to database. Just ignore this function.
+//})
 
 module.exports = {
   query: (text, params, callback) => {
