@@ -30,7 +30,8 @@ const pool = new Pool({
 module.exports = {
   query: (text, params, callback) => {
     return pool.query(text, params, callback);
-  }
+  },
+  port: 8080 // this port is used for localhost testig/ viewing of webapp.
 }
 
 

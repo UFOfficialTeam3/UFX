@@ -19,7 +19,9 @@ module.exports.init = function() {
 
   
   /** Serve static files */
-  app.use('/', express.static(path.join(__dirname, '/../../client')));
+  app.get('/', function(req, res){
+    res.sendFile(path.resolve(__dirname+'/../../client/src/components/home/home.html'));
+  });
  
   /** Mount the listingsRouter onto the /api/listings route */
   app.use('/api/listings', listingsRouter); 

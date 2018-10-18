@@ -22,15 +22,4 @@ router.route('/register')
   
 
 
-/*
-  The ':' specifies a URL parameter. 
- */
-router.route('/:listingId')
-  .get(listings.read)
-  .put(listings.update)
-  .delete(listings.delete);
-
-
-router.param('listingId', listings.listingByID);
-
 module.exports = router;
