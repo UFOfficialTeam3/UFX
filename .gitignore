@@ -6,3 +6,7 @@
 
 # node
 node_modules
+
+# sublime files
+UFX.sublime-project
+UFX.sublime-workspace
