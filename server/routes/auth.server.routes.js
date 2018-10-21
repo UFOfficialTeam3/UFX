@@ -1,7 +1,6 @@
 /** All HTTP requests on the login page should go through here */
 
-// nameofwebsite.com/login 
-// the angular code for this page can make a post request to 
+// The nameofwebsite.com/login webpage will contain code that makes requests to:
 // nameofwebsite.com/api/authenticate/login
 // nameofwebsite.com/api/authenticate/register
 

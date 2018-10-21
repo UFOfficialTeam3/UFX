@@ -3,6 +3,7 @@ var path = require('path'),
     morgan = require('morgan'),
     bodyParser = require('body-parser'),
     config = require('./config'),
+    viewsRouter = require('../routes/views.server.routes'),
     listingsRouter = require('../routes/listings.server.routes'),
     authRouter = require('../routes/auth.server.routes');
 
@@ -19,9 +20,7 @@ module.exports.init = function() {
 
   
   /** Serve static files */
-  app.get('/', function(req, res){
-    res.sendFile(path.resolve(__dirname+'/../../client/src/components/home/home.html'));
-  });
+  app.use(viewsRouter);
  
   /** Mount the listingsRouter onto the /api/listings route */
   app.use('/api/listings', listingsRouter); 
@@ -30,7 +29,7 @@ module.exports.init = function() {
   app.use('/api/authenticate', authRouter);
 
   /** Go to homepage for all routes not specified */ 
-  app.use('*', express.static(path.join(__dirname, '/../../client')));
+  // just make a get request to homepage, so we are redirected to homepage.
  
 
   return app;
