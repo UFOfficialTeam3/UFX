@@ -76,5 +76,10 @@ exports.list = function(req, res) {
         then finally call next
  */
 exports.listingByID = function(req, res, next, id) {
-
+  try {
+    const result = await db.query("SELECT FROM Listings WHERE lid=$1", [req.body.lid]);
+    return res.json(results.rows);
+  } catch (err)
+    return next(err);
+  }
 };
