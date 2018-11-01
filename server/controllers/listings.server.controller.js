@@ -13,11 +13,13 @@ db.connect();
 /* Create a listing */
 exports.create = function(req, res) {
    try {
+     const listing = req.body;
      const result = await db.query("INSERT INTO Listings (lid, pid, Title, Price, type, condition, payment, description) VALUES ($1,$2,$3,$4,$5,$6,$7,$8) RETURNING *",
-     [req.body.lid, req.body.pid, req.body.Title, req.body.Price, req.body.type, req.body.condition, req.body.payment, req.body.description]
+     [listing.lid, listing.pid, listing.Title, listing.Price, listing.type, listing.condition, listing.payment, listing.description]
     );
     return res.json(result.rows[0]);
     } catch (err) {
+      console.log('Error while trying to create a listing');
       return next(err);
     }
 };
@@ -29,6 +31,7 @@ exports.read = function(req, res) {
     const result = await db.query("SELECT * FROM Listings");
     return res.json(result.rows);
   } catch (err)
+    console.log('Error while trying to read all listings');
     return next(err);
   }
 };
@@ -36,12 +39,14 @@ exports.read = function(req, res) {
 /* Update a listing */
 exports.update = function(req, res) {
   try {
+    const listing = req.body;
     const result = await db.query(
       "UPDATE Listings SET pid=$2, Title=$3, Price=$4, type=$5, condition=$6, payment=$7, description=$8 WHERE lid=$1 RETURNING *"
-     [req.body.lid, req.body.pid, req.body.Title, req.body.Price, req.body.type, req.body.condition, req.body.payment, req.body.description]
+     [listing.lid, listing.pid, listing.Title, listing.Price, listing.type, listing.condition, listing.payment, listing.description]
    );
    return res.json(result.rows[0]);
    } catch (err) {
+     console.log('Error while trying to update a listing');
      return next(err);
    }
 };
@@ -54,6 +59,7 @@ exports.delete = function(req, res) {
   );
     return res.json({ message: "Deleted" });
   } catch (err) {
+    console.log('Error while trying to delete a listing');
     return next(err);
   }
 };
@@ -64,6 +70,7 @@ exports.list = function(req, res) {
     const result = await db.query("SELECT * FROM Sells");
     return res.json(result.rows);
   } catch (err)
+    console.log('Error while trying to read all sells');
     return next(err);
   }
 };
@@ -77,9 +84,11 @@ exports.list = function(req, res) {
  */
 exports.listingByID = function(req, res, next, id) {
   try {
-    const result = await db.query("SELECT FROM Listings WHERE lid=$1", [req.body.lid]);
+    const listing = req.body;
+    const result = await db.query("SELECT FROM Listings WHERE lid=$1", [listing.lid]);
     return res.json(result.rows);
   } catch (err)
+    console.log('Error while trying to read a listing by ID');
     return next(err);
   }
 };
@@ -87,9 +96,11 @@ exports.listingByID = function(req, res, next, id) {
 /* Retrieve listings by type */
 exports.listingByID = function(req, res, next, type) {
   try {
-    const result = await db.query("SELECT FROM Listings WHERE type=$1", [req.body.type]);
+    const listing = req.body;
+    const result = await db.query("SELECT FROM Listings WHERE type=$1", [listing.type]);
     return res.json(result.rows);
   } catch (err)
+    console.log('Error while trying to update a listing by type');
     return next(err);
   }
 };
