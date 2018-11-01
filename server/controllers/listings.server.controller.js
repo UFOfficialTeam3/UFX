@@ -83,3 +83,13 @@ exports.listingByID = function(req, res, next, id) {
     return next(err);
   }
 };
+
+/* Retrieve listings by type */
+exports.listingByID = function(req, res, next, type) {
+  try {
+    const result = await db.query("SELECT FROM Listings WHERE type=$1", [req.body.type]);
+    return res.json(results.rows);
+  } catch (err)
+    return next(err);
+  }
+};
