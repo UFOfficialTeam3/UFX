@@ -27,7 +27,7 @@ exports.read = function(req, res) {
   /* send back the listing as json from the request */
   try {
     const result = await db.query("SELECT * FROM Listings");
-    return res.json(results.rows);
+    return res.json(result.rows);
   } catch (err)
     return next(err);
   }
@@ -62,7 +62,7 @@ exports.delete = function(req, res) {
 exports.list = function(req, res) {
   try {
     const result = await db.query("SELECT * FROM Sells");
-    return res.json(results.rows);
+    return res.json(result.rows);
   } catch (err)
     return next(err);
   }
@@ -78,7 +78,7 @@ exports.list = function(req, res) {
 exports.listingByID = function(req, res, next, id) {
   try {
     const result = await db.query("SELECT FROM Listings WHERE lid=$1", [req.body.lid]);
-    return res.json(results.rows);
+    return res.json(result.rows);
   } catch (err)
     return next(err);
   }
@@ -88,7 +88,7 @@ exports.listingByID = function(req, res, next, id) {
 exports.listingByID = function(req, res, next, type) {
   try {
     const result = await db.query("SELECT FROM Listings WHERE type=$1", [req.body.type]);
-    return res.json(results.rows);
+    return res.json(result.rows);
   } catch (err)
     return next(err);
   }
