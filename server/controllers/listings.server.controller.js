@@ -3,7 +3,6 @@
 // connect to database (technically)
 const db = require('../config/config.js');
 
-db.connect();
 /*
   In this file, you should use SQL queries in order to retrieve/add/remove/update Free&4Sale listings.
   On an error you should send a 404 status code, as well as the error message.
@@ -19,6 +18,8 @@ exports.create = function(req, res) {
     );
     return res.json(result.rows[0]);
     } catch (err) {
+      res.status(404)        // HTTP status 404: Not Found
+        .send('Not found');
       console.log('Error while trying to create a listing');
       return next(err);
     }
@@ -30,7 +31,9 @@ exports.read = function(req, res) {
   try {
     const result = await db.query("SELECT * FROM Listings");
     return res.json(result.rows);
-  } catch (err)
+  } catch (err) {
+    res.status(404)        // HTTP status 404: Not Found
+    .send('Not found');
     console.log('Error while trying to read all listings');
     return next(err);
   }
@@ -46,6 +49,8 @@ exports.update = function(req, res) {
    );
    return res.json(result.rows[0]);
    } catch (err) {
+     res.status(404)        // HTTP status 404: Not Found
+       .send('Not found');
      console.log('Error while trying to update a listing');
      return next(err);
    }
@@ -59,6 +64,8 @@ exports.delete = function(req, res) {
   );
     return res.json({ message: "Deleted" });
   } catch (err) {
+    res.status(404)        // HTTP status 404: Not Found
+      .send('Not found');
     console.log('Error while trying to delete a listing');
     return next(err);
   }
@@ -69,7 +76,9 @@ exports.list = function(req, res) {
   try {
     const result = await db.query("SELECT * FROM Sells");
     return res.json(result.rows);
-  } catch (err)
+  } catch (err) {
+    res.status(404)        // HTTP status 404: Not Found
+      .send('Not found');
     console.log('Error while trying to read all sells');
     return next(err);
   }
@@ -87,7 +96,9 @@ exports.listingByID = function(req, res, next, id) {
     const listing = req.body;
     const result = await db.query("SELECT FROM Listings WHERE lid=$1", [listing.lid]);
     return res.json(result.rows);
-  } catch (err)
+  } catch (err) {
+    res.status(404)        // HTTP status 404: Not Found
+      .send('Not found');
     console.log('Error while trying to read a listing by ID');
     return next(err);
   }
@@ -99,7 +110,9 @@ exports.listingByID = function(req, res, next, type) {
     const listing = req.body;
     const result = await db.query("SELECT FROM Listings WHERE type=$1", [listing.type]);
     return res.json(result.rows);
-  } catch (err)
+  } catch (err) {
+    res.status(404)        // HTTP status 404: Not Found
+      .send('Not found');
     console.log('Error while trying to update a listing by type');
     return next(err);
   }
