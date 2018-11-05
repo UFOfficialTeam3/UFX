@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../home/main.css">
+    <link rel="stylesheet" href="profile.css">
+  </head>
+  <body ng-app="UFX" ng-controller="ufxCtrl">
+     <div id="page-wrapper">
+        <div id="top-section">
+            <h1>UFX</h1>
+            <div id="nav-btns">
+               <input type="button" value="Logout" class="login-btn">
+            </div>
+        </div>
+        <div id="user-info">
+           <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfNbcFM1HkR6NJBLM8NfpDoZdH2sqgaBh1dRRv1h8W35sHIcAX3g" alt="" class="profile-img">
+            <ul id="user-info-list">
+               <li class="user-info-item">First Name: Wilson</li>
+               <li class="user-info-item">Last Name: Staley</li>
+               <li class="user-info-item">Email: wilstaley@gmail.com</li>
+               <li class="user-info-item">Phone: 352-222-5282</li>
+               <li class="user-info-item">Username: wilstaley</li>
+            </ul>
+            <div id="profile-btns">
+               <input type="button" value="Edit Account Info" class="profile-btn">
+               <input type="button" value="Reset Password" class="profile-btn">
+            </div>
+        </div>
+        <div id="listings-section">
+            <h2>Listing History</h2>
+            <div class="listing" ng-repeat="x in a">
+               <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfNbcFM1HkR6NJBLM8NfpDoZdH2sqgaBh1dRRv1h8W35sHIcAX3g" alt="" class="listing-img">
+               <div id="listing-text">
+                  <h5>Listing Title</h5>
+                  <p id="listing-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pharetra orci et ante imperdiet, nec lobortis sem lobortis. Pellentesque feugiat turpis ac tellus auctor, in cursus massa dictum. Nullam posuere purus sed neque dictum feugiat. Proin quis velit a nulla dapibus facilisis non in nulla. Vestibulum accumsan urna nec nunc vulputate, congue lobortis sem ultrices. Pellentesque sed leo nec lectus feugiat efficitur. Ut at metus ut neque laoreet placerat eget ac lacus. Nunc dui sem, interdum ut tempor ac, faucibus ut orci. Maecenas lacinia pellentesque finibus. Suspendisse potenti.</p>
+               </div>
+               <ul id="listing-info">
+                  <li><b>Seller/Buyer</b>: Seller</li>
+                  <li><b>Category</b>: Other</li>
+                  <li><b>Condition</b>: New</li>
+                  <li><b>Asking Price</b>: $20</li>
+                  <li><b>Payment Types</b>: Cash</li>
+               </ul>
+            </div>
+        </div>
+     </div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+    <script src="https://code.angularjs.org/1.4.3/angular.js"></script>
+    <script src="../../js/app.js"></script>
+    <script src="js/factories/listingsFactory.js"></script>
+    <script src="js/controllers/listingsController.js"></script>
+
+
+  </body>
+  <footer class="page-footer font-small">
+    <!-- Copyright -->
+    <div class="text-center">© 2018 Copyright: Skilled & 4 Hire</div>
+    <!-- Copyright. -->
+  </footer>
+</html>
