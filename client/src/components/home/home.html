@@ -5,35 +5,67 @@
     <link rel="stylesheet" href="main.css">
   </head>
   <body ng-app="UFX" ng-controller="ufxCtrl">
-     <div id="page-wrapper">
-        <div id="top-section">
-            <h1>UFX</h1>
-            <div id="nav-btns">
-               <input type="button" value="Post Listing" class="post-btn">
-               <input type="button" value="Login/Signup" class="login-btn">
-            </div>
+     <div id="page-wrapper" class="container-fluid">
+        <div id="top-section" class="row">
+           <div class="col-sm-12 topSection">
+              <h1>UFX</h1>
+              <div id="nav-btns">
+                 <input type="button" class="btn btn-primary" value="Post Listing">
+                 <input type="button" class="btn btn-primary" value="Login/Signup">
+              </div>
+           </div>
         </div>
         <div id="search-section">
-            <ul id="categories">
-               <li class="category">Appliances</li>
-               <li class="category">Automobiles</li>
-               <li class="category">Bikes</li>
-               <li class="category">Books</li>
-               <li class="category">Cell Phones</li>
-               <li class="category">Clothes</li>
-               <li class="category">Collectibles</li>
-               <li class="category">Electronics</li>
-               <li class="category">Furniture</li>
-               <li class="category">Music</li>
-               <li class="category">Photo/Video</li>
-               <li class="category">Tickets</li>
-               <li class="category">Tools</li>
-               <li class="category">Others</li>
-            </ul>
-            <input type="text" id="searchBar" placeholder="Search" ng-model="searchListing">
+           <div class="row">
+              <div class="categories-section col-sm-12">
+                 <div class="categories">
+                    <input type="button" class="btn btn-default btn-sm" value="Appliances">
+                    <input type="button" class="btn btn-default btn-sm" value="Automobiles">
+                    <input type="button" class="btn btn-default btn-sm" value="Bikes">
+                    <input type="button" class="btn btn-default btn-sm" value="Books">
+                    <input type="button" class="btn btn-default btn-sm" value="Cell Phones">
+                    <input type="button" class="btn btn-default btn-sm" value="Clothes">
+                    <input type="button" class="btn btn-default btn-sm" value="Collectibles">
+                 </div>
+              </div>
+           </div>
+           <div class="row">
+              <div class="categories-section col-sm-12">
+                  <div class="categories">
+                    <input type="button" class="btn btn-default btn-sm" value="Electronics">
+                    <input type="button" class="btn btn-default btn-sm" value="Furniture">
+                    <input type="button" class="btn btn-default btn-sm" value="Music">
+                    <input type="button" class="btn btn-default btn-sm" value="Photo/Video">
+                    <input type="button" class="btn btn-default btn-sm" value="Tickets">
+                    <input type="button" class="btn btn-default btn-sm" value="Tools">
+                    <input type="button" class="btn btn-default btn-sm" value="Others">
+                 </div>
+              </div>
+           </div>
+           <div class="row searchbar">
+              <input type="text" id="searchBar" class="form-control" placeholder="Search" ng-model="searchListing">
+           </div>
         </div>
-        <div id="listings-section">
-            <div class="listing" ng-repeat="x in a">
+        <div id="listings-section" class="row">
+           <div class="listing">
+               <div class="col-sm-2">
+                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfNbcFM1HkR6NJBLM8NfpDoZdH2sqgaBh1dRRv1h8W35sHIcAX3g" alt="" class="listing-img">
+              </div>
+              <div id="listing-text" class="col-sm-7">
+                 <h3>Listing Title</h3>
+                 <p id="listing-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pharetra orci et ante imperdiet, nec lobortis sem lobortis. Pellentesque feugiat turpis ac tellus auctor, in cursus massa dictum. Nullam posuere purus sed neque dictum feugiat. Proin quis velit a nulla dapibus facilisis non in nulla. Vestibulum accumsan urna nec nunc vulputate, congue lobortis sem ultrices. Pellentesque sed leo nec lectus feugiat efficitur. Ut at metus ut neque laoreet placerat eget ac lacus. Nunc dui sem, interdum ut tempor ac, faucibus ut orci. Maecenas lacinia pellentesque finibus. Suspendisse potenti.</p>
+              </div>
+              <div class="col-sm-3">
+                 <ul id="listing-info">
+                    <li><b>Seller/Buyer</b>: Seller</li>
+                    <li><b>Category</b>: Other</li>
+                    <li><b>Condition</b>: New</li>
+                    <li><b>Asking Price</b>: $20</li>
+                    <li><b>Payment Types</b>: Cash</li>
+                 </ul>
+              </div>
+           </div>
+            <!-- <div class="listing" ng-repeat="x in a">
                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfNbcFM1HkR6NJBLM8NfpDoZdH2sqgaBh1dRRv1h8W35sHIcAX3g" alt="" class="listing-img">
                <div id="listing-text">
                   <h5>Listing Title</h5>
@@ -46,7 +78,7 @@
                   <li><b>Asking Price</b>: $20</li>
                   <li><b>Payment Types</b>: Cash</li>
                </ul>
-            </div>
+            </div> -->
         </div>
      </div>
 

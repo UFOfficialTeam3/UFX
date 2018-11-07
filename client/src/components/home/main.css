@@ -1,68 +1,66 @@
 #top-section{
-   width: 100vw;
+   border-bottom: 1px solid black;
+   height: 100px;
+}
+.topSection{
    display: flex;
    flex-direction: row;
+   height: 100%;
    justify-content: space-between;
    align-items: center;
-   padding: 10px;
 }
-#nav-btns input{
-   /* width: 45%; */
-   background: #fff;
-   border: 1px solid #aaa;
-   border-radius: 20px;
-   padding: 7px;
-   margin: 5px;
-}
-#search-section{
-   padding: 20px;
-   border-top: 1px solid black;
-   border-bottom: 1px solid black;
-   display: flex;
-   flex-direction: column;
-   justify-content: center;
-}
-#categories{
-   list-style-type: none;
-   display: grid;
-   grid-template-columns: auto auto auto auto auto auto auto;
-   grid-row-gap: 25px;
-   margin-top: 25px;
-}
-#searchBar{
-   width: 350px;
-   align-self: center;
-   margin-top: 50px;
-   margin-bottom: 30px;
+.topSection h1{
+   margin: none;
 }
 .listing{
    display: flex;
    flex-direction: row;
-   /* justify-content: space-between; */
+   justify-content: center;
    align-items: center;
-   background: #aaa;
-}
-.listing > img{
-   padding: 20px;
+   border: 2px solid black;
 }
 #listing-text{
-   /* width: 200px;
-   height: 200px; */
-   /* padding-top: 15px; */
-   max-width: 600px;
-}
-#listing-text h5{
-   font-weight: bold;
+   margin-left: 20px;
 }
 #listing-description{
-   margin-left: 20px;
+   padding: 20px;
 }
 #listing-info{
    list-style-type: none;
-   margin-right: 100px;
-   margin-left: auto;
-   margin-top: 20px;
 }
-#listing-info > li{
-   padding: 5px;
+#listing-info li{
+   margin: 5px;
+}
+#search-section{
+   margin-top: 100px;
+   margin: 0;
+}
+.categories-section{
+   display: flex;
+   flex-direction: row;
+}
+.categories{
+   width: 100%;
+   display: flex;
+   flex-direction: row;
+   justify-content: space-around;
+   padding: 0;
+   margin-left: 100px;
+   margin-right: 100px;
+   margin-top: 50px;
+}
+.categories input{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   width: 80px;
+}
+.searchbar{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   padding: 70px;
+}
+#searchBar{
+   width: 30%;
 }
