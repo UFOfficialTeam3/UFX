@@ -6,7 +6,7 @@
   </head>
   <h1>UFX | Create a new Listing</h1>
   <body ng-app="ufxApp">
-    <form>
+    <form ng-submit="submit()">
       <div class="row">
        <div class="col-md-6">
         <h2> Title of Listing: </h2>
@@ -52,11 +52,10 @@
          <br />
          <h2>Description:</h2>
          <textarea id="listing-description" placeholder="What are you trying to sell?" ng-model="newListingDescription"></textarea><br />
-         <!----TODO: Adding functionality to upload photos-->
+         <!----TODO: finalizing functionality to upload photos-->
          <h2> Photo to upload (Optional): </h2>
-         <input type="text" ng-model=>  
+         <input type="file" accept="image/png, image/jpeg">  
          <!---^^^^^^-->
-         <button>Browse</button>
          <br /><br />
         </div>
       </div>

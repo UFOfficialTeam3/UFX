@@ -5,6 +5,7 @@
 	</head>
 	<h1> UFX | Register for a new Account! </h1>
 	<body ng-app="ufxApp">
+	<form ng-submit="submit()">
 		<h2>Username:</h2>
 		<input type="text" id="acc-usrn" ng-model="newUserUserName">
 		<h2>Password:</h2>
@@ -19,9 +20,9 @@
 		<input type="text" id="acc-email" ng-model="newUserEmail">
 		<h2>Photo (Optional):</h2>
 		<!--TODO photo functionality-->
-		<input type="text" id="acc-photo-loc" ng-model="newUserPhoto">
-		<button>Browse</button>
+		<input type="file" accept="image/png, image/jpeg" ng-model="newUserPhoto">
 		<br /><br />
 		<input type="submit" value="Register!">
+	</form>
 	</body>
 </html>
