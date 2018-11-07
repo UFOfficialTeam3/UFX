@@ -1,0 +1,66 @@
+#top-section{
+   border-bottom: 1px solid black;
+   height: 100px;
+}
+.topSection{
+   display: flex;
+   flex-direction: row;
+   height: 100%;
+   justify-content: space-between;
+   align-items: center;
+}
+.topSection h1{
+   margin: none;
+}
+.listing{
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+   align-items: center;
+   border: 2px solid black;
+}
+#listing-text{
+   margin-left: 20px;
+}
+#listing-description{
+   padding: 20px;
+}
+#listing-info{
+   list-style-type: none;
+}
+#listing-info li{
+   margin: 5px;
+}
+#search-section{
+   margin-top: 100px;
+   margin: 0;
+}
+.categories-section{
+   display: flex;
+   flex-direction: row;
+}
+.categories{
+   width: 100%;
+   display: flex;
+   flex-direction: row;
+   justify-content: space-around;
+   padding: 0;
+   margin-left: 100px;
+   margin-right: 100px;
+   margin-top: 50px;
+}
+.categories input{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   width: 80px;
+}
+.searchbar{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   padding: 70px;
+}
+#searchBar{
+   width: 30%;
+}

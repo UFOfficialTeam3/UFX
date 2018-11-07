@@ -1,36 +1,58 @@
-angular.module('listings').controller('authController', ['$scope', 'Listings', 
-  function($scope, Listings) {
-    
-    /**The Controller makes functions available to be called from the html and 
-     * updates the view if neccessary
-     * Add functions that will be used by the website to make calls to the appropriate Factories
-    */
-	
-	// Helpful resource: http://jasonwatmore.com/post/2014/05/26/angularjs-basic-http-authentication-example
+'use strict';
 
-    $scope.login = function(username, password) {
-       /**TODO
-        * Calls authFactory to login user 
-        */
-    };
+//TODO: get user profile from Auth0
+//TODO: change registration page. Require First, Last name
 
-    $scope.register = function(username, password) {
-       /**TODO
-        * Calls authFactory to register user
-        */
-    };
-    
+app.controller('authController', ['authService', '$timeout', function(authService, $timeout) {
+    var vm = this;
 
-    $scope.googleLogin = function(SomeGoogleAPIObject) { 
-      /**TODO
-        * Calls authFactory to login user using google auth credinentials
-        */
-    };
+    // This function is called once everytime this page is loaded (with this controller attatched of course)
+    authService.handleAuthentication();         
 
-    $scope.googleRegister = function(SomeGoogleAPIObject) {
-         /**TODO
-           * Calls authFactory to register user using google auth credinentials
-           */
+    vm.areTokens = function() { // used to check that handleAuthentication runs properly on page load.
+        
+        var is_access = localStorage.getItem('access_token');
+        var is_id = localStorage.getItem('id_token');
+        var is_expires = localStorage.getItem('expires_at');
+
+        console.log("access_token: " + is_access);
+        console.log("id_token: " + is_id);
+        console.log("expires_at: " + is_expires);
+        
     }
-  }
-]);
+    
+    // test getting user profile
+    vm.userProfile = {};
+    vm.getUserProfile = function() {
+        console.log("Getting User Profile");
+        var access_token = localStorage.getItem('access_token');
+        
+        if(!access_token){
+            console.log('Error: access token required for getUserProfile');
+            return
+        } 
+        else {
+            auth0.client.userInfo(access_token, function(err, user) {
+                if(err){
+                    console.log(err);
+                }
+                //console.log(user);
+                vm.userProfile = user;
+                
+            });
+        }
+        
+    }
+
+    vm.displayUserProfile = function() {
+        console.log(vm.userProfile);
+    }
+
+        
+    vm.login = authService.login;
+    vm.isAuthenticated = authService.isAuthenticated;
+    vm.handleAuthentication = authService.handleAuthentication;
+    vm.logout = authService.logout;
+    
+
+}])
