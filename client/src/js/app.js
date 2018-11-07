@@ -32,5 +32,3 @@ auth0 = new auth0.WebAuth({
     redirectUri: 'http://localhost:8080/login',
     scope: 'openid profile'
   })
-
-

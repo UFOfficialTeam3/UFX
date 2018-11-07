@@ -4,57 +4,93 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="main.css">
   </head>
-  <body ng-app="directoryApp" class="bg">
-    <!-- background image -->
-    <div class="bg"></div>
-    <div class="container">
-      <div class="row">
-        <h1 class="jumbotron" id="title">UF Directory App</h1>
-      </div>
-      <div class="row" ng-controller="ListingsController">
-        <div class="col-md-6">
-          <div class="input-group" id="searchBar">
-            <span class="input-group-addon" id="sizing-addon1"><span class="glyphicon glyphicon-search"></span></span>
-            <input type="text" class="form-control" placeholder="Search" ng-model="query">
-          </div>
-          <div class="tableWrapper">
-            <table class="table table-striped table-hover">
-              <tr>
-                <th>Code</th>
-                <th>Building Name</th>
-                <th></th>
-              </tr>
-              <tr ng-repeat="listing in listings | filter: query" ng-click="showDetails(listing)">
-                <td>{{listing.code}}</td>
-                <td>{{listing.name}}</td>
-                <td ng-click="deleteListing(listing)"><span style="color: red;" class="glyphicon glyphicon-remove"></span></td>
-              </tr>
-            </table>
-          </div>
-          <form novalidate class="simple-form">
-            <h2>Add New Listing</h2>
-            Code: <input type="text" ng-model="newListing.code" /><br />
-            Name: <input type="text" ng-model="newListing.name" /><br />
-            Address: <input type="text" ng-model="newListing.address" /><br />
-            <button class="btn btn-primary" ng-click="addListing()">Add Listing</button>
-          </form>
+  <body ng-app="UFX" ng-controller="ufxCtrl">
+     <div id="page-wrapper" class="container-fluid">
+        <div id="top-section" class="row">
+           <div class="col-sm-12 topSection">
+              <h1>UFX</h1>
+              <div id="nav-btns">
+                 <input type="button" class="btn btn-primary" value="Post Listing">
+                 <input type="button" class="btn btn-primary" value="Login/Signup">
+              </div>
+           </div>
         </div>
-        <div class="col-md-6" id="infobox">
-          <div class="jumbotron">
-            <h2 id="detInfo">Detailed Information</h2>
-            <h4>{{detailedInfo.name}}</h4>
-            <p>Address: {{detailedInfo.address}}</p>
-            <p>Building Code: {{detailedInfo.code}}</p>
-          </div>
+        <div id="search-section">
+           <div class="row">
+              <div class="categories-section col-sm-12">
+                 <div class="categories">
+                    <input type="button" class="btn btn-default btn-sm" value="Appliances">
+                    <input type="button" class="btn btn-default btn-sm" value="Automobiles">
+                    <input type="button" class="btn btn-default btn-sm" value="Bikes">
+                    <input type="button" class="btn btn-default btn-sm" value="Books">
+                    <input type="button" class="btn btn-default btn-sm" value="Cell Phones">
+                    <input type="button" class="btn btn-default btn-sm" value="Clothes">
+                    <input type="button" class="btn btn-default btn-sm" value="Collectibles">
+                 </div>
+              </div>
+           </div>
+           <div class="row">
+              <div class="categories-section col-sm-12">
+                  <div class="categories">
+                    <input type="button" class="btn btn-default btn-sm" value="Electronics">
+                    <input type="button" class="btn btn-default btn-sm" value="Furniture">
+                    <input type="button" class="btn btn-default btn-sm" value="Music">
+                    <input type="button" class="btn btn-default btn-sm" value="Photo/Video">
+                    <input type="button" class="btn btn-default btn-sm" value="Tickets">
+                    <input type="button" class="btn btn-default btn-sm" value="Tools">
+                    <input type="button" class="btn btn-default btn-sm" value="Others">
+                 </div>
+              </div>
+           </div>
+           <div class="row searchbar">
+              <input type="text" id="searchBar" class="form-control" placeholder="Search" ng-model="searchListing">
+           </div>
         </div>
-      </div>
-    </div>
+        <div id="listings-section" class="row">
+           <div class="listing">
+               <div class="col-sm-2">
+                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfNbcFM1HkR6NJBLM8NfpDoZdH2sqgaBh1dRRv1h8W35sHIcAX3g" alt="" class="listing-img">
+              </div>
+              <div id="listing-text" class="col-sm-7">
+                 <h3>Listing Title</h3>
+                 <p id="listing-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pharetra orci et ante imperdiet, nec lobortis sem lobortis. Pellentesque feugiat turpis ac tellus auctor, in cursus massa dictum. Nullam posuere purus sed neque dictum feugiat. Proin quis velit a nulla dapibus facilisis non in nulla. Vestibulum accumsan urna nec nunc vulputate, congue lobortis sem ultrices. Pellentesque sed leo nec lectus feugiat efficitur. Ut at metus ut neque laoreet placerat eget ac lacus. Nunc dui sem, interdum ut tempor ac, faucibus ut orci. Maecenas lacinia pellentesque finibus. Suspendisse potenti.</p>
+              </div>
+              <div class="col-sm-3">
+                 <ul id="listing-info">
+                    <li><b>Seller/Buyer</b>: Seller</li>
+                    <li><b>Category</b>: Other</li>
+                    <li><b>Condition</b>: New</li>
+                    <li><b>Asking Price</b>: $20</li>
+                    <li><b>Payment Types</b>: Cash</li>
+                 </ul>
+              </div>
+           </div>
+            <!-- <div class="listing" ng-repeat="x in a">
+               <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfNbcFM1HkR6NJBLM8NfpDoZdH2sqgaBh1dRRv1h8W35sHIcAX3g" alt="" class="listing-img">
+               <div id="listing-text">
+                  <h5>Listing Title</h5>
+                  <p id="listing-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pharetra orci et ante imperdiet, nec lobortis sem lobortis. Pellentesque feugiat turpis ac tellus auctor, in cursus massa dictum. Nullam posuere purus sed neque dictum feugiat. Proin quis velit a nulla dapibus facilisis non in nulla. Vestibulum accumsan urna nec nunc vulputate, congue lobortis sem ultrices. Pellentesque sed leo nec lectus feugiat efficitur. Ut at metus ut neque laoreet placerat eget ac lacus. Nunc dui sem, interdum ut tempor ac, faucibus ut orci. Maecenas lacinia pellentesque finibus. Suspendisse potenti.</p>
+               </div>
+               <ul id="listing-info">
+                  <li><b>Seller/Buyer</b>: Seller</li>
+                  <li><b>Category</b>: Other</li>
+                  <li><b>Condition</b>: New</li>
+                  <li><b>Asking Price</b>: $20</li>
+                  <li><b>Payment Types</b>: Cash</li>
+               </ul>
+            </div> -->
+        </div>
+     </div>
+
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
     <script src="https://code.angularjs.org/1.4.3/angular.js"></script>
-    <script src="js/app.js"></script>
+    <script src="../../js/app.js"></script>
     <script src="js/factories/listingsFactory.js"></script>
     <script src="js/controllers/listingsController.js"></script>
+
+
   </body>
   <footer class="page-footer font-small">
     <!-- Copyright -->
