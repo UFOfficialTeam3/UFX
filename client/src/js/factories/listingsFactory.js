@@ -1,4 +1,6 @@
-angular.module('listings', []).factory('listingsFactory', function($http) {
+'use strict';
+
+app.factory('listingsFactory', function($http) {
 
     /**Listing API methods
      *The factory is responsible for making api calls that are then routed

@@ -1,8 +1,9 @@
 'use strict';
 
-/* register the application and inject all the necessary dependencies */
+// Register App
 const app = angular.module('app', ['auth0.auth0'])
 
+/** Configure Authentication */
 .config(config)
 
 config.$inject = [

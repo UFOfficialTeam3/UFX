@@ -1,4 +1,6 @@
-angular.module('listings').controller('listingsController', ['$scope', 'Listings', 
+'use strict';
+
+app.controller('listingsController', ['$scope', 'Listings', 
   function($scope, Listings) {
     
     /**The Controller makes functions available to be called from the html and
