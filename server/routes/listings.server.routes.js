@@ -1,8 +1,8 @@
 /** All HTTP requests on the main page/ listings page should go through here */
 
 /* Dependencies */
-//var listings = require('../controllers/listings.server.controller.js'), UNCOMMENT LATER
-  var  express = require('express'), 
+var listings = require('../controllers/listings.server.controller.js'),
+    express = require('express'), 
     router = express.Router();
 
 /* 
@@ -10,11 +10,11 @@
   Take note that it is possible for different controller functions to handle requests to the same route.
  */
 router.route('/')
-  //.get(listings.list) UNCOMMENT LATTTERERRERERER
-  //.post(listings.create);
+  .get(listings.list) 
+  
 
 router.route('/create-listing')
-  //.post(listings.create)
+  .post(listings.create)
 
 
 module.exports = router;

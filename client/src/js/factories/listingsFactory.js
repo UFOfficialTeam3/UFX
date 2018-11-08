@@ -13,7 +13,7 @@ app.factory('listingsFactory', function($http) {
          * Make http post request
          */
         console.log("Calling factory.add()");
-        return $http.post('http://localhost:8080/api/create-listing', listing); 
+        return $http.post('http://localhost:8080/api/listings/create-listing', listing); 
         
       },
       
