@@ -5,17 +5,17 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   </head>
   <h1>UFX | Create a new Listing</h1>
-  <body ng-app="app">
-    <form>
+  <body ng-app="app" ng-controller="createListingsController">
+    <form ng-submit="createListing()">
       <div class="row">
        <div class="col-md-6">
         <h2> Title of Listing: </h2>
-        <input type="text" id="listing-name" placeholder="What are we trading?" ng-model="newListingName">
+        <input type="text" id="listing-name" placeholder="What are we trading?" ng-model="newListing.Title">
         <h2> Buying or Selling? </h2>
-        <label for="buying"><input type="radio" id="buying" name="buying-selling" ng-model="newListingBorS" ng-value="buying">Buying</label>
-        <label for="selling"><input type="radio" id="selling" name="buying-selling" ng-model="newListingBorS" ng-value="selling">Selling</label>
+        <label for="buying"><input type="radio" id="buying" name="buying-selling" ng-model="newListing.buyOrSell" value="buying">Buying</label>
+        <label for="selling"><input type="radio" id="selling" name="buying-selling" ng-model="newListing.buyOrSell" value="selling">Selling</label>
         <h2> Item Type: </h2>
-        <select id="listing-item-type"ng-model="newListingType">
+        <select id="listing-item-type"ng-model="newListing.type">
           <option value="cars"> Cars </option>
           <option value="housing"> Housing </option>
           <option value="services"> Services </option>
@@ -27,36 +27,35 @@
           <option value="other"> Other </option>
         </select>
         <h2>Condition:</h2>
-        <select id="listing-condition" ng-model="newListingCond">
+        <select id="listing-condition" ng-model="newListing.condition">
           <option value="new"> New </option>
           <option value="slightly used"> Slightly Used </option>
           <option value="used"> Used </option>
           <option value="beater"> Beater </option>
         </select>
         <h2> Asking Price: </h2>
-        <input type="text" id="listing-price" placeholder="how much?" ng-model="newListingPrice">
-        <label for="listing-price-neg"> Price Negotiable? </label><input type="checkbox" id="listing-price-neg" ng-model="newListingPriceNeg">
+        <input type="text" id="listing-price" placeholder="how much?" ng-model="newListing.Price">
+        <label for="listing-price-neg"> Price Negotiable? </label><input type="checkbox" id="listing-price-neg" ng-model="newListing.negotiable" value=True>
         <h2> Payment Types Accepted: </h2>
-        <label for="payType-money">Money</label><input type="checkbox" id="payType-money" ng-model="newListingPayMoney">
-        <label for="payType-venmo">Venmo</label><input type="checkbox" id="payType-venmo" ng-model="newListingPayVenmo">
-        <label for="payType-other">Paypal</label><input type="checkbox" id="payType-paypal"ng-model="newListingPayPaypal">
+        <label for="payType-money">Money<input type="checkbox" id="payType-money" ng-model="newListing.pt_money" ng-true-value="'money'"></label>
+        <label for="payType-venmo">Venmo<input type="checkbox" id="payType-venmo" ng-model="newListing.pt_venmo" ng-true-value="'venmo'"></label>
+        <label for="payType-other">Paypal<input type="checkbox" id="payType-paypal"ng-model="newListing.pt_paypal" ng-true-value="'paypal'"></label>
        </div>
        <div class="col-md-6">
          <h2> Proposed Meeting Location:</h2>
-         <select id="listing-location" ng-model="newListingLocation">
-           <option value="the hub">The Hub</option>
-           <option value="marston">Marston Science Library</option>
-           <option value="library west">Library West</option>
-           <option value="reitz union">Reitz Union</option>
+         <select id="listing-location" ng-model="newListing.location">
+           <option value="The Hub">The Hub</option>
+           <option value="Marston">Marston Science Library</option>
+           <option value="Library West">Library West</option>
+           <option value="Reitz Union">Reitz Union</option>
          </select>
          <br />
          <h2>Description:</h2>
-         <textarea id="listing-description" placeholder="What are you trying to sell?" ng-model="newListingDescription"></textarea><br />
-         <!----TODO: Adding functionality to upload photos-->
+         <textarea id="listing-description" placeholder="What are you trying to sell?" ng-model="newListing.description"></textarea><br />
+         <!----TODO: finalizing functionality to upload photos-->
          <h2> Photo to upload (Optional): </h2>
-         <input type="text" ng-model=>  
+         <input type="file" accept="image/png, image/jpeg">  
          <!---^^^^^^-->
-         <button>Browse</button>
          <br /><br />
         </div>
       </div>
@@ -82,7 +81,7 @@
     <script src="js/app.js"></script>
     <script src="js/authFactory.js"></script>
     <script src="js/authController.js"></script>
-    <script src="js/listingsController.js"></script>
+    <script src="js/createListingsController.js"></script>
     <script src="js/listingsFactory.js"></script>
 
     <!-- Latest patch release (recommended for production) -->

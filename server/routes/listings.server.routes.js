@@ -13,5 +13,8 @@ router.route('/')
   //.get(listings.list) UNCOMMENT LATTTERERRERERER
   //.post(listings.create);
 
+router.route('/create-listing')
+  //.post(listings.create)
+
 
 module.exports = router;

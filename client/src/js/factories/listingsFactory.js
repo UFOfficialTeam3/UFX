@@ -8,11 +8,13 @@ app.factory('listingsFactory', function($http) {
      * The methods here will be called by the listingsController
      */
     var methods = {
-      add: function() {
+      add: function(listing) {
         /**TODO
          * Make http post request
          */
-        //Example: return $http.post('http://localhost:8080/api/listings');
+        console.log("Calling factory.add()");
+        return $http.post('http://localhost:8080/api/create-listing', listing); 
+        
       },
       
       delete: function(listingId) {
