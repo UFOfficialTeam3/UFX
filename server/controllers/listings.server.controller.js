@@ -13,17 +13,21 @@ const db = require('../config/config.js');
 exports.create = function(req, res) {
    try {
      const listing = req.body;
-     const result = db.query("INSERT INTO Listings (lid, pid, Title, Price, type, condition, payment, description) VALUES ($1,$2,$3,$4,$5,$6,$7,$8) RETURNING *",
-     [listing.lid, listing.pid, listing.Title, listing.Price, listing.type, listing.condition, listing.payment, listing.description]
+     const result = db.query("INSERT INTO listing (lid, pid, title, price, category, item_condition, payment, description, sell) VALUES ($1,$2,$3,$4,$5,$6,$7, $8, $9) RETURNING *",
+     [listing.lid, listing.pid, listing.Title, listing.Price, listing.category, listing.condition, listing.payment, listing.description, listing.sell]
     );
     return res.json(result.rows[0]);
     } catch (err) {
-      res.status(404)        // HTTP status 404: Not Found
-        .send('Not found');
-      console.log('Error while trying to create a listing');
-      return next(err);
+      res.status(107)        // HTTP status 404: Not Found
+        .send('Error with create');
+      console.log('Error while trying to create a listing', err);
+      return (err);
     }
 };
+
+
+
+
 
 /* Show the current listing */
 exports.read = function(req, res) {

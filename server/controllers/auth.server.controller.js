@@ -5,9 +5,9 @@
 const db = require('../config/config.js');
 
 // test connection to database
-db.query('SELECT NOW()', (err, res) => {
-   console.log(err, res)
-});
+//db.query('SELECT NOW()', (err, res) => {
+//   console.log(err, res)
+//});
 
 /*
   In this file, you should use SQL queries in order to authenticate a user's username and password.

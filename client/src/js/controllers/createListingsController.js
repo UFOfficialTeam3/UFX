@@ -4,18 +4,20 @@ app.controller('createListingsController', ['$scope', 'listingsFactory',
   function($scope, listingsFactory) {
     
     $scope.newListing = {
-      lid: undefined,     // How should users go about inputting a listing id??
-      Title: undefined,
-      Price: undefined,
-      negotiable: undefined, // This field not in table.
-      buyOrSell: undefined, // This field not in table.
-      type: undefined,
-      condition: undefined,
+      lid: 70,     // How should users go about inputting a listing id??
+      pid: 101,
+      Title: 'Honda Civic',
+      Price: 200,
+      negotiable: true, // This field not in table.
+      sell: true, //TODO: change html code for this
+      category: 'cars', //TODO: replace type with category
+      condition: 'new',
+      payment: 'cash', // This field will be changed.
       pt_money: undefined,  // This field not in table.
       pt_venmo: undefined,  // This field not in table.
       pt_paypal: undefined,  // This field not in table.
-      description: undefined,
-      location: undefined, // This field not in table.
+      description: 'description',
+      location: 'The Hub', // This field not in table.
     }
 
     $scope.createListing = function() {
@@ -24,7 +26,7 @@ app.controller('createListingsController', ['$scope', 'listingsFactory',
       // TODO: Error checking for required fields
 
       // Call Factory method to add newListing to db
-      print(listingsFactory.add($scope.newListing));
+      console.log(listingsFactory.add($scope.newListing));
       
     }
 
