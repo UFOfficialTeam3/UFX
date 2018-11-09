@@ -24,15 +24,15 @@ function($timeout, angularAuth0, $http) {
           if (authResult && authResult.accessToken && authResult.idToken) {
             setSession(authResult);
             //$state.go('home');
-            console.log('Dont forget to add redirect code!');
+            //console.log('Dont forget to add redirect code!');
             
           } else if (err) {
             $timeout(function() {
               //$state.go('home');
-              console.log('Dont forget to add timeout redirect code!');
+              //console.log('Dont forget to add timeout redirect code!');
 
             });
-            console.log('handleAuthentication error: ' + err);
+            console.log('handleAuthentication error: ' + err.message);
             
           }
         });
@@ -62,7 +62,7 @@ function($timeout, angularAuth0, $http) {
 
         // logout user from auth0 session        
         angularAuth0.logout({
-            returnTo: 'http://localhost:8080/login',
+            returnTo: 'http://localhost:8080/',
             client_id: '1oXEUQBPzfcr2q6R0Z5GQgWydPOtymlf'
         });
     }

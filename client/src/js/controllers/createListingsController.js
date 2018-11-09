@@ -2,8 +2,9 @@
 
 app.controller('createListingsController', ['$scope', 'listingsFactory', 
   function($scope, listingsFactory) {
-    
-    $scope.newListing = {
+    var vm = this;
+
+    vm.newListing = {
       lid: 70,     // How should users go about inputting a listing id??
       pid: 101,
       Title: 'Honda Civic',
@@ -20,36 +21,37 @@ app.controller('createListingsController', ['$scope', 'listingsFactory',
       location: 'The Hub', // This field not in table.
     }
 
-    $scope.createListing = function() {
-      console.log($scope.newListing);
+    vm.createListing = function() {
+      console.log(vm.newListing);
 
       // TODO: Error checking for required fields
 
       // Call Factory method to add newListing to db
-      console.log(listingsFactory.add($scope.newListing));
+      //console.log(listingsFactory.add(vm.newListing));
       
     }
 
-    $scope.addItem = function() {
+    vm.addItem = function() {
        /**TODO
         * Calls listingsFactory to add new posts to the Free and For Sale page
         */
     };
 
-    $scope.deleteItem = function(Item) {
+    vm.deleteItem = function(Item) {
        /**TODO
         * Calls listingsFactory to delete posts on the Free and For Sale page
         */
     };
     
 
-    $scope.showItemDetails = function(Item) { 
+    vm.showItemDetails = function(Item) { 
       /**TODO
         * Calls listingsFactory to display post details to the Free and For Sale page
         */
     };
 
     
+    return vm;
 
   }
 ]);

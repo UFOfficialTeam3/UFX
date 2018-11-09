@@ -1,13 +1,53 @@
 'use strict';
 
 //TODO: get user profile from Auth0
-//TODO: change registration page. Require First, Last name
 
-app.controller('authController', ['authService', '$timeout', function(authService, $timeout) {
-    var vm = this;
 
-    // This function is called once everytime this page is loaded (with this controller attatched of course)
-    authService.handleAuthentication();         
+app.controller('authController', ['authService', '$scope', '$timeout', 
+    function(authService, $scope, $timeout) {
+    var vm = this;    
+    
+    vm.isAuthenticated = authService.isAuthenticated;
+    vm.login = authService.login;
+    vm.logout = authService.logout;
+
+    console.log("Hello from authController");
+    
+    // DEBUG: This function is called once everytime this page is loaded (with this controller attatched of course)
+    console.log("handle auth: " + authService.handleAuthentication());
+    
+    // DEBUG: Checks if user is logged in
+    console.log("is auth: " + authService.isAuthenticated());
+    
+    // Promise isAuthenticated()
+    var willRedirectToLogin = new Promise(
+        function (resolve, reject) {
+            if(!authService.isAuthenticated()) {
+                resolve("Promise resolved. User not logged in");
+            } else {
+                var reason = new Error('Promise Rejected. User is already logged in.');
+                reject(reason);
+            }
+
+        }
+    );
+    
+    // call our promise
+    vm.askRedirect = function () {
+        willRedirectToLogin
+            .then(function(fulfilled) {
+                // yes, we must redirect to login page
+                console.log(fulfilled);
+                authService.login();
+            })
+            .catch(function (error) {
+                // nope, no need to redirect to homepage
+                console.log(error.message);
+            });
+    };
+
+    // check login, redirect if necess.
+    //askRedirect();
 
     vm.areTokens = function() { // used to check that handleAuthentication runs properly on page load.
         
@@ -37,7 +77,7 @@ app.controller('authController', ['authService', '$timeout', function(authServic
                     console.log(err);
                 }
                 //console.log(user);
-                vm.userProfile = user;
+                $scope.userProfile = user;
                 
             });
         }
@@ -48,11 +88,8 @@ app.controller('authController', ['authService', '$timeout', function(authServic
         console.log(vm.userProfile);
     }
 
-        
-    vm.login = authService.login;
-    vm.isAuthenticated = authService.isAuthenticated;
-    vm.handleAuthentication = authService.handleAuthentication;
-    vm.logout = authService.logout;
+    return vm;    
+    
     
 
 }])

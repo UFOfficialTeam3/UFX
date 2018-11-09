@@ -9,15 +9,16 @@
     
     <h1> Hello </h1>
     
-    <div ng-controller="authController as vm">
+    <div ng-controller="authController as authCtrl">
 
-        <button ng-if="!vm.isAuthenticated()" ng-click="vm.login()">Log In</button>
-        <button ng-if="vm.isAuthenticated()" ng-click="vm.logout()">Log Out</button>
-        <button ng-click="vm.handleAuthentication()">Handle Authentication</button>
-        <button ng-click="vm.areTokens()">Check Tokens</button>
-        <button ng-click="vm.getUserProfile()">Get User Profile</button>
-        <button ng-click="vm.displayUserProfile()">Display Profile</button>
-        <h1 ng-if="vm.isAuthenticated()"> YOU'RE LOGGED IN MATE!!</h1>
+        <!--<div ng-init="authCtrl.askRedirect()"></div>-->
+        <button ng-if="!authCtrl.isAuthenticated()" ng-click="authCtrl.login()">Log In</button>
+        <button ng-if="authCtrl.isAuthenticated()" ng-click="authCtrl.logout()">Log Out</button>
+        <button ng-click="authCtrl.handleAuthentication()">Handle Authentication</button>
+        <button ng-click="authCtrl.areTokens()">Check Tokens</button>
+        <button ng-click="authCtrl.getUserProfile()">Get User Profile</button>
+        <button ng-click="authCtrl.displayUserProfile()">Display Profile</button>
+        <h1 ng-if="authCtrl.isAuthenticated()"> YOU'RE LOGGED IN MATE!!</h1>
     </div> 
 
 

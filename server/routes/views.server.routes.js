@@ -17,12 +17,10 @@ router.get('/main.css', function(req, res){
 router.get('/js/app.js', function(req, res){
     res.sendFile(path.resolve(__dirname+'/../../client/src/js/app.js'));
 });
-router.get('/js/controllers/listingsController.js', function(req, res){
-    res.sendFile(path.resolve(__dirname+'/../../client/src/js/controllers/listingsController.js'));
+router.get('/js/homeController.js', function(req, res){
+    res.sendFile(path.resolve(__dirname+'/../../client/src/js/controllers/homeController.js'));
 });
-router.get('/js/factories/listingsFactory.js', function(req, res){
-    res.sendFile(path.resolve(__dirname+'/../../client/src/js/factories/listingsFactory.js'));
-});
+
 
 
 /* create-listing Page & Dependencies */
