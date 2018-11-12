@@ -14,7 +14,7 @@ router.route('/')
   
 
 router.route('/create-listing')
-  .post(listings.create)
+  .post(listings.createListing)
 
 
 module.exports = router;
