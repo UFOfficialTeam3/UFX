@@ -18,14 +18,18 @@ app.controller('authController', ['authService', '$scope', '$timeout',
     console.log("is auth: " + authService.isAuthenticated());
 
     // Store user's profile in localstorage so other controllers can access it
-    auth0.client.userInfo(localStorage.getItem('access_token'), function(err, user) {
-        if(err){
-            console.log("userInfo error:", err);
-        }
-        console.log(user); // DEBUG
-        localStorage.setItem('user', JSON.stringify(user));        
-        
-    });
+    var access_token = localStorage.getItem('access_token');
+    if (access_token) {
+        auth0.client.userInfo(access_token, function(err, user) {
+            if(err){
+                console.log("userInfo error:", err);
+            }
+            console.log(user); // DEBUG
+            localStorage.setItem('user', JSON.stringify(user));        
+            
+        });
+    }
+    
     
 
     // DEBUG: function that fetches user profile from local storage
