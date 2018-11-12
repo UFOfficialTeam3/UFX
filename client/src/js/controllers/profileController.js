@@ -9,6 +9,7 @@ angular.module('app').controller('profileController', ['$scope', 'Profile',
 
     Profile.getUser().then(function(response) {
         $scope.user = response.data;
+        console.log(response.data);
       }, function(error) {
         console.log('Unable to retrieve user:', error);
       });

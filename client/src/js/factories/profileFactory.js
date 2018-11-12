@@ -5,7 +5,7 @@ angular.module('app', []).factory('Profile', function($http) {
         return $http({
             method: 'GET',
             url: 'http://localhost:8080/api/user',
-            params: { id: 1}
+            params: { 'id': '1'}
           })
       },
       
