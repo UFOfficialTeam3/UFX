@@ -22,10 +22,11 @@ app.controller('authController', ['authService', '$scope', '$timeout',
         if(err){
             console.log("userInfo error:", err);
         }
-        //console.log(user);
+        console.log(user); // DEBUG
         localStorage.setItem('user', JSON.stringify(user));        
         
     });
+    
 
     // DEBUG: function that fetches user profile from local storage
     vm.testUser = function() {
@@ -57,6 +58,7 @@ app.controller('authController', ['authService', '$scope', '$timeout',
             } else {
                 var reason = new Error('Promise Rejected. User is already logged in.');
                 reject(reason);
+                
             }
 
         }
@@ -72,6 +74,7 @@ app.controller('authController', ['authService', '$scope', '$timeout',
             .catch(function (error) {
                 // nope, no need to redirect to homepage
                 console.log(error.message);
+                
             });
     };
 
