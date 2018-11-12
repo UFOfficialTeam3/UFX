@@ -18,8 +18,10 @@ function config(angularAuth0Provider) {
       domain: 'ufx.auth0.com',
       responseType: 'token id_token',
       redirectUri: 'http://localhost:8080/',
-      audience: 'https://ufx.auth0.com/userinfo',
-      scope: 'openid profile'
+      audience: 'https://ufx.com/api',
+      scope: "openid profile crud:db"
+      //audience: 'https://ufx.auth0.com/userinfo',
+      //scope: 'openid profile'
     });
 
 }
@@ -29,7 +31,9 @@ auth0 = new auth0.WebAuth({
     clientID: '1oXEUQBPzfcr2q6R0Z5GQgWydPOtymlf',
     domain: 'ufx.auth0.com',
     responseType: 'token id_token',
-    audience: 'https://ufx.auth0.com/userinfo',
     redirectUri: 'http://localhost:8080/',
-    scope: 'openid profile'
+    audience: 'https://ufx.com/api',
+    scope: "openid profile crud:db"
+    //audience: 'https://ufx.auth0.com/userinfo',
+    //scope: 'openid profile'
   })
