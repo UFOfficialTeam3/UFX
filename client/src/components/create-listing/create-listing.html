@@ -1,21 +1,23 @@
-
+<!----TODO: Make Nav with option to login. Josh will implement-->
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   </head>
   <h1>UFX | Create a new Listing</h1>
-  <body ng-app="ufxApp">
-    <form ng-submit="submit()">
+  <body ng-app="app">
+    <div ng-controller="authController as authCtrl"></div>
+    <div ng-controller="createListingsController as clc">
+    <form ng-submit="clc.createListing()">
       <div class="row">
        <div class="col-md-6">
         <h2> Title of Listing: </h2>
-        <input type="text" id="listing-name" placeholder="What are we trading?" ng-model="newListingName">
+        <input type="text" id="listing-name" placeholder="What are we trading?" ng-model="clc.newListing.Title">
         <h2> Buying or Selling? </h2>
-        <label for="buying"><input type="radio" id="buying" name="buying-selling" ng-model="newListingBorS" ng-value="buying">Buying</label>
-        <label for="selling"><input type="radio" id="selling" name="buying-selling" ng-model="newListingBorS" ng-value="selling">Selling</label>
+        <label for="buying"><input type="radio" id="buying" name="buying-selling" ng-model="clc.newListing.sell" value="false">Buying</label>
+        <label for="selling"><input type="radio" id="selling" name="buying-selling" ng-model="clc.newListing.sell" value="true">Selling</label>
         <h2> Item Type: </h2>
-        <select id="listing-item-type"ng-model="newListingType">
+        <select id="listing-item-type"ng-model="clc.newListing.type">
           <option value="cars"> Cars </option>
           <option value="housing"> Housing </option>
           <option value="services"> Services </option>
@@ -27,31 +29,31 @@
           <option value="other"> Other </option>
         </select>
         <h2>Condition:</h2>
-        <select id="listing-condition" ng-model="newListingCond">
+        <select id="listing-condition" ng-model="clc.newListing.condition">
           <option value="new"> New </option>
           <option value="slightly used"> Slightly Used </option>
           <option value="used"> Used </option>
           <option value="beater"> Beater </option>
         </select>
         <h2> Asking Price: </h2>
-        <input type="text" id="listing-price" placeholder="how much?" ng-model="newListingPrice">
-        <label for="listing-price-neg"> Price Negotiable? </label><input type="checkbox" id="listing-price-neg" ng-model="newListingPriceNeg">
+        <input type="text" id="listing-price" placeholder="how much?" ng-model="clc.newListing.Price">
+        <label for="listing-price-neg"> Price Negotiable? </label><input type="checkbox" id="listing-price-neg" ng-model="clc.newListing.negotiable" value=True>
         <h2> Payment Types Accepted: </h2>
-        <label for="payType-money">Money</label><input type="checkbox" id="payType-money" ng-model="newListingPayMoney">
-        <label for="payType-venmo">Venmo</label><input type="checkbox" id="payType-venmo" ng-model="newListingPayVenmo">
-        <label for="payType-other">Paypal</label><input type="checkbox" id="payType-paypal"ng-model="newListingPayPaypal">
+        <label for="payType-money">Money<input type="checkbox" id="payType-money" ng-model="clc.newListing.pt_money" ng-true-value="'money'"></label>
+        <label for="payType-venmo">Venmo<input type="checkbox" id="payType-venmo" ng-model="clc.newListing.pt_venmo" ng-true-value="'venmo'"></label>
+        <label for="payType-other">Paypal<input type="checkbox" id="payType-paypal"ng-model="clc.newListing.pt_paypal" ng-true-value="'paypal'"></label>
        </div>
        <div class="col-md-6">
          <h2> Proposed Meeting Location:</h2>
-         <select id="listing-location" ng-model="newListingLocation">
-           <option value="the hub">The Hub</option>
-           <option value="marston">Marston Science Library</option>
-           <option value="library west">Library West</option>
-           <option value="reitz union">Reitz Union</option>
+         <select id="listing-location" ng-model="clc.newListing.location">
+           <option value="The Hub">The Hub</option>
+           <option value="Marston">Marston Science Library</option>
+           <option value="Library West">Library West</option>
+           <option value="Reitz Union">Reitz Union</option>
          </select>
          <br />
          <h2>Description:</h2>
-         <textarea id="listing-description" placeholder="What are you trying to sell?" ng-model="newListingDescription"></textarea><br />
+         <textarea id="listing-description" placeholder="What are you trying to sell?" ng-model="clc.newListing.description"></textarea><br />
          <!----TODO: finalizing functionality to upload photos-->
          <h2> Photo to upload (Optional): </h2>
          <input type="file" accept="image/png, image/jpeg" ng-model="newListingPhoto">  
@@ -65,5 +67,28 @@
         </div>
       </div>
     </form>
+    </div>
+
+    <!-- Import Scripts -->
+    <!-- JS files should be the last thing in the body -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+    <script src="https://code.angularjs.org/1.4.3/angular.js"></script>
+    
+    <!-- Auth0 dependencies -->
+    <script src="https://cdn.auth0.com/js/lock-8.1.min.js"></script>
+    <script src="https://cdn.auth0.com/js/auth0/9.5.1/auth0.min.js"></script>
+    <script type="text/javascript" src="node_modules/angular-auth0/dist/angular-auth0.js"></script>
+
+    <!-- Angular JS app, modules, services -->    
+    <script src="js/app.js"></script>
+    <script src="js/authFactory.js"></script>
+    <script src="js/authController.js"></script>
+    <script src="js/createListingsController.js"></script>
+    <script src="js/listingsFactory.js"></script>
+
+    <!-- Latest patch release (recommended for production) -->
+    <script src="https://cdn.auth0.com/js/lock/11.11.0/lock.min.js"></script>
+
   </body>
 </html>

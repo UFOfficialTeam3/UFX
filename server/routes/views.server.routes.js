@@ -17,21 +17,23 @@ router.get('/main.css', function(req, res){
 router.get('/js/app.js', function(req, res){
     res.sendFile(path.resolve(__dirname+'/../../client/src/js/app.js'));
 });
-router.get('/js/controllers/listingsController.js', function(req, res){
-    res.sendFile(path.resolve(__dirname+'/../../client/src/js/controllers/listingsController.js'));
+router.get('/js/homeController.js', function(req, res){
+    res.sendFile(path.resolve(__dirname+'/../../client/src/js/controllers/homeController.js'));
 });
-router.get('/js/factories/listingsFactory.js', function(req, res){
-    res.sendFile(path.resolve(__dirname+'/../../client/src/js/factories/listingsFactory.js'));
-});
+
 
 
 /* create-listing Page & Dependencies */
 router.get('/create-listing', function(req, res){
     res.sendFile(path.resolve(__dirname+'/../../client/src/components/create-listing/create-listing.html'));
 });
-// TODO: send dependency files
-//
-//
+router.get('/js/createListingsController.js', function(req, res){
+    res.sendFile(path.resolve(__dirname+'/../../client/src/js/controllers/createListingsController.js'))
+});
+router.get('/js/listingsFactory.js', function(req, res){
+    res.sendFile(path.resolve(__dirname+'/../../client/src/js/factories/listingsFactory.js'))
+});
+
 
 /* listing-details Page & Dependencies */
 router.get('/listing-details', function(req, res){
@@ -62,6 +64,28 @@ router.get('/node_modules/angular-auth0/dist/angular-auth0.js', function(req, re
 router.get('/register', function(req, res){
     res.sendFile(path.resolve(__dirname+'/../../client/src/components/register/register.html'));
 });
+
+/* Profile page */
+router.get('/profile', function(req, res){
+    res.sendFile(path.resolve(__dirname+'/../../client/src/components/profile/profile.html'));
+});
+router.get('../home/main.css', function(req, res){
+    res.sendFile(path.resolve(__dirname+'/../../client/src/components/home/main.css'));
+});
+router.get('/profile.css', function(req, res){
+    res.sendFile(path.resolve(__dirname+'/../../client/src/components/profile/profile.css'));
+});
+
+router.get('/js/controllers/profileController.js', function(req, res){
+    res.sendFile(path.resolve(__dirname+'/../../client/src/js/controllers/profileController.js'));
+});
+router.get('/js/factories/profileFactory.js', function(req, res){
+    res.sendFile(path.resolve(__dirname+'/../../client/src/js/factories/profileFactory.js'));
+});
+
+
+
+
 // TODO: send dependency files
 //
 //

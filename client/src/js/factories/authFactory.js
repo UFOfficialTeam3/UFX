@@ -16,6 +16,16 @@ function($timeout, angularAuth0, $http) {
         angularAuth0.authorize();
     }
 
+    // Test send jwt to server
+    function sendjwt(jwt) {
+        console.log("Running authFactory's sendjwt().");
+        return $http({
+            method: 'POST',
+            url: 'http://localhost:8080/api/testjwt',
+            headers: {'Authorization': 'Bearer ' + jwt}
+        })
+    }
+
     // looks for the result of authentication in the URL hash. 
     // Then, the result is processed with the parseHash method from auth0.js
     function handleAuthentication() {
@@ -24,15 +34,15 @@ function($timeout, angularAuth0, $http) {
           if (authResult && authResult.accessToken && authResult.idToken) {
             setSession(authResult);
             //$state.go('home');
-            console.log('Dont forget to add redirect code!');
+            //console.log('Dont forget to add redirect code!');
             
           } else if (err) {
             $timeout(function() {
               //$state.go('home');
-              console.log('Dont forget to add timeout redirect code!');
+              //console.log('Dont forget to add timeout redirect code!');
 
             });
-            console.log('handleAuthentication error: ' + err);
+            console.log('handleAuthentication error: ' + err.message);
             
           }
         });
@@ -46,7 +56,7 @@ function($timeout, angularAuth0, $http) {
         localStorage.setItem('expires_at', expiresAt);
     }
 
-    // TODO: if user is past expiration date: logout, make user login.
+    
     function isAuthenticated() {
         // Check whether the current time is past the 
         // Access Token's expiry time
@@ -62,7 +72,7 @@ function($timeout, angularAuth0, $http) {
 
         // logout user from auth0 session        
         angularAuth0.logout({
-            returnTo: 'http://localhost:8080/login',
+            returnTo: 'http://localhost:8080/',
             client_id: '1oXEUQBPzfcr2q6R0Z5GQgWydPOtymlf'
         });
     }
@@ -75,6 +85,7 @@ function($timeout, angularAuth0, $http) {
         isAuthenticated: isAuthenticated,
         handleAuthentication: handleAuthentication,
         logout: logout,
+        sendjwt: sendjwt,
         
         
     } 

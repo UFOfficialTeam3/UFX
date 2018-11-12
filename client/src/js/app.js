@@ -1,8 +1,9 @@
 'use strict';
 
-/* register the application and inject all the necessary dependencies */
+// Register App
 const app = angular.module('app', ['auth0.auth0'])
 
+/** Configure Authentication */
 .config(config)
 
 config.$inject = [
@@ -16,9 +17,11 @@ function config(angularAuth0Provider) {
       clientID: '1oXEUQBPzfcr2q6R0Z5GQgWydPOtymlf',
       domain: 'ufx.auth0.com',
       responseType: 'token id_token',
-      redirectUri: 'http://localhost:8080/login',
-      audience: 'https://ufx.auth0.com/userinfo',
-      scope: 'openid profile'
+      redirectUri: 'http://localhost:8080/',
+      audience: 'https://ufx.com/api',
+      scope: "openid profile crud:db"
+      //audience: 'https://ufx.auth0.com/userinfo',
+      //scope: 'openid profile'
     });
 
 }
@@ -28,7 +31,9 @@ auth0 = new auth0.WebAuth({
     clientID: '1oXEUQBPzfcr2q6R0Z5GQgWydPOtymlf',
     domain: 'ufx.auth0.com',
     responseType: 'token id_token',
-    audience: 'https://ufx.auth0.com/userinfo',
-    redirectUri: 'http://localhost:8080/login',
-    scope: 'openid profile'
+    redirectUri: 'http://localhost:8080/',
+    audience: 'https://ufx.com/api',
+    scope: "openid profile crud:db"
+    //audience: 'https://ufx.auth0.com/userinfo',
+    //scope: 'openid profile'
   })
