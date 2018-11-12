@@ -19,17 +19,9 @@ const db = require('../config/config.js');
  */
 
 exports.userByID = function(req, res) {
-      console.log("Here is the req.method: " + req.method);
-      console.log("Here is the req.params: " + req.query.id);
-      const userID = req.query.id;
-      const result = db.query("SELECT FROM users WHERE uid=$1", [userID]);
-      console.log(result);
-      res.json(result.rows);
-      res.end();
-    /*
     try {
       console.log(req.body);
-      const userID = req.body;
+      const userID = req.query.id;
       
       const result = db.query("SELECT FROM users WHERE uid=$1", [userID]);
       return res.json(result.rows);
@@ -40,7 +32,6 @@ exports.userByID = function(req, res) {
       console.log('Error while trying to read a user by ID');
       return next(err);
     }
-    */
   };
 
 /* Update a user */
