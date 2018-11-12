@@ -20,13 +20,6 @@ const pool = new Pool({
   port: 5432,
 });
 
-
-// test connection to database
-//pool.query('SELECT NOW()', (err, res) => {
-//  console.log(err, res)
-//  pool.end() // Only call pool.end() once application terminates and no longer needs connection to database. Just ignore this function.
-//})
-
 module.exports = {
   query: (text, params, callback) => {
     return pool.query(text, params, callback);

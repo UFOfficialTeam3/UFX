@@ -2,10 +2,10 @@
 <html>
   <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../home/main.css">
+    <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="profile.css">
   </head>
-  <body ng-app="UFX" ng-controller="ufxCtrl">
+  <body ng-app="app" ng-controller="profileController">
      <div id="page-wrapper">
         <div id="top-section" class="row">
            <div class="topSection col-sm-12">
@@ -21,15 +21,14 @@
           </div>
           <div class="col-sm-3">
             <ul id="user-info-list">
-               <li class="user-info-item">First Name: Wilson</li>
-               <li class="user-info-item">Last Name: Staley</li>
-               <li class="user-info-item">Email: wilstaley@gmail.com</li>
-               <li class="user-info-item">Phone: 352-222-5282</li>
-               <li class="user-info-item">Username: wilstaley</li>
+               <li class="user-info-item">First Name: {{user.f_name}}</li>
+               <li class="user-info-item">Last Name: {{user.l_name}}</li>
+               <li class="user-info-item">Email: {{user.email}}</li>
+               <li class="user-info-item">Username: {{user.username}}</li>
             </ul>
           </div>
           <div class="profile-btns col-sm-6">
-            <input type="button" value="Edit Account Info" class="btn btn-default">
+            <input type="button" ng-click="editUser()" value="Edit Account Info" class="btn btn-default">
             <input type="button" value="Reset Password" class="btn btn-default">
           </div>
         </div>
@@ -84,8 +83,12 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
     <script src="https://code.angularjs.org/1.4.3/angular.js"></script>
     <script src="../../js/app.js"></script>
-    <script src="js/factories/listingsFactory.js"></script>
-    <script src="js/controllers/listingsController.js"></script>
+    <script src="js/factories/profileFactory.js"></script>
+    <script src="js/controllers/profileController.js"></script>
+    <!-- Auth0 dependencies -->
+    <script src="https://cdn.auth0.com/js/lock-8.1.min.js"></script>
+    <script src="https://cdn.auth0.com/js/auth0/9.5.1/auth0.min.js"></script>
+    <script type="text/javascript" src="node_modules/angular-auth0/dist/angular-auth0.js"></script>
 
 
   </body>

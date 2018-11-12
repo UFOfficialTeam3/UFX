@@ -64,6 +64,28 @@ router.get('/node_modules/angular-auth0/dist/angular-auth0.js', function(req, re
 router.get('/register', function(req, res){
     res.sendFile(path.resolve(__dirname+'/../../client/src/components/register/register.html'));
 });
+
+/* Profile page */
+router.get('/profile', function(req, res){
+    res.sendFile(path.resolve(__dirname+'/../../client/src/components/profile/profile.html'));
+});
+router.get('../home/main.css', function(req, res){
+    res.sendFile(path.resolve(__dirname+'/../../client/src/components/home/main.css'));
+});
+router.get('/profile.css', function(req, res){
+    res.sendFile(path.resolve(__dirname+'/../../client/src/components/profile/profile.css'));
+});
+
+router.get('/js/controllers/profileController.js', function(req, res){
+    res.sendFile(path.resolve(__dirname+'/../../client/src/js/controllers/profileController.js'));
+});
+router.get('/js/factories/profileFactory.js', function(req, res){
+    res.sendFile(path.resolve(__dirname+'/../../client/src/js/factories/profileFactory.js'));
+});
+
+
+
+
 // TODO: send dependency files
 //
 //
