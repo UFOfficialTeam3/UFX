@@ -31,24 +31,24 @@ exports.userByID = function(request, response) {
         console.log(res.rows[0]);
         return response.json(res.rows[0]);
       })
-  };
+};
 
-/* Update a user */
-exports.update = function(req, res) {
-    try {
-      const user = req.body;
-      const result = db.query(
-        "UPDATE Listings SET pid=$2, Title=$3, Price=$4, type=$5, condition=$6, payment=$7, description=$8 WHERE lid=$1 RETURNING *"
-       [listing.lid, listing.pid, listing.Title, listing.Price, listing.type, listing.condition, listing.payment, listing.description]
-     );
-     return res.json(result.rows[0]);
-     } catch (err) {
-       res.status(404)        // HTTP status 404: Not Found
-         .send('Not found');
-       console.log('Error while trying to update a listing');
-       return next(err);
-     }
-  };
+exports.update = function(request, response) {
+      const userID = request.body.userID;
+      const f_name = 'Rick';
+
+      db.query('UPDATE users SET f_name=$2 WHERE uid=$1 RETURNING *', [userID, f_name], 
+      (err, res) => {
+        if (err) {
+          res.status(404)        // HTTP status 404: Not Found
+          .send('Not found');
+          console.log('Error while trying to update user');
+          throw err;
+        }
+        console.log('this is what server controller is returning: ' + res.rows[0]);
+        return response.json(res.rows[0]);
+      })
+};
 
 
 /* Show the current listing */

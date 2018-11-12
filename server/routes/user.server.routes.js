@@ -14,7 +14,7 @@ var user = require('../controllers/user.server.controller.js'),
 router.route('/')
   .get(user.userByID)
   //.post(user.create)
-  //.put(user.update);
+  .put(user.update);
 
 
 module.exports = router;

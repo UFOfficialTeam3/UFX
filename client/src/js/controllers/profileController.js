@@ -16,7 +16,13 @@ angular.module('app').controller('profileController', ['$scope', 'Profile',
     
 
     $scope.editUser = function() {
-        Profile.edit()
+      console.log('editUser has been called')
+        Profile.edit().then(function(response){
+          console.log('editUser receieved from http.put: ' + response.data);
+          $scope.user = response.data;
+        }, function(error) {
+          console.log('Unable to update user:', error);
+        });
     }
 
     $scope.loginUser = function(UserId) {
