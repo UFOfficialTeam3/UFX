@@ -10,7 +10,7 @@
            <div class="col-sm-12 topSection">
               <h1>UFX</h1>
               <div id="nav-btns" ng-controller="authController as authCtrl">
-                 <input type="button" class="btn btn-primary" value="Post Listing">
+                 <input type="button" class="btn btn-primary" ng-if="authCtrl.isAuthenticated()" value="Post Listing">
                  <input type="button" class="btn btn-primary" ng-if="!authCtrl.isAuthenticated()" ng-click="authCtrl.login()" value="Login/Signup">
                  <input type="button" class="btn btn-primary" ng-if="authCtrl.isAuthenticated()" ng-click="authCtrl.logout()" value="Logout">
               </div>

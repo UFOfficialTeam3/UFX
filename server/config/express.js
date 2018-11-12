@@ -5,7 +5,8 @@ var path = require('path'),
     config = require('./config'),
     viewsRouter = require('../routes/views.server.routes'),
     listingsRouter = require('../routes/listings.server.routes'),
-    authRouter = require('../routes/auth.server.routes');
+    authRouter = require('../routes/auth.server.routes'),
+    jwtRouter = require('../routes/test_jwt');
 
 module.exports.init = function() {
   
@@ -27,6 +28,9 @@ module.exports.init = function() {
 
   /** Mount the authenticationRouter onto the /api/authenticate */
   app.use('/api/authenticate', authRouter);
+
+  // For testing jwt
+  app.use('/api/testjwt', jwtRouter);
 
   /** Go to homepage for all routes not specified */ 
   // just make a get request to homepage, so we are redirected to homepage.
