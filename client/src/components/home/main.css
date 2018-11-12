@@ -17,7 +17,7 @@
    flex-direction: row;
    justify-content: center;
    align-items: center;
-   border: 2px solid black;
+   /* border: 2px solid black; */
 }
 #listing-text{
    margin-left: 20px;
@@ -38,6 +38,11 @@
 .categories-section{
    display: flex;
    flex-direction: row;
+   /* justify-content: center;
+   align-items: center; */
+}
+.categories-section input{
+   margin: 5px;
 }
 .categories{
    width: 100%;

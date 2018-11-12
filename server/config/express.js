@@ -6,7 +6,8 @@ var path = require('path'),
     viewsRouter = require('../routes/views.server.routes'),
     listingsRouter = require('../routes/listings.server.routes'),
     authRouter = require('../routes/auth.server.routes'),
-    jwtRouter = require('../routes/test_jwt');
+    jwtRouter = require('../routes/test_jwt'),
+    userRouter = require('../routes/user.server.routes');
 
 module.exports.init = function() {
   
@@ -25,12 +26,16 @@ module.exports.init = function() {
  
   /** Mount the listingsRouter onto the /api/listings route */
   app.use('/api/listings', listingsRouter); 
+  
 
   /** Mount the authenticationRouter onto the /api/authenticate */
   app.use('/api/authenticate', authRouter);
 
   // For testing jwt
   app.use('/api/testjwt', jwtRouter);
+  
+  /** Mount the userRouter onto the /api/user */
+  app.use('/api/user', userRouter);
 
   /** Go to homepage for all routes not specified */ 
   // just make a get request to homepage, so we are redirected to homepage.

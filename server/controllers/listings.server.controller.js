@@ -10,7 +10,7 @@ const db = require('../config/config.js');
  */
 
 /* Create a listing */
-exports.create = function(req, res) {
+exports.createListing = function(req, res) {
    try {
      const listing = req.body;
      const result = db.query("INSERT INTO listing (lid, pid, title, price, category, item_condition, payment, description, sell) VALUES ($1,$2,$3,$4,$5,$6,$7, $8, $9) RETURNING *",
@@ -25,7 +25,21 @@ exports.create = function(req, res) {
     }
 };
 
-
+//create a user
+exports.createUser = function(req, res) {
+  try {
+    const listing = req.body;
+    const result = db.query("INSERT INTO listing (lid, pid, title, price, category, item_condition, payment, description, sell) VALUES ($1,$2,$3,$4,$5,$6,$7, $8, $9) RETURNING *",
+    [listing.lid, listing.pid, listing.Title, listing.Price, listing.category, listing.condition, listing.payment, listing.description, listing.sell]
+   );
+   return res.json(result.rows[0]);
+   } catch (err) {
+     res.status(107)        // HTTP status 404: Not Found
+       .send('Error with create');
+     console.log('Error while trying to create a listing', err);
+     return (err);
+   }
+};
 
 
 
@@ -33,7 +47,7 @@ exports.create = function(req, res) {
 exports.read = function(req, res) {
   /* send back the listing as json from the request */
   try {
-    const result = db.query("SELECT * FROM Listings");
+    const result = db.query("SELECT * FROM listing");
     return res.json(result.rows);
   } catch (err) {
     res.status(404)        // HTTP status 404: Not Found
@@ -44,11 +58,11 @@ exports.read = function(req, res) {
 };
 
 /* Update a listing */
-exports.update = function(req, res) {
+exports.updateListing = function(req, res) {
   try {
     const listing = req.body;
     const result = db.query(
-      "UPDATE Listings SET pid=$2, Title=$3, Price=$4, type=$5, condition=$6, payment=$7, description=$8 WHERE lid=$1 RETURNING *"
+      "UPDATE listing SET pid=$2, Title=$3, Price=$4, type=$5, condition=$6, payment=$7, description=$8 WHERE lid=$1 RETURNING *"
      [listing.lid, listing.pid, listing.Title, listing.Price, listing.type, listing.condition, listing.payment, listing.description]
    );
    return res.json(result.rows[0]);
@@ -61,9 +75,9 @@ exports.update = function(req, res) {
 };
 
 /* Delete a listing */
-exports.delete = function(req, res) {
+exports.deleteListing = function(req, res) {
   try {
-    const result = db.query("DELETE FROM Listings WHERE lid=$1",
+    const result = db.query("DELETE FROM listing WHERE lid=$1",
     [req.body.lid]
   );
     return res.json({ message: "Deleted" });
@@ -78,7 +92,7 @@ exports.delete = function(req, res) {
 /* Retreive all items available for sale */
 exports.list = function(req, res) {
   try {
-    const result = db.query("SELECT * FROM Sells");
+    const result = db.query("SELECT * FROM sells");
     return res.json(result.rows);
   } catch (err) {
     res.status(404)        // HTTP status 404: Not Found
@@ -98,7 +112,7 @@ exports.list = function(req, res) {
 exports.listingByID = function(req, res, next, id) {
   try {
     const listing = req.body;
-    const result = db.query("SELECT FROM Listings WHERE lid=$1", [listing.lid]);
+    const result = db.query("SELECT * FROM listing WHERE lid=$1", [listing.lid]);
     return res.json(result.rows);
   } catch (err) {
     res.status(404)        // HTTP status 404: Not Found
@@ -109,10 +123,10 @@ exports.listingByID = function(req, res, next, id) {
 };
 
 /* Retrieve listings by type */
-exports.listingByID = function(req, res, next, type) {
+exports.listingByType = function(req, res, next, type) {
   try {
     const listing = req.body;
-    const result = db.query("SELECT FROM Listings WHERE type=$1", [listing.type]);
+    const result = db.query("SELECT * FROM listing WHERE type=$1", [listing.type]);
     return res.json(result.rows);
   } catch (err) {
     res.status(404)        // HTTP status 404: Not Found
