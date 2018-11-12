@@ -2,7 +2,6 @@
 /* Dependencies */
 // connect to database (technically)
 const db = require('../config/config.js');
-
 /*
   In this file, you should use SQL queries in order to retrieve/add/remove/update Free&4Sale listings.
   On an error you should send a 404 status code, as well as the error message.
@@ -18,20 +17,20 @@ const db = require('../config/config.js');
         then finally call next
  */
 
-exports.userByID = function(req, res) {
-    try {
-      console.log(req.body);
-      const userID = req.query.id;
-      
-      const result = db.query("SELECT FROM users WHERE uid=$1", [userID]);
-      return res.json(result.rows);
-    } 
-    catch (err) {
-      res.status(404)        // HTTP status 404: Not Found
-        .send('Not found');
-      console.log('Error while trying to read a user by ID');
-      return next(err);
-    }
+exports.userByID = function(request, response) {
+    
+      const userID = request.query.id;
+
+      db.query('SELECT * FROM users WHERE uid = $1', [userID], (err, res) => {
+        if (err) {
+          res.status(404)        // HTTP status 404: Not Found
+          .send('Not found');
+          console.log('Error while trying to read a user by ID');
+          throw err;
+        }
+        console.log(res.rows[0]);
+        return response.json(res.rows[0]);
+      })
   };
 
 /* Update a user */
