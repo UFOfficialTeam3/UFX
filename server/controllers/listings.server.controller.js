@@ -77,15 +77,13 @@ exports.deleteListing = function(req, res) {
         console.log("error from listing.server: " + err);
       else
         console.log("worked");
-    }
-
-  );
+    });
  
 };
 
 /* Retreive all items available for sale */
 exports.list = function(req, response) {
-    const result = db.query("SELECT * FROM sells", null, (err, res) => {
+    const result = db.query("SELECT * FROM listing", null, (err, res) => {
       if(err)
         console.log("error in list from listings.server.controller: " + err);
       else

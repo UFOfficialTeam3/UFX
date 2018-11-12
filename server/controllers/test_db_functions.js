@@ -13,6 +13,7 @@ var test_listing_ins = {
   payment: ['venmo', 'cash'],
   description: 'This fresh new civic will take you about 90mph and be loud as hell. Women will want you.',
   sell: true,
+  uid: 1
   
 }
 
