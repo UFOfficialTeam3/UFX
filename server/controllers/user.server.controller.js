@@ -2,6 +2,7 @@
 /* Dependencies */
 // connect to database (technically)
 const db = require('../config/config.js');
+const fs = require('fs'); 
 /*
   In this file, you should use SQL queries in order to retrieve/add/remove/update Free&4Sale listings.
   On an error you should send a 404 status code, as well as the error message.
@@ -29,8 +30,10 @@ exports.userByID = function(request, response) {
           console.log('Error while trying to read a user by ID');
           throw err;
         }
-        console.log(res.rows[0]);
-        return response.json(res.rows[0]);
+        else{
+          console.log(res.rows[0]);
+          return response.json(res.rows[0]);
+        }
       })
 };
 
@@ -50,4 +53,42 @@ exports.update = function(request, response) {
         console.log('this is what server controller is returning: ' + res.rows[0]);
         return response.json(res.rows[0]);
       })
+};
+
+exports.addPic= function(req, res) {
+  fs.readFile('C:\\Users\\paul\\Pictures\\pic2.jpg', (err, imgData) => {
+    // inserting data into column 'img' of type 'bytea':
+    db.query('INSERT INTO pictures(pid, picture) VALUES(2 , $1)', [imgData], 
+    (err,response)=> {
+          if(err){
+            console.log("fuuuuck");
+          }
+          console.log("YYYAAAAAS");
+        })
+  });
+
+
+}
+//create a user
+exports.createUser = function(req, res) {
+  try {
+    const user = req.body;
+
+    /* This if statement MUST happen before the query. Need to figure out how.*/
+
+    // if(user.pic != null){
+      
+    //   addPic();
+    // }
+
+    const result = db.query("INSERT INTO users (uid, pid, email, username, f_name, l_name) VALUES ($1,$2,$3,$4,$5,$6,$7, $8, $9) RETURNING *",
+    [user.uid, user.pid, user.email, user.username, user.f_name, user.l_name]
+   );
+   return res.json(result.rows[0]);
+   } catch (err) {
+     res.status(107)        // HTTP status 404: Not Found
+       .send('Error with create');
+     console.log('Error while trying to create a user', err);
+     return (err);
+   }
 };

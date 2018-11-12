@@ -4,20 +4,20 @@ var listings = require('../controllers/listings.server.controller.js'),
 
 // TEST FUNCTIONS. Edit test_listing so that it works with your function.
 var test_listing_ins = {
-  lid: 11243,
-  pid: null,
+  lid: 1111,
+  pid: 1,
   Title: 'honda civic',
   Price: 1200.12,
   category: 'cars',
   condition: 'new',
-  payment: 'venmo',
+  payment: ['venmo', 'cash'],
   description: 'This fresh new civic will take you about 90mph and be loud as hell. Women will want you.',
   sell: true,
   
 }
 
 var test_listing_del = {
-  lid: 11243,  
+  lid: 1111
 }
 
 var test_usr_create = {
@@ -50,5 +50,5 @@ const usr_create = {
 
 request(listing_ins); // check the terminal where you started ./server.js for error messages from the db.
 request(listing_del); // check the terminal where you started ./server.js for error messages from the db.
-request(usr_create); // check the terminal where you started ./server.js for error messages from the db.
+//request(usr_create); // check the terminal where you started ./server.js for error messages from the db.
 
