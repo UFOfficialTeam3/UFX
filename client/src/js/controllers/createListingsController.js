@@ -4,28 +4,37 @@ app.controller('createListingsController', ['$scope', 'listingsFactory',
   function($scope, listingsFactory) {
     var vm = this;
 
+   
     vm.newListing = {
-      lid: 70,     // How should users go about inputting a listing id??
-      pid: 101,
-      title: 'Honda Civic',
-      price: 200,
-      category: 'cars', //TODO: replace type with category
-      condition: 'new',
-      payment: ['cash'], // This field will be changed.
-      description: 'description',
-      sell: true,
-      uid: 'qwerqwre'
-
+      title: null,
+      price: null,
+      negotiable: null, // This field not in table.
+      sell: null, //TODO: change html code for this
+      category: null, //TODO: replace type with category
+      condition: null,
+      payment: ['false', 'false', 'false'],  // This field not in table.
+      description: null, // This field not in table.
+      uid: null,
+      photo: null,
     }
-
+ 
     vm.createListing = function() {
-      console.log(vm.newListing);
+      //var photo = document.getElementById('file_upload').files[0];
+     // vm.newListing.photo = photo;
+      var user = JSON.parse(localStorage.getItem('user'));
+
+      // get user id
+      vm.newListing.uid = user.sub;
+
+      function checkPayment(payment) {
+        return payment != 'false';
+      }
 
       // TODO: Error checking for required fields
-
+      vm.newListing.payment = vm.newListing.payment.filter(checkPayment);
       // Call Factory method to add newListing to db
-      //console.log(listingsFactory.add(vm.newListing));
-      
+      listingsFactory.add(vm.newListing);
+ 
     }
 
     vm.addItem = function() {

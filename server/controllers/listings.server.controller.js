@@ -12,8 +12,15 @@ const fs = require('fs');
 /* Create a listing */
 exports.createListing = function(req, res) {
      const listing = req.body;
-     const result = db.query("INSERT INTO listing(lid, pid, title, price, category, item_condition, description, sell, payment, uid) VALUES ($1,$2,$3,$4,$5,$6,$7, $8, $9, $10)",
-     [listing.lid, listing.pid, listing.title, listing.price, listing.category, listing.condition, listing.description, listing.sell, listing.payment, listing.uid], 
+     console.log(listing);
+
+     fs.readFile(listing.photo, (err, imgData) => {
+      console.log(imgData);
+      console.log(err);
+     });
+
+     const result = db.query("INSERT INTO listing(title, price, category, item_condition, description, sell, payment, uid) VALUES ($1,$2,$3,$4,$5,$6, $7, $8)",
+     [listing.title, listing.price, listing.category, listing.condition, listing.description, listing.sell, listing.payment, listing.uid], 
     (err, res) => {
       if(err)
         console.log("error from createListing in listing.server.controller: " + err);
@@ -28,7 +35,7 @@ exports.addPic= function(req, res) {
     console.log(imgData);
     console.log(err);
     // inserting data into column 'img' of type 'bytea':
-    db.query('INSERT INTO pictures(pid, picture) VALUES(2 , $1)', [imgData], 
+    db.query('INSERT INTO pictures(picture) VALUES($1)', [imgData], 
     (err,response)=> {
           if(err){
             console.log("fuuuuck" + err);
@@ -59,8 +66,8 @@ exports.read = function(req, response) {
 exports.updateListing = function(req, res) {
     const listing = req.body;
     const result = db.query(
-      "UPDATE listing SET pid=$2, Title=$3, Price=$4, type=$5, condition=$6, payment=$7, description=$8 WHERE lid=$1"
-     [listing.lid, listing.pid, listing.Title, listing.Price, listing.type, listing.condition, listing.payment, listing.description],
+      "UPDATE listing SET Title=$2, Price=$3, type=$4, condition=$5, payment=$6, description=$7 WHERE lid=$1"
+     [listing.lid, listing.Title, listing.Price, listing.type, listing.condition, listing.payment, listing.description],
      null, (err,res) => {
        if(err)
         console.log("error in updateListing from listings.server.controller" + err);
