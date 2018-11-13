@@ -24,6 +24,12 @@ app.factory('listingsFactory', function($http) {
          */
         console.log("Calling factory.getAll()");
         return $http.get('http://localhost:8080/api/listings/');
+      
+      },
+
+      purchase: function(){
+        return $http.post('http://localhost:8080/api/listings/email');
+
       },
       
       delete: function(listingId) {

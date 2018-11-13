@@ -198,3 +198,31 @@ exports.listingByType = function(req, response) {
       }
     });
 };
+
+exports.sendEmail = function(request, response){
+  var nodemailer = require('nodemailer');
+      
+      var transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+          user: 'papa0398@gmail.com',
+          pass: 'gmailkingdom'
+        }
+      });
+
+      var mailOptions = {
+        from: 'papa0398@gmail.com',
+        to: 'papa0398@gmail.com',
+        subject: 'Sending Email using Node.js',
+        text: 'That was easy!'
+      };
+
+      transporter.sendMail(mailOptions, function(error, info){
+        if (error) {
+          console.log(error);
+        } else {
+          console.log('Email sent: ' + info.response);
+          response.end;
+        }
+      });
+}
