@@ -10,26 +10,23 @@ const fs = require('fs');
  */
 
 /* Create a listing */
-exports.createListing = function(req, res) {
+exports.createListing = function(req, response) {
      const listing = req.body;
      const result = db.query("INSERT INTO listing(lid, pid, title, price, category, item_condition, description, sell, payment, uid) VALUES ($1,$2,$3,$4,$5,$6,$7, $8, $9, $10)",
-     [listing.lid, listing.pid, listing.title, listing.price, listing.category, listing.condition, listing.description, listing.sell, listing.payment, listing.uid], 
+     [listing.lid, listing.pid, listing.title, listing.price, listing.category, listing.condition, listing.description, listing.sell, listing.payment, listing.uid],
     (err, res) => {
       if(err)
         console.log("error from createListing in listing.server.controller: " + err);
-    }
-    
-     );
-
+    })
 };
 
-exports.addPic= function(req, res) {
+exports.addPic= function(req, response) {
   fs.readFile('/mnt/c/Users/paul/Pictures/pic2.jpg', (err, imgData) => {
     console.log(imgData);
     console.log(err);
     // inserting data into column 'img' of type 'bytea':
-    db.query('INSERT INTO pictures(pid, picture) VALUES(2 , $1)', [imgData], 
-    (err,response)=> {
+    db.query('INSERT INTO pictures(pid, picture) VALUES(2 , $1)', [imgData],
+    (err,res)=> {
           if(err){
             console.log("fuuuuck" + err);
           }
@@ -37,9 +34,7 @@ exports.addPic= function(req, res) {
             console.log("YYYAAAAAS");
         })
   });
-
-
-}
+};
 
 
 
@@ -52,11 +47,10 @@ exports.read = function(req, response) {
       else
         return response.json(res.rows);
     });
-  
 };
 
 /* Update a listing */
-exports.updateListing = function(req, res) {
+exports.updateListing = function(req, response) {
     const listing = req.body;
     const result = db.query(
       "UPDATE listing SET pid=$2, Title=$3, Price=$4, type=$5, condition=$6, payment=$7, description=$8 WHERE lid=$1"
@@ -66,19 +60,16 @@ exports.updateListing = function(req, res) {
         console.log("error in updateListing from listings.server.controller" + err);
      }
    );
- 
 };
 
 /* Delete a listing */
-exports.deleteListing = function(req, res) {
-  
+exports.deleteListing = function(req, response) {
     const result = db.query("DELETE FROM listing WHERE lid=$1",
     [req.body.lid],
     (err, res) => {
       if(err)
         console.log("error from listing.server: " + err);
     });
- 
 };
 
 /* Retreive all items available for sale */
@@ -89,7 +80,6 @@ exports.list = function(req, response) {
       else
       return response.json(res.rows);
     });
-
   };
 
 /*
@@ -99,31 +89,31 @@ exports.list = function(req, response) {
         bind it to the request object as the property 'listing',
         then finally call next
  */
-exports.listingByID = function(req, response, next, id) {
+exports.listingByID = function(req, response) {
     const listing = req.body;
     const result = db.query("SELECT * FROM listing WHERE lid=$1", [listing.lid], (err,res) => {
       if(err)
         console.log("error in listingByID from listings.server.controller: " + err);
       else
-        return response.json(res.rows[0]);  
+        return response.json(res.rows[0]);
     });
 
 };
 
 //get all the users listings they are selling
-exports.usersSellListings = function(req, response, next, id) {
+exports.usersSellListings = function(req, response) {
   const listing = req.body;
   const result = db.query("SELECT * FROM listing WHERE uid=$1 AND sells = true", [listing.uid], (err,res) => {
     if(err)
       console.log("error in  userSEllListings from listings.server.controller: " + err);
-    else 
+    else
       return response.json(res.rows);
   });
 
 };
 
 //get all the users listings they are selling
-exports.usersBuyListings = function(req, response, next, id) {
+exports.usersBuyListings = function(req, response) {
   const listing = req.body;
   const result = db.query("SELECT * FROM listing WHERE uid=$1 AND sells = false", [listing.uid], (err,res) => {
     if(err)
@@ -134,7 +124,7 @@ exports.usersBuyListings = function(req, response, next, id) {
 
 };
 /* Retrieve listings by type */
-exports.listingByType = function(req, response, next, type) {
+exports.listingByType = function(req, response) {
 
     const listing = req.body;
     const result = db.query("SELECT * FROM listing WHERE type=$1", [listing.type], (err,res) => {
@@ -143,5 +133,5 @@ exports.listingByType = function(req, response, next, type) {
       else
       return response.json(res.rows);
     });
- 
+
 };
