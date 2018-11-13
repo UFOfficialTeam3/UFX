@@ -3,6 +3,7 @@
 // Register App
 const app = angular.module('app', ['auth0.auth0'])
 
+
 /** Configure Authentication */
 .config(config)
 

@@ -2,7 +2,6 @@
 /* Dependencies */
 // connect to database (technically)
 const db = require('../config/config.js'),
-  fileUpload = require('express-fileupload'),
   fs = require('fs');
 /*
   In this file, you should use SQL queries in order to retrieve/add/remove/update Free&4Sale listings.
@@ -13,23 +12,24 @@ const db = require('../config/config.js'),
 /* Create a listing */
 exports.createListing = function(req, response) {
      const listing = req.body;
-  
 
-     fs.readFile(buffer, (err, imgData) => {
-      console.log(imgData);
-      console.log(err);
-     });
+     fs.readFile('/mnt/c/Users/paul/Pictures/pic2.jpg', (err, imgData) => {
+       console.log(err);
+       //console.log(imgData.toString('hex'));
+      });
 
-     const result = db.query("INSERT INTO listing(title, price, category, item_condition, description, sell, payment, uid) VALUES ($1,$2,$3,$4,$5,$6, $7, $8)",
-     [listing.title, listing.price, listing.category, listing.condition, listing.description, listing.sell, listing.payment, listing.uid], 
+     const result = db.query("INSERT INTO listing(title, price, category, item_condition, description, sell, payment, uid, picture) VALUES ($1,$2,$3,$4,$5,$6, $7, $8, $9)",
+     [listing.title, listing.price, listing.category, listing.condition, listing.description, listing.sell, listing.payment, listing.uid,null], 
     (err, res) => {
       if (err) {
-        res.status(404)        // HTTP status 404: Not Found
-        .send('Not found');
-        console.log("error from createListing in listing.server.controller: " + err);
-        throw err;
+      
+        // res.status(404)        // HTTP status 404: Not Found
+        // .send('Not found');
+         console.log("error from createListing in listing.server.controller: " + err);
+        // throw err;
       }
     })
+
 };
 
 /* Upload a Picture */
