@@ -16,12 +16,12 @@
        <div class="col-md-6">
          <div class="m-5">
           <h2> Title of Listing: </h2>
-          <input type="text" id="listing-name" placeholder="What are we trading?" ng-model="clc.newListing.Title">
+          <input type="text" id="listing-name" placeholder="What are we trading?" ng-model="clc.newListing.title">
           <h2> Buying or Selling? </h2>
           <label for="buying"><input type="radio" id="buying" name="buying-selling" ng-model="clc.newListing.sell" value="false">Buying</label>
           <label for="selling"><input type="radio" id="selling" name="buying-selling" ng-model="clc.newListing.sell" value="true">Selling</label>
           <h2> Item Type: </h2>
-          <select id="listing-item-type"ng-model="clc.newListing.type">
+          <select id="listing-item-category"ng-model="clc.newListing.category">
             <option value="cars"> Cars </option>
             <option value="housing"> Housing </option>
             <option value="services"> Services </option>
@@ -40,12 +40,12 @@
             <option value="beater"> Beater </option>
           </select>
           <h2> Asking Price: </h2>
-          <input type="text" id="listing-price" placeholder="how much?" ng-model="clc.newListing.Price">
+          <input type="text" id="listing-price" placeholder="how much?" ng-model="clc.newListing.price">
           <label for="listing-price-neg"> Price Negotiable? </label><input type="checkbox" id="listing-price-neg" ng-model="clc.newListing.negotiable" value=True>
           <h2> Payment Types Accepted: </h2>
-          <label for="payType-money">Money<input type="checkbox" id="payType-money" ng-model="clc.newListing.pt_money" ng-true-value="'money'"></label>
-          <label for="payType-venmo">Venmo<input type="checkbox" id="payType-venmo" ng-model="clc.newListing.pt_venmo" ng-true-value="'venmo'"></label>
-          <label for="payType-other">Paypal<input type="checkbox" id="payType-paypal"ng-model="clc.newListing.pt_paypal" ng-true-value="'paypal'"></label>
+          <label for="payType-cash">cash<input type="checkbox" id="payType-cash" ng-model="clc.newListing.payment[0]" ng-true-value="'cash'"></label>
+          <label for="payType-venmo">venmo<input type="checkbox" id="payType-venmo" ng-model="clc.newListing.payment[1]" ng-true-value="'venmo'"></label>
+          <label for="payType-paypal">paypal<input type="checkbox" id="payType-paypal"ng-model="clc.newListing.payment[2]" ng-true-value="'paypal'"></label>
        </div>
       </div>
        <div class=" m-5 col-md-6 ">
@@ -61,7 +61,7 @@
          <textarea id="listing-description" placeholder="What are you trying to sell?" ng-model="clc.newListing.description"></textarea><br />
          <!----TODO: finalizing functionality to upload photos-->
          <h2> Photo to upload (Optional): </h2>
-         <input type="file" accept="image/png, image/jpeg" ng-model="newListingPhoto">  
+         <input id="file_upload" type="file" name="item_pic" accept="image/png,image/jpg, image/jpeg" ng-model="clc.newListing.photo">  
          <!---^^^^^^-->
          <br /><br />
         </div>
