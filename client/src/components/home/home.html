@@ -78,20 +78,6 @@
                     <li><b>Asking Price</b>: $20</li>
                     <li><b>Payment Types</b>: Cash</li>
                  </ul>-->
-                 <input type="button" id="myBtn" class="btn btn-default btn-sm" ng-click="contactSeller()" value="Purchase">
-                 
-                   <!-- The Modal -->
-                <div id="myModal" class="modal">
-
-                  <!-- Modal content -->
-                  <div class="modal-content">
-                <!--  <span class="close">&times;</span>  -->
-                  <div id='map' style='width: 900px; height: 400px;'></div>
-                  <input type="button" id="confirmLocation" class="btn btn-default btn-sm" ng-click="confirmLocation()" value="Confirm Location">
-			         <!--   <script src="../../js/controllers/mapController.js"></script> -->
-                  </div>
-
-                </div>
               </div>
            </div>
            <div class="tableWrapper">
@@ -109,6 +95,23 @@
                 <td>{{listing.description}}</td>
                 <td>{{listing.item_condition}}</td>
                 <td>{{listing.price}}</td>
+                <td>
+                    <input type="button" id="myBtn" class="btn btn-default btn-sm" ng-click="contactSeller()" value="Purchase">
+                 
+                    <!-- The Modal -->
+                 <div id="myModal" class="modal">
+ 
+                   <!-- Modal content -->
+                   <div class="modal-content">
+                 <!--  <span class="close">&times;</span>  -->
+                   <div id='map' style='width: 900px; height: 400px;'></div>
+                   <input type="button" id="confirmLocation" class="btn btn-default btn-sm" ng-click="confirmLocation()" value="Confirm Location">
+                <!--   <script src="../../js/controllers/mapController.js"></script> -->
+                   </div>
+ 
+                 </div>
+
+                </td>
 
               </tr>
             </table>
