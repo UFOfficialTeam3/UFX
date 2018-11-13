@@ -19,9 +19,9 @@ const fs = require('fs');
  */
 
 /** Gets a user by id */
-exports.userByID = function(request, response) {
+exports.userByID = function(req, response) {
 
-      const userID = request.query.id;
+      const userID = req.query.id;
 
       db.query('SELECT * FROM users WHERE uid = $1', [userID], (err, res) => {
         if (err) {
@@ -38,8 +38,8 @@ exports.userByID = function(request, response) {
 };
 
 /** Updates user info */
-exports.update = function(request, response) {
-      const userID = request.body.userID;
+exports.update = function(req, response) {
+      const userID = req.body.userID;
       const f_name = 'Rick';
 
       db.query('UPDATE users SET f_name=$2 WHERE uid=$1 RETURNING *', [userID, f_name],
@@ -55,20 +55,19 @@ exports.update = function(request, response) {
       })
 };
 
-exports.addPic= function(req, res) {
+exports.addPic= function(req, response) {
   fs.readFile('C:\\Users\\paul\\Pictures\\pic2.jpg', (err, imgData) => {
     // inserting data into column 'img' of type 'bytea':
     db.query('INSERT INTO pictures(pid, picture) VALUES(2 , $1)', [imgData],
-    (err,response)=> {
+    (err,res)=> {
           if(err){
             console.log("fuuuuck");
           }
           console.log("YYYAAAAAS");
         })
   });
-
-
 }
+
 //create a user
 exports.createUser = function(req, response) {
   const userID = req.body.id;
@@ -86,5 +85,4 @@ exports.createUser = function(req, response) {
       res.send('User', userID, 'added to database'); // untested
       return response.json(res.rows[0]);
     })
-
 };
