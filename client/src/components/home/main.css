@@ -1,6 +1,6 @@
 #top-section{
    border-bottom: 1px solid black;
-   height: 100px;
+   height: 250px;
 }
 .topSection{
    display: flex;
@@ -8,27 +8,63 @@
    height: 100%;
    justify-content: space-between;
    align-items: center;
-   background: rgb(200, 200, 200);
+   background-image: url("https://images.unsplash.com/photo-1541256942802-7b29531f0df8?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=28e4dc5bc17175cb7c786a7d838a8eaa&auto=format&fit=crop&w=1350&q=80");
+   background-size: cover;
+   background-repeat: no-repeat;
+   background-position: center;
+   background-attachment: fixed;
    padding: 40px;
 }
 .topSection h1{
    margin: none;
-   color: #0021A5;
-   font-size: 3em;
-   text-shadow: 2px 2px 0 #eee;
+   font-family: 'Bungee Shade', cursive;
+   color: #eee;
+   font-size: 5em;
+   transition: all .5s;
+}
+.topSection h1:hover{
+   color: #aaa;
 }
 .topSection h3{
-   margin: 10px;
+   color: #FA4616;
+}
+.topSection .btn{
+  width: 100px;
 }
 .topSection a:hover{
   text-decoration: none;
+}
+.logo{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  margin: auto;
+  padding-right: 100px;
+  /* margin-left: -45px; */
+}
+#nav-btns{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 100%;
 }
 .listing{
    display: flex;
    flex-direction: row;
    justify-content: center;
    align-items: center;
-   /* border: 2px solid black; */
+}
+.category-btns{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.category-btns btn{
+  width: 100px;
+  height: 100px;
 }
 #listing-text{
    margin-left: 20px;
@@ -45,17 +81,18 @@
 #search-section{
    margin-top: 100px;
    margin: 0;
+   background: #303030;
 }
-/* .categories-section{
-   padding: 50px;
-} */
 .categories-section input{
    margin-right: 5px;
    margin-top: 20px;
    margin-bottom: 5px;
+   width: 80px;
+   height: 80px;
+   padding: 0;
 }
 .categories-section{
-  margin-right: 10%;
+  padding-top: 50px;
 }
 .searchbar{
   padding-top: 50px;

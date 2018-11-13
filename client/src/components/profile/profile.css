@@ -10,6 +10,9 @@
    flex-direction: row;
    justify-content: flex-start;
    align-items: center;
+   background: #303030;
+   color: #eee;
+   padding: 20px;
 }
 #user-info-list{
    list-style-type: none;
@@ -30,40 +33,3 @@
    justify-content: center;
    align-items: center;
 }
-/* #page-wrapper{
-   overflow: hidden;
-}
-#top-section{
-   border-bottom: 1px solid black;
-}
-#nav-btns > input{
-   margin-right: 20px;
-   width: 100px;
-}
-#user-info{
-   display: flex;
-   flex-direction: row;
-   align-items: flex-start;
-   padding-top: 20px;
-}
-#user-info-list{
-   list-style-type: none;
-   margin-left: 50px;
-}
-.user-info-item{
-   padding: 5px;
-}
-#profile-btns{
-   display: flex;
-   flex-direction: column;
-   margin-left: 50px;
-}
-.profile-btn{
-   width: 200px;
-   margin: 100px;
-   background: #fff;
-   border: 1px solid #aaa;
-   border-radius: 20px;
-   padding: 7px;
-   margin: 10px;
-} */

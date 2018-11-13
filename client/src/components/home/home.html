@@ -7,46 +7,52 @@
 		<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.50.0/mapbox-gl.css' rel='stylesheet' />
 		<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.3.0/mapbox-gl-geocoder.min.js'></script>
 		<link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.3.0/mapbox-gl-geocoder.css' type='text/css' />
+    <link href="https://fonts.googleapis.com/css?family=Bungee+Shade" rel="stylesheet">
   </head>
   <body ng-app="app" ng-controller="homeController as homeCtrl">
      <div id="page-wrapper">
         <div id="top-section" class="row">
            <div class="col-sm-12 topSection">
-              <a href="/"><h1>UF<span style="color:#FA4616">X</span></h1></a>
-              <h3>University of Florida Exchange</h3>
               <div id="nav-btns" ng-controller="authController as authCtrl">
-                 <a href="create-listing">
-                   <input type="button" class="btn btn-primary" ng-if="authCtrl.isAuthenticated()" value="Post Listing">
-                 </a>
-                 <input type="button" class="btn btn-primary" ng-if="!authCtrl.isAuthenticated()" ng-click="authCtrl.login()" value="Login/Signup">
-                 <input type="button" class="btn btn-primary" ng-if="authCtrl.isAuthenticated()" ng-click="authCtrl.logout()" value="Logout">
                  <a href="/profile">
-                   <button type="button" class="btn btn-primary">
-                     <span class="glyphicon glyphicon-user"></span> Profile
-                   </button>
+                    <button type="button" class="btn btn-default" ng-if="authCtrl.isAuthenticated()">
+                      <span class="glyphicon glyphicon-user"></span> Profile
+                    </button>
                  </a>
-                 <button type="button" class="btn btn-primary" ng-if="authCtrl.isAuthenticated()">
-                   <span class="glyphicon glyphicon-user"></span> Profile
-                 </button>
+                 <a href="create-listing">
+                   <input type="button" class="btn btn-default" ng-if="authCtrl.isAuthenticated()" value="Post Listing">
+                 </a>
+                 <input type="button" class="btn btn-default" ng-if="!authCtrl.isAuthenticated()" ng-click="authCtrl.login()" value="Login/Signup">
+                 <input type="button" class="btn btn-default" ng-if="authCtrl.isAuthenticated()" ng-click="authCtrl.logout()" value="Logout">
+              </div>
+              <div class="logo">
+                <a href="/">
+                  <h1>UFX</h1>
+                </a>
               </div>
            </div>
         </div>
         <div id="search-section">
            <div class="row categories-section">
-              <input type="button" class="col-md-1 col-md-offset-3 btn btn-default btn-sm" value="Appliances">
-              <input type="button" class="col-md-1 btn btn-default btn-sm" value="Automobiles">
-              <input type="button" class="col-md-1 btn btn-default btn-sm" value="Bikes">
-              <input type="button" class="col-md-1 btn btn-default btn-sm" value="Books">
-              <input type="button" class="col-md-1 btn btn-default btn-sm" value="Cell Phones">
-              <input type="button" class="col-md-1 btn btn-default btn-sm" value="Clothes">
-              <input type="button" class="col-md-1 btn btn-default btn-sm" value="Collectibles">
-              <input type="button" class="col-md-1 col-md-offset-3 btn btn-default btn-sm" value="Electronics">
-              <input type="button" class="col-md-1 btn btn-default btn-sm" value="Furniture">
-              <input type="button" class="col-md-1 btn btn-default btn-sm" value="Music">
-              <input type="button" class="col-md-1 btn btn-default btn-sm" value="Photo/Video">
-              <input type="button" class="col-md-1 btn btn-default btn-sm" value="Tickets">
-              <input type="button" class="col-md-1 btn btn-default btn-sm" value="Tools">
-              <input type="button" class="col-md-1 btn btn-default btn-sm" value="Others">
+             <div class="col-sm-12 btn-group category-btns">
+               <button type="button" class="btn btn-primary">Cars</button>
+               <button type="button" class="btn btn-primary">Housing</button>
+               <button type="button" class="btn btn-primary">Services</button>
+               <button type="button" class="btn btn-primary">Electronics</button>
+               <button type="button" class="btn btn-primary">Home & Garden</button>
+               <button type="button" class="btn btn-primary">Other Vehicle</button>
+               <button type="button" class="btn btn-primary">Fashion</button>
+               <button type="button" class="btn btn-primary">Entertainment</button>
+               <button type="button" class="btn btn-primary">Other</button>
+             </div>
+              <!-- <input type="button" class="col-sm-1 btn btn-default btn-sm" value="Automobiles">
+              <input type="button" class="col-sm-1 btn btn-default btn-sm" value="Bikes">
+              <input type="button" class="col-sm-1 btn btn-default btn-sm" value="Books">
+              <input type="button" class="col-sm-1 btn btn-default btn-sm" value="Cell Phones">
+              <input type="button" class="col-sm-1 btn btn-default btn-sm" value="Clothes">
+              <input type="button" class="col-sm-1 btn btn-default btn-sm" value="Collectibles">
+              <input type="button" class="col-sm-1 btn btn-default btn-sm" value="Electronics">
+              <input type="button" class="col-sm-1 btn btn-default btn-sm" value="Furniture"> -->
            </div>
            <div class="row searchbar">
               <div class="col-sm-4 col-sm-offset-4">
@@ -88,7 +94,6 @@
                 </div>
               </div>
            </div>
-           -->
            <div class="tableWrapper">
             <table class="table table-striped table-hover">
               <tr>
