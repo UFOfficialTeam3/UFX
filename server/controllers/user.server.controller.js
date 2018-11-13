@@ -82,7 +82,7 @@ exports.createUser = function(req, response) {
         throw err;
       }
       console.log('this is what server controller is returning: ' + res.rows[0]);
-      res.send('User', userID, 'added to database'); // untested
+      //res.send('User', userID, 'added to database'); // untested
       return response.json(res.rows[0]);
     })
 };
