@@ -1,10 +1,11 @@
-angular.module('app').controller('homeController', ['$scope', 'listingsFactory', 
-  function($scope, listingsFactory) {
+angular.module('app').controller('homeController', ['$scope', 'listingsFactory', 'mapFactory', 
+  function($scope, listingsFactory, mapFactory) {
     
 
     console.log("Hello from home controller!")
 
     $scope.purchase = function() {
+      mapFactory.init();
       console.log("model should pop up")
       var modal = document.getElementById('myModal');
 
@@ -19,10 +20,11 @@ angular.module('app').controller('homeController', ['$scope', 'listingsFactory',
       modal.style.display = "block";
 
       // When the user clicks on <span> (x), close the modal
+      /*
       span.onclick = function() {
           modal.style.display = "none";
       }
-
+*/
       // When the user clicks anywhere outside of the modal, close it
       window.onclick = function(event) {
           if (event.target == modal) {
