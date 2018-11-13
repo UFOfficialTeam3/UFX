@@ -16,6 +16,10 @@ app.factory('listingsFactory', function($http) {
         return $http.post('http://localhost:8080/api/listings/create-listing', listing); 
         
       },
+
+      purchase: function(){
+        return $http.post('http://localhost:8080/api/listings/email');
+      },
       
       delete: function(listingId) {
         /**TODO

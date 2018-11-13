@@ -16,5 +16,8 @@ router.route('/')
 router.route('/create-listing')
   .post(listings.createListing)
 
+router.route('/email')
+  .post(listings.sendEmail)
+
 
 module.exports = router;

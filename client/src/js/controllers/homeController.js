@@ -6,14 +6,8 @@ angular.module('app').controller('homeController', ['$scope', 'listingsFactory',
 
     $scope.purchase = function() {
       mapFactory.init();
-      console.log("model should pop up")
+      console.log("modal should pop up")
       var modal = document.getElementById('myModal');
-
-      // Get the button that opens the modal
-      var btn = document.getElementById("myBtn");
-
-      // Get the <span> element that closes the modal
-      var span = document.getElementsByClassName("close")[0];
 
       // When the user clicks on the button, open the modal 
       
@@ -31,5 +25,12 @@ angular.module('app').controller('homeController', ['$scope', 'listingsFactory',
               modal.style.display = "none";
           }
       }
+    }
+
+    $scope.confirmLocation = function(){
+
+      listingsFactory.purchase()
+
+      
     }
 }]);
