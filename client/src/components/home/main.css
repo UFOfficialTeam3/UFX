@@ -54,6 +54,14 @@
   color: #333;
   background: #eee;
 }
+.btn-group>.btn{
+  background: #0021A5;
+  color: #eee;
+}
+.btn-group>.btn:hover{
+  background: #445dbf;
+  color: #eee;
+}
 .listing{
    display: flex;
    flex-direction: row;
