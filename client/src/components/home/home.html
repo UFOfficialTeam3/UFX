@@ -8,48 +8,48 @@
      <div id="page-wrapper" class="container-fluid">
         <div id="top-section" class="row">
            <div class="col-sm-12 topSection">
-              <h1>UFX</h1>
+              <a href="/"><h1>UFX</h1></a>
               <div id="nav-btns" ng-controller="authController as authCtrl">
-                 <input type="button" class="btn btn-primary" ng-if="authCtrl.isAuthenticated()" value="Post Listing">
+                 <a href="create-listing">
+                   <input type="button" class="btn btn-primary" ng-if="authCtrl.isAuthenticated()" value="Post Listing">
+                 </a>
                  <input type="button" class="btn btn-primary" ng-if="!authCtrl.isAuthenticated()" ng-click="authCtrl.login()" value="Login/Signup">
                  <input type="button" class="btn btn-primary" ng-if="authCtrl.isAuthenticated()" ng-click="authCtrl.logout()" value="Logout">
-                 <button type="button" class="btn btn-primary">
+                 <a href="/profile">
+                   <button type="button" class="btn btn-primary">
+                     <span class="glyphicon glyphicon-user"></span> Profile
+                   </button>
+                 </a>
+                 <button type="button" class="btn btn-primary" ng-if="authCtrl.isAuthenticated()">
                    <span class="glyphicon glyphicon-user"></span> Profile
                  </button>
               </div>
            </div>
         </div>
         <div id="search-section">
-           <div class="row">
-              <div class="categories-section col-sm-12">
-                  <div class="categories">
-                    <input type="button" class="btn btn-default btn-sm" value="Appliances">
-                    <input type="button" class="btn btn-default btn-sm" value="Automobiles">
-                    <input type="button" class="btn btn-default btn-sm" value="Bikes">
-                    <input type="button" class="btn btn-default btn-sm" value="Books">
-                    <input type="button" class="btn btn-default btn-sm" value="Cell Phones">
-                    <input type="button" class="btn btn-default btn-sm" value="Clothes">
-                    <input type="button" class="btn btn-default btn-sm" value="Collectibles">
-                  </div>
-              </div>
-           </div>
-           <div class="row">
-              <div class="categories-section col-sm-12">
-                  <div class="categories">
-                    <input type="button" class="btn btn-default btn-sm" value="Electronics">
-                    <input type="button" class="btn btn-default btn-sm" value="Furniture">
-                    <input type="button" class="btn btn-default btn-sm" value="Music">
-                    <input type="button" class="btn btn-default btn-sm" value="Photo/Video">
-                    <input type="button" class="btn btn-default btn-sm" value="Tickets">
-                    <input type="button" class="btn btn-default btn-sm" value="Tools">
-                    <input type="button" class="btn btn-default btn-sm" value="Others">
-                 </div>
-              </div>
+           <div class="row categories-section">
+              <input type="button" class="col-md-1 col-md-offset-3 btn btn-default btn-sm" value="Appliances">
+              <input type="button" class="col-md-1 btn btn-default btn-sm" value="Automobiles">
+              <input type="button" class="col-md-1 btn btn-default btn-sm" value="Bikes">
+              <input type="button" class="col-md-1 btn btn-default btn-sm" value="Books">
+              <input type="button" class="col-md-1 btn btn-default btn-sm" value="Cell Phones">
+              <input type="button" class="col-md-1 btn btn-default btn-sm" value="Clothes">
+              <input type="button" class="col-md-1 btn btn-default btn-sm" value="Collectibles">
+              <input type="button" class="col-md-1 col-md-offset-3 btn btn-default btn-sm" value="Electronics">
+              <input type="button" class="col-md-1 btn btn-default btn-sm" value="Furniture">
+              <input type="button" class="col-md-1 btn btn-default btn-sm" value="Music">
+              <input type="button" class="col-md-1 btn btn-default btn-sm" value="Photo/Video">
+              <input type="button" class="col-md-1 btn btn-default btn-sm" value="Tickets">
+              <input type="button" class="col-md-1 btn btn-default btn-sm" value="Tools">
+              <input type="button" class="col-md-1 btn btn-default btn-sm" value="Others">
            </div>
            <div class="row searchbar">
-              <input type="text" id="searchBar" class="form-control" placeholder="Search" ng-model="searchListing">
+              <div class="col-sm-4 col-sm-offset-4">
+                <input type="text" id="searchBar" class="form-control" placeholder="Search" ng-model="searchListing">
+              </div>
            </div>
         </div>
+        <!--
         <div id="listings-section" class="row">
            <div class="listing">
                <div class="col-sm-2">
@@ -69,20 +69,26 @@
                  </ul>
               </div>
            </div>
-            <!-- <div class="listing" ng-repeat="x in a">
-               <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfNbcFM1HkR6NJBLM8NfpDoZdH2sqgaBh1dRRv1h8W35sHIcAX3g" alt="" class="listing-img">
-               <div id="listing-text">
-                  <h5>Listing Title</h5>
-                  <p id="listing-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pharetra orci et ante imperdiet, nec lobortis sem lobortis. Pellentesque feugiat turpis ac tellus auctor, in cursus massa dictum. Nullam posuere purus sed neque dictum feugiat. Proin quis velit a nulla dapibus facilisis non in nulla. Vestibulum accumsan urna nec nunc vulputate, congue lobortis sem ultrices. Pellentesque sed leo nec lectus feugiat efficitur. Ut at metus ut neque laoreet placerat eget ac lacus. Nunc dui sem, interdum ut tempor ac, faucibus ut orci. Maecenas lacinia pellentesque finibus. Suspendisse potenti.</p>
-               </div>
-               <ul id="listing-info">
-                  <li><b>Seller/Buyer</b>: Seller</li>
-                  <li><b>Category</b>: Other</li>
-                  <li><b>Condition</b>: New</li>
-                  <li><b>Asking Price</b>: $20</li>
-                  <li><b>Payment Types</b>: Cash</li>
-               </ul>
-            </div> -->
+           -->
+           <div class="tableWrapper">
+            <table class="table table-striped table-hover">
+              <tr>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Description</th>
+                <th>Condition</th>
+                <th>Price</th>
+              </tr>
+              <tr ng-repeat="listing in homeCtrl.listings">
+                <td>{{listing.title}}</td>
+                <td>{{listing.category}}</td>
+                <td>{{listing.description}}</td>
+                <td>{{listing.item_condition}}</td>
+                <td>{{listing.price}}</td>
+
+              </tr>
+            </table>
+          </div>
         </div>
      </div>
 

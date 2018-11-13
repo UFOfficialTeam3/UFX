@@ -7,7 +7,9 @@
   </head>
   <h1>UFX | Create a new Listing</h1>
   <body ng-app="app">
-    <div ng-controller="authController as authCtrl"></div>
+    <div ng-controller="authController as authCtrl">
+      <div ng-init="authCtrl.askRedirect()"></div>
+    </div>
     <div ng-controller="createListingsController as clc">
     <form ng-submit="clc.createListing()">
       <div class="row">

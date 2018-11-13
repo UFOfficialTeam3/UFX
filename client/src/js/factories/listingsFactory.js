@@ -23,7 +23,7 @@ app.factory('listingsFactory', function($http) {
          * Make http get request to retrieve all listings in database
          */
         console.log("Calling factory.getAll()");
-
+        return $http.get('http://localhost:8080/api/listings/');
       },
       
       delete: function(listingId) {
