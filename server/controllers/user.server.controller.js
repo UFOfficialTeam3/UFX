@@ -63,7 +63,9 @@ exports.addPic= function(req, response) {
           if(err){
             console.log("fuuuuck");
           }
-          console.log("YYYAAAAAS");
+          else {
+            console.log("YYYAAAAAS");
+          }
         })
   });
 }
@@ -81,8 +83,10 @@ exports.createUser = function(req, response) {
         console.log('Error while trying to create user');
         throw err;
       }
-      console.log('this is what server controller is returning: ' + res.rows[0]);
-      //res.send('User', userID, 'added to database'); // untested
-      return response.json(res.rows[0]);
+      else {
+        console.log('this is what server controller is returning: ' + res.rows[0]);
+        //res.send('User', userID, 'added to database'); // untested
+        return response.json(res.rows[0]);
+      }
     })
 };

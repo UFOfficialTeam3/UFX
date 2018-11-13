@@ -36,8 +36,9 @@ exports.addPic= function(req, response) {
           if(err){
             console.log("fuuuuck" + err);
           }
-          else
+          else {
             console.log("YYYAAAAAS");
+          }
         })
   });
 };
