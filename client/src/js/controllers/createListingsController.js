@@ -19,8 +19,12 @@ app.controller('createListingsController', ['$scope', 'listingsFactory',
     }
  
     vm.createListing = function() {
-      //var photo = document.getElementById('file_upload').files[0];
-     // vm.newListing.photo = photo;
+
+      //console.log("file?", $scope.file);
+
+      // var photo = document.getElementById('file_upload').files[0];
+      // console.log(photo);
+      // vm.newListing.photo = photo;
       var user = JSON.parse(localStorage.getItem('user'));
 
       // get user id

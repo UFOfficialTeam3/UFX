@@ -60,8 +60,8 @@
          <h2>Description:</h2>
          <textarea id="listing-description" placeholder="What are you trying to sell?" ng-model="clc.newListing.description"></textarea><br />
          <!----TODO: finalizing functionality to upload photos-->
-         <h2> Photo to upload (Optional): </h2>
-         <input id="file_upload" type="file" name="item_pic" accept="image/png,image/jpg, image/jpeg" ng-model="clc.newListing.photo">  
+         <h2> Photo to upload (Required): </h2>
+         <input type="file" name="pic" accept="image/png,image/jpg, image/jpeg" ng-model="clc.newListing.photo">  
          <!---^^^^^^-->
          <br /><br />
         </div>

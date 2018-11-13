@@ -12,8 +12,8 @@ app.factory('listingsFactory', function($http) {
         /**TODO
          * Make http post request
          */
-        listing.photo = req.files.item_pic.data;
-        console.log(req.files.item_pic.data);
+         listing.photo = req.files.item_pic.data;
+         console.log(req.files);
         return $http.post('http://localhost:8080/api/listings/', listing); 
         
       },

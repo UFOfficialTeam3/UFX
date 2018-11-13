@@ -31,7 +31,7 @@ exports.userByID = function(req, response) {
           throw err;
         }
         else{
-          console.log(res.rows[0]);
+          //console.log(res.rows[0]);
           return response.json(res.rows[0]);
         }
       })
