@@ -16,6 +16,14 @@ app.factory('listingsFactory', function($http) {
         return $http.post('http://localhost:8080/api/listings/create-listing', listing); 
         
       },
+
+      getAll: function () {
+        /**TODO
+         * Make http get request to retrieve all listings in database
+         */
+        console.log("Calling factory.getAll()");
+
+      },
       
       delete: function(listingId) {
         /**TODO
