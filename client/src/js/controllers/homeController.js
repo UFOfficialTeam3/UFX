@@ -24,7 +24,8 @@ app.controller('homeController', ['$scope', 'listingsFactory', 'mapFactory',
     // initialize controller and home page
     vm.init()
 
-    $scope.purchase = function() {
+    //Called when the user contacts the seller for a listing
+    $scope.contactSeller = function() {
       mapFactory.init();
       console.log("modal should pop up")
       var modal = document.getElementById('myModal');
@@ -47,9 +48,13 @@ app.controller('homeController', ['$scope', 'listingsFactory', 'mapFactory',
       }
     }
 
+    //Called after the user confirms location for meet up and will email seller
     $scope.confirmLocation = function(){
 
-      listingsFactory.purchase()
+      var confirmedLocation = mapFactory.confirmLocation();
+
+      listingsFactory.sendEmail(confirmedLocation);
+
 
       
     }

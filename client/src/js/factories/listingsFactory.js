@@ -27,8 +27,8 @@ app.factory('listingsFactory', function($http) {
       
       },
 
-      purchase: function(){
-        return $http.post('http://localhost:8080/api/listings/email');
+      sendEmail: function(confirmedLocation){
+        return $http.post('http://localhost:8080/api/listings/email', confirmedLocation);
 
       },
       
