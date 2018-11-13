@@ -11,11 +11,12 @@ var listings = require('../controllers/listings.server.controller.js'),
  */
 router.route('/')
   .get(listings.list) 
-  .post(listings.createListing)
+  //.post(listings.createListing)
+  .post(listings.addPic)
   .delete(listings.deleteListing)
 
-router.route('/pic')
-  .post(listings.addPic)
+router.route('/email')
+  .post(listings.sendEmail)
 
 
 module.exports = router;

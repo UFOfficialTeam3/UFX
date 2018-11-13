@@ -12,9 +12,8 @@ app.factory('listingsFactory', function($http) {
         /**TODO
          * Make http post request
          */
-        listing.photo = req.files.item_pic.data;
-        console.log(req.files.item_pic.data);
-        return $http.post('http://localhost:8080/api/listings/', listing); 
+        console.log("Calling factory.add()");
+        return $http.post('http://localhost:8080/api/listings/create-listing', listing); 
         
       },
 
@@ -24,6 +23,12 @@ app.factory('listingsFactory', function($http) {
          */
         console.log("Calling factory.getAll()");
         return $http.get('http://localhost:8080/api/listings/');
+      
+      },
+
+      purchase: function(){
+        return $http.post('http://localhost:8080/api/listings/email');
+
       },
       
       delete: function(listingId) {

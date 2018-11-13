@@ -84,6 +84,12 @@ router.get('/js/factories/profileFactory.js', function(req, res){
 });
 
 
+/* Routes for map integration*/
+router.get('/js/mapFactory.js', function(req, res){
+    res.sendFile(path.resolve(__dirname+'/../../client/src/js/factories/mapFactory.js'));
+});
+
+
 
 
 // TODO: send dependency files
