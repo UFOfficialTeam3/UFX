@@ -27,6 +27,9 @@ router.get('/js/homeController.js', function(req, res){
 router.get('/create-listing', function(req, res){
     res.sendFile(path.resolve(__dirname+'/../../client/src/components/create-listing/create-listing.html'));
 });
+router.get('/create-listing.css', function(req, res){
+    res.sendFile(path.resolve(__dirname+'/../../client/src/components/create-listing/create-listing.css'));
+});
 router.get('/js/createListingsController.js', function(req, res){
     res.sendFile(path.resolve(__dirname+'/../../client/src/js/controllers/createListingsController.js'))
 });
