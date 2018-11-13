@@ -14,22 +14,48 @@ app.controller('authController', ['authService', '$scope', '$timeout',
     // DEBUG: This function is called once everytime this page is loaded (with this controller attatched of course)
     console.log("handle auth: " + authService.handleAuthentication());
     
-    // DEBUG: Checks if user is logged in
-    console.log("is auth: " + authService.isAuthenticated());
+    // on page load, double check user and put jwts in local storage
+    authService.isAuthenticated();       
 
     // Store user's profile in localstorage so other controllers can access it
+    function spaghetti() {
     var access_token = localStorage.getItem('access_token');
     if (access_token) {
         auth0.client.userInfo(access_token, function(err, user) {
             if(err){
                 console.log("userInfo error:", err);
-            }
-            console.log(user); // DEBUG
-            localStorage.setItem('user', JSON.stringify(user));        
+            } else {
+                console.log(user); // DEBUG
+                localStorage.setItem('user', JSON.stringify(user));
+            
+                // check if user exists in database.
+                authService.findByID(user.sub)
+                    .then(
+                        function(result) {
+                            console.log("findByID result",result) // Output: data: ""
+                            
+                            // if user not in database
+                            if (result.data == ""){
+                                // add user to database
+                                authService.createUser(user.sub)
+                                    .then(
+                                        function(result){
+                                            console.log("createUser result",result);
+                                        }, 
+                                        function(error){console.log("createUser error",error)})
+                            }
+
+                        }, function(error) {console.log("findByID error",error)}
+                    );
+
+            }            
             
         });
     }
-    
+    }
+    // give handleAuthentication a chance to put access tokens in local storage
+    setTimeout(spaghetti, 1000);
+        
     
 
     // DEBUG: function that fetches user profile from local storage
@@ -68,6 +94,7 @@ app.controller('authController', ['authService', '$scope', '$timeout',
         }
     );    
     // call our promise
+    // implement this function in places where the user clicks a
     vm.askRedirect = function () {
         willRedirectToLogin
             .then(function(fulfilled) {
@@ -123,6 +150,9 @@ app.controller('authController', ['authService', '$scope', '$timeout',
     vm.displayUserProfile = function() {
         console.log(vm.userProfile);
     }
+
+
+
 
     return vm;    
     

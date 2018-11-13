@@ -77,6 +77,16 @@ function($timeout, angularAuth0, $http) {
         });
     }
 
+    // This function communicates with database
+    function findByID (userID) {
+        return $http.get('http://localhost:8080/api/user', {params: { id: userID }})
+    }
+
+    // This function communicates with database
+    function createUser (userID) {
+        return $http.post('http://localhost:8080/api/user', {id: userID});
+    }
+
     
     
     return {
@@ -86,6 +96,8 @@ function($timeout, angularAuth0, $http) {
         handleAuthentication: handleAuthentication,
         logout: logout,
         sendjwt: sendjwt,
+        findByID: findByID,
+        createUser: createUser
         
         
     } 

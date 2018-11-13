@@ -4,7 +4,7 @@ angular.module('app', []).factory('Profile', function($http) {
         var userID = 1;
         return $http.get('http://localhost:8080/api/user', {params: { id: 1 }});
       },
-      
+            
       edit: function() {
         var userID = {userID: 1};
         return $http.put('http://localhost:8080/api/user', userID);
