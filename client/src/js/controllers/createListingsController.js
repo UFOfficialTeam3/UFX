@@ -4,7 +4,6 @@ app.controller('createListingsController', ['$scope', 'listingsFactory',
   function($scope, listingsFactory) {
     var vm = this;
 
-   
     vm.newListing = {
       title: null,
       price: null,
@@ -27,18 +26,16 @@ app.controller('createListingsController', ['$scope', 'listingsFactory',
       // vm.newListing.photo = photo;
       var user = JSON.parse(localStorage.getItem('user'));
 
-      // get user id
-      vm.newListing.uid = user.sub;
+    }
 
-      function checkPayment(payment) {
-        return payment != 'false';
-      }
+    vm.createListing = function() {
+      console.log(vm.newListing);
 
       // TODO: Error checking for required fields
-      vm.newListing.payment = vm.newListing.payment.filter(checkPayment);
+
       // Call Factory method to add newListing to db
-      listingsFactory.add(vm.newListing);
- 
+      //console.log(listingsFactory.add(vm.newListing));
+      
     }
 
     vm.addItem = function() {
