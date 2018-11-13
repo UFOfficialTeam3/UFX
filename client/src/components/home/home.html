@@ -3,6 +3,10 @@
   <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="main.css">
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.50.0/mapbox-gl.js'></script>
+		<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.50.0/mapbox-gl.css' rel='stylesheet' />
+		<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.3.0/mapbox-gl-geocoder.min.js'></script>
+		<link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.3.0/mapbox-gl-geocoder.css' type='text/css' />
   </head>
   <body ng-app="app" ng-controller="homeController as homeCtrl">
      <div id="page-wrapper" class="container-fluid">
@@ -67,6 +71,19 @@
                     <li><b>Asking Price</b>: $20</li>
                     <li><b>Payment Types</b>: Cash</li>
                  </ul>
+                 <input type="button" id="myBtn" class="btn btn-default btn-sm" ng-click="purchase()" value="Purchase">
+                 <!-- Trigger/Open The Modal -->
+                  <!-- The Modal -->
+                <div id="myModal" class="modal">
+
+                  <!-- Modal content -->
+                  <div class="modal-content">
+                  <span class="close">&times;</span>
+                  <div id='map' style='width: 1000px; height: 400px;'></div>
+			            <script src="../../js/controllers/mapController.js"></script>
+                  </div>
+
+                </div>
               </div>
            </div>
             <!-- <div class="listing" ng-repeat="x in a">

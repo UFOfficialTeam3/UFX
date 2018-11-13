@@ -147,6 +147,7 @@ map.on('load', function() {
     UIMarker.setPopup(popupUI);
     UIMarker.addTo(map);
     UIMarker.togglePopup();
+    map.resize();
 
 
   });
