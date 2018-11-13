@@ -2,7 +2,7 @@
 /* Dependencies */
 // connect to database (technically)
 const db = require('../config/config.js');
-
+const fs = require('fs');
 /*
   In this file, you should use SQL queries in order to retrieve/add/remove/update Free&4Sale listings.
   On an error you should send a 404 status code, as well as the error message.
@@ -12,11 +12,11 @@ const db = require('../config/config.js');
 /* Create a listing */
 exports.createListing = function(req, res) {
      const listing = req.body;
-     const result = db.query("INSERT INTO listing (lid, pid, title, price, category, item_condition, payment, description, sell) VALUES ($1,$2,$3,$4,$5,$6,$7, $8, $9) RETURNING *",
-     [listing.lid, listing.pid, listing.Title, listing.Price, listing.category, listing.condition, listing.payment, listing.description, listing.sell], 
+     const result = db.query("INSERT INTO listing(lid, pid, title, price, category, item_condition, description, sell, payment, uid) VALUES ($1,$2,$3,$4,$5,$6,$7, $8, $9, $10)",
+     [listing.lid, listing.pid, listing.title, listing.price, listing.category, listing.condition, listing.description, listing.sell, listing.payment, listing.uid], 
     (err, res) => {
       if(err)
-        console.log("error from createListing in lisdting.server.controller: " + err);
+        console.log("error from createListing in listing.server.controller: " + err);
     }
     
      );
@@ -24,12 +24,14 @@ exports.createListing = function(req, res) {
 };
 
 exports.addPic= function(req, res) {
-  fs.readFile('pic2.jpg', (err, imgData) => {
+  fs.readFile('/mnt/c/Users/paul/Pictures/pic2.jpg', (err, imgData) => {
+    console.log(imgData);
+    console.log(err);
     // inserting data into column 'img' of type 'bytea':
     db.query('INSERT INTO pictures(pid, picture) VALUES(2 , $1)', [imgData], 
     (err,response)=> {
           if(err){
-            console.log("fuuuuck");
+            console.log("fuuuuck" + err);
           }
           else
             console.log("YYYAAAAAS");
@@ -75,8 +77,6 @@ exports.deleteListing = function(req, res) {
     (err, res) => {
       if(err)
         console.log("error from listing.server: " + err);
-      else
-        console.log("worked");
     });
  
 };

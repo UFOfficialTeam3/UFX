@@ -7,18 +7,15 @@ app.controller('createListingsController', ['$scope', 'listingsFactory',
     vm.newListing = {
       lid: 70,     // How should users go about inputting a listing id??
       pid: 101,
-      Title: 'Honda Civic',
-      Price: 200,
-      negotiable: true, // This field not in table.
-      sell: true, //TODO: change html code for this
+      title: 'Honda Civic',
+      price: 200,
       category: 'cars', //TODO: replace type with category
       condition: 'new',
-      payment: 'cash', // This field will be changed.
-      pt_money: undefined,  // This field not in table.
-      pt_venmo: undefined,  // This field not in table.
-      pt_paypal: undefined,  // This field not in table.
+      payment: ['cash'], // This field will be changed.
       description: 'description',
-      location: 'The Hub', // This field not in table.
+      sell: true,
+      uid: 'qwerqwre'
+
     }
 
     vm.createListing = function() {

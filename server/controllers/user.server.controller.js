@@ -70,25 +70,21 @@ exports.addPic= function(req, res) {
 
 }
 //create a user
-exports.createUser = function(req, res) {
-  try {
-    const user = req.body;
-
-    /* This if statement MUST happen before the query. Need to figure out how.*/
-
-    // if(user.pic != null){
-      
-    //   addPic();
-    // }
-
-    const result = db.query("INSERT INTO users (uid, pid, email, username, f_name, l_name) VALUES ($1,$2,$3,$4,$5,$6,$7, $8, $9) RETURNING *",
-    [user.uid, user.pid, user.email, user.username, user.f_name, user.l_name]
-   );
-   return res.json(result.rows[0]);
-   } catch (err) {
-     res.status(107)        // HTTP status 404: Not Found
-       .send('Error with create');
-     console.log('Error while trying to create a user', err);
-     return (err);
-   }
+exports.createUser = function(req, response) {
+  const userID = req.body.id;
+  //console.log("req.body:",req.body.id); //DEBUG
+   
+  db.query('INSERT INTO users (uid) VALUES($1)', [userID], 
+    (err, res) => {
+      if (err) {
+        res.status(404)        // HTTP status 404: Not Found
+        .send('Not found');
+        console.log('Error while trying to create user');
+        throw err;
+      }
+      console.log('this is what server controller is returning: ' + res.rows[0]);
+      res.send('User', userID, 'added to database'); // untested
+      return response.json(res.rows[0]);
+    })
+    
 };
