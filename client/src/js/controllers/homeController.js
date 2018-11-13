@@ -1,7 +1,7 @@
-angular.module('app').controller('homeController', ['$scope', 'listingsFactory', 'mapFactory', 
+app.controller('homeController', ['$scope', 'listingsFactory', 'mapFactory', 
   function($scope, listingsFactory, mapFactory) {
     
-
+    var vm = this;
     console.log("Hello from home controller!")
     vm.listings = {};
 
