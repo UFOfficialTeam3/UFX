@@ -61,7 +61,7 @@ var methods = {
     });
 
       //Various popups for pre defined locations
-      var popupHub = new mapboxgl.Popup({closeButton: false, closeOnClick: false})
+      var popupHub = new mapboxgl.Popup({closeButton: false, closeOnClick: false, className: 'Hub'})
       .setText('Hub')
       .addTo(map);
       var popupReitz = new mapboxgl.Popup({closeButton: false, closeOnClick: false})
@@ -166,7 +166,11 @@ var methods = {
 
         //Generates popup if mouse is over specified coordinates
         if(onHub){
-          document.getElementsByClassName("mapboxgl-popup-content")[0].style.backgroundColor = "green";
+          console.log("Lat: " + mouseClickRoundLat + "Long: " + mouseClickRoundLng)
+          var div = window.document.createElement('div');
+          div.style.backgroundColor = "green";
+          HubMarker.getPopup().setDOMContent(div);
+          //document.getElementsByClassName("Hub")[0].style.backgroundColor = "green";
         }
         else if (onReitz){
           ReitzMarker.getPopup().addTo(map);
