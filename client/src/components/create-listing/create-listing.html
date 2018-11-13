@@ -3,6 +3,7 @@
 <html lang="en">
   <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="create-listing.css">
   </head>
   <h1>UFX | Create a new Listing</h1>
   <body ng-app="app">
@@ -11,39 +12,41 @@
     <form ng-submit="clc.createListing()">
       <div class="row">
        <div class="col-md-6">
-        <h2> Title of Listing: </h2>
-        <input type="text" id="listing-name" placeholder="What are we trading?" ng-model="clc.newListing.Title">
-        <h2> Buying or Selling? </h2>
-        <label for="buying"><input type="radio" id="buying" name="buying-selling" ng-model="clc.newListing.sell" value="false">Buying</label>
-        <label for="selling"><input type="radio" id="selling" name="buying-selling" ng-model="clc.newListing.sell" value="true">Selling</label>
-        <h2> Item Type: </h2>
-        <select id="listing-item-type"ng-model="clc.newListing.type">
-          <option value="cars"> Cars </option>
-          <option value="housing"> Housing </option>
-          <option value="services"> Services </option>
-          <option value="electronics"> Electronics </option>
-          <option value="home and garden"> Home and Garden </option>
-          <option value="other vehicle"> Other Vehicle </option>
-          <option value="fashion"> Fashion </option>
-          <option value="entertainment">Entertainment</option>
-          <option value="other"> Other </option>
-        </select>
-        <h2>Condition:</h2>
-        <select id="listing-condition" ng-model="clc.newListing.condition">
-          <option value="new"> New </option>
-          <option value="slightly used"> Slightly Used </option>
-          <option value="used"> Used </option>
-          <option value="beater"> Beater </option>
-        </select>
-        <h2> Asking Price: </h2>
-        <input type="text" id="listing-price" placeholder="how much?" ng-model="clc.newListing.Price">
-        <label for="listing-price-neg"> Price Negotiable? </label><input type="checkbox" id="listing-price-neg" ng-model="clc.newListing.negotiable" value=True>
-        <h2> Payment Types Accepted: </h2>
-        <label for="payType-money">Money<input type="checkbox" id="payType-money" ng-model="clc.newListing.pt_money" ng-true-value="'money'"></label>
-        <label for="payType-venmo">Venmo<input type="checkbox" id="payType-venmo" ng-model="clc.newListing.pt_venmo" ng-true-value="'venmo'"></label>
-        <label for="payType-other">Paypal<input type="checkbox" id="payType-paypal"ng-model="clc.newListing.pt_paypal" ng-true-value="'paypal'"></label>
+         <div class="m-5">
+          <h2> Title of Listing: </h2>
+          <input type="text" id="listing-name" placeholder="What are we trading?" ng-model="clc.newListing.Title">
+          <h2> Buying or Selling? </h2>
+          <label for="buying"><input type="radio" id="buying" name="buying-selling" ng-model="clc.newListing.sell" value="false">Buying</label>
+          <label for="selling"><input type="radio" id="selling" name="buying-selling" ng-model="clc.newListing.sell" value="true">Selling</label>
+          <h2> Item Type: </h2>
+          <select id="listing-item-type"ng-model="clc.newListing.type">
+            <option value="cars"> Cars </option>
+            <option value="housing"> Housing </option>
+            <option value="services"> Services </option>
+            <option value="electronics"> Electronics </option>
+            <option value="home and garden"> Home and Garden </option>
+            <option value="other vehicle"> Other Vehicle </option>
+            <option value="fashion"> Fashion </option>
+            <option value="entertainment">Entertainment</option>
+            <option value="other"> Other </option>
+          </select>
+          <h2>Condition:</h2>
+          <select id="listing-condition" ng-model="clc.newListing.condition">
+            <option value="new"> New </option>
+            <option value="slightly used"> Slightly Used </option>
+            <option value="used"> Used </option>
+            <option value="beater"> Beater </option>
+          </select>
+          <h2> Asking Price: </h2>
+          <input type="text" id="listing-price" placeholder="how much?" ng-model="clc.newListing.Price">
+          <label for="listing-price-neg"> Price Negotiable? </label><input type="checkbox" id="listing-price-neg" ng-model="clc.newListing.negotiable" value=True>
+          <h2> Payment Types Accepted: </h2>
+          <label for="payType-money">Money<input type="checkbox" id="payType-money" ng-model="clc.newListing.pt_money" ng-true-value="'money'"></label>
+          <label for="payType-venmo">Venmo<input type="checkbox" id="payType-venmo" ng-model="clc.newListing.pt_venmo" ng-true-value="'venmo'"></label>
+          <label for="payType-other">Paypal<input type="checkbox" id="payType-paypal"ng-model="clc.newListing.pt_paypal" ng-true-value="'paypal'"></label>
        </div>
-       <div class="col-md-6">
+      </div>
+       <div class=" m-5 col-md-6 ">
          <h2> Proposed Meeting Location:</h2>
          <select id="listing-location" ng-model="clc.newListing.location">
            <option value="The Hub">The Hub</option>
@@ -62,9 +65,7 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-sm-4">
-          <input type="submit" value="Submit Listing">
-        </div>
+        <input id="submit-button" type="submit" value="Submit Listing">
       </div>
     </form>
     </div>
