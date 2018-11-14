@@ -18,23 +18,24 @@ angular.module('app').controller('profileController', ['$scope', 'Profile',
 
     $scope.editUser = function() {
       //Variables from edit account form
-      console.log("edituser is called")
+      
       var email = $scope.email
       var firstname = $scope.firstname
       var lastname = $scope.lastname
-      console.log(email)
-      console.log(firstname)
-      console.log(lastname)
+      var modal = document.getElementById('editProfileModal')
+      
+      
       
 
-
-
-        Profile.edit(email, firstname, lastname).then(function(response){
-          console.log('editUser receieved from http.put: ' + response.data);
-          $scope.user = response.data;
-        }, function(error) {
+      Profile.edit(email, firstname, lastname).then(function(response){
+        console.log('editUser receieved from http.put: ' + response.data);
+        $scope.user = response.data;
+      }, function(error) {
           console.log('Unable to update user:', error);
-        });
+         });
+
+      modal.style.display = "none";
+
     }
     $scope.showEditForm = function() { //when the user clicks the edit profile button, the modal form should appear
       console.log("modal should pop up")
