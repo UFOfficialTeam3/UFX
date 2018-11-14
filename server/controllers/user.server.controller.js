@@ -38,6 +38,7 @@ exports.userByID = function(req, response) {
 
 /** Updates user info */
 exports.update = function(req, response) {
+  console.log(req.body)
       const uid = req.body.uid;
       const email = req.body.email;
       const f_name = req.body.fname;
@@ -46,10 +47,8 @@ exports.update = function(req, response) {
       db.query('UPDATE users SET email=$2, f_name=$3, l_name=$4 WHERE uid=$1 RETURNING *', [uid, email, f_name, l_name],
       (err, res) => {
         if (err) {
-          res.status(404)        // HTTP status 404: Not Found
-          .send('Not found');
-          console.log('Error while trying to update user');
-          throw err;
+          console.log('Error while trying to update user: ' + err);
+          return err;
         }
         console.log('this is what server controller is returning: ' + res.rows[0]);
         return response.json(res.rows[0]);

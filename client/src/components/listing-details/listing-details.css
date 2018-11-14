@@ -1,10 +1,34 @@
-body {
-    background-color: rgb(226,143,65);
-}
-
 #row {
     background-color: rgb(108,154,195);
 
+}
+
+html, body{
+  background: #333;
+}
+form{
+  background: #eee;
+  border-radius: 5px;
+}
+#listingDetails{
+  margin-top: 5%;
+}
+.listing-form{
+  display: flex;
+}
+#left-side{
+  width: 50%;
+  padding: 20px;
+}
+#right-side{
+  width: 50%;
+  padding: 20px;
+}
+.row{
+  margin: 0;
+}
+#submit-btn{
+  margin-top: 30px;
 }
 
 .modal {
