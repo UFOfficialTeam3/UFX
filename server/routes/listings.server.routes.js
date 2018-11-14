@@ -3,7 +3,9 @@
 /* Dependencies */
 var listings = require('../controllers/listings.server.controller.js'),
     express = require('express'), 
-    router = express.Router();
+    router = express.Router(),
+    multer = require('multer');
+    var upload = multer();
 
 /* 
   These method calls are responsible for routing requests to the correct request handler.
@@ -12,7 +14,7 @@ var listings = require('../controllers/listings.server.controller.js'),
 
 router.route('/')
   .get(listings.list) 
-  .post(listings.createListing)
+  .post(upload.single('pic'), listings.createListing)
   .delete(listings.deleteListing)
 
 router.route('/email')
@@ -20,6 +22,7 @@ router.route('/email')
 
 router.route('/email')
   .post(listings.sendEmail)
+
 
 
 module.exports = router;

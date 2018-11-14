@@ -11,7 +11,7 @@
       <div ng-init="authCtrl.askRedirect()"></div>
     </div>
     <div ng-controller="createListingsController as clc">
-    <form ng-submit="clc.createListing()" enctype="multipart/form-data">
+    <form ng-submit="clc.createListing()" enctype="multipart/form-data" method="POST">
       <div class="row">
        <div class="col-md-6">
          <div class="m-5">
@@ -61,7 +61,7 @@
          <textarea id="listing-description" placeholder="What are you trying to sell?" ng-model="clc.newListing.description"></textarea><br />
          <!----TODO: finalizing functionality to upload photos-->
          <h2> Photo to upload (Required): </h2>
-         <input type="file" name="pic" accept="image/png,image/jpg, image/jpeg" ng-model="clc.newListing.photo" multiple>  
+         <input type="file" name="pic" />
          <!---^^^^^^-->
          <br /><br />
         </div>

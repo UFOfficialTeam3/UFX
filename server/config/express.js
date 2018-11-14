@@ -7,9 +7,8 @@ var path = require('path'),
     listingsRouter = require('../routes/listings.server.routes'),
     authRouter = require('../routes/auth.server.routes'),
     jwtRouter = require('../routes/test_jwt'),
-    userRouter = require('../routes/user.server.routes'),
-    multer  = require('multer'),
-    upload = multer({ dest: 'uploads/' });
+    userRouter = require('../routes/user.server.routes');
+
 
 module.exports.init = function() {
   

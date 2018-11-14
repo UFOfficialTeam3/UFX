@@ -12,14 +12,17 @@ const db = require('../config/config.js'),
 /* Create a listing */
 exports.createListing = function(req, response) {
      const listing = req.body;
-
-     fs.readFile('/mnt/c/Users/paul/Pictures/pic2.jpg', (err, imgData) => {
-       console.log(err);
-       //console.log(imgData.toString('hex'));
-      });
+    //var image = new Image();
+    //image.img.data = req.file.buffer;
+    //image.img.contentType = req.file.mimetype;
+    console.log(req.file);
+    //  fs.readFile('/mnt/c/Users/paul/Pictures/pic2.jpg', (err, imgData) => {
+    //    console.log(err);
+    //    //console.log(imgData.toString('hex'));
+    //   });
 
      const result = db.query("INSERT INTO listing(title, price, category, item_condition, description, sell, payment, uid, picture) VALUES ($1,$2,$3,$4,$5,$6, $7, $8, $9)",
-     [listing.title, listing.price, listing.category, listing.condition, listing.description, listing.sell, listing.payment, listing.uid,null], 
+     [listing.title, listing.price, listing.category, listing.condition, listing.description, listing.sell, listing.payment, listing.uid, null], 
     (err, res) => {
       if (err) {
       
