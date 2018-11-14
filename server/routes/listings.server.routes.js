@@ -24,5 +24,7 @@ router.route('/email')
   .post(listings.sendEmail)
 
 
+router.route('/:lid')  
+  .get(listings.listingByID)
 
 module.exports = router;

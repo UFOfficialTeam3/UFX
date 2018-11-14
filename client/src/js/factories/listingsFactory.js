@@ -7,6 +7,8 @@ app.factory('listingsFactory', function($http) {
      * to the server-side controllers
      * The methods here will be called by the listingsController
      */
+    var savedLid = undefined;
+
     var methods = {
       add: function(listing) {
         /**TODO
@@ -14,6 +16,11 @@ app.factory('listingsFactory', function($http) {
          */
         
         return $http.post('http://localhost:8080/api/listings/', listing); 
+        
+      },
+
+      findByID: function(listingId) {
+        return $http.get('http://localhost:8080/api/listings/' + listingId)
         
       },
 
@@ -38,15 +45,19 @@ app.factory('listingsFactory', function($http) {
         //Example: return $http.delete('http://localhost:8080/api/listings/' + id);
         
       }, 
-  
-      showDetails: function(listingId) {
-         /**TODO
-          Make http get request
-         */
-        //Example: return $http.get('http://localhost:8080/api/listings/' + id);
-  
+
+      hello: function() {
+        console.log('hello');
       },
 
+      setLid: function(listingId) {
+        savedLid = listingId;
+        
+      },
+
+      getLid: function(listingId) {savedLid = listingId},
+  
+      
 
     };
   
