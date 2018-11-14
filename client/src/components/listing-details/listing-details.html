@@ -14,19 +14,21 @@
 			
 		-->
 		<div id ="row"class="row">
+			<h1 >{{dc.listing.title}}</h1>
 			<div class="col-sm-4">
 	        	<h2>Condition:</h2>
-	        	<p>Near Mint</p>
+				<p>{{dc.listing.item_condition}}</p>
+				
 	        	<h2>Asking Price:</h2>
-	        	<p>$150</p>
-	        	<h2>Price Negotiable:</h2>
-	        	<p>Yes</p>
+	        	<p>{{dc.listing.price}}</p>
+	        	
 	        	<h2>Payment Accepted:</h2>
-	        	<p>Cash</p>
+	        	<p ng-model="dc.listing.payment">Cash</p>
 			</div>
 			<div class="col-sm-4">
 		        <h2>Description:</h2>
-		        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sapien ligula, scelerisque eget ante vitae, sodales vulputate magna. Aenean placerat a tellus ut elementum. Cras at molestie elit. Nunc efficitur eros eget sem viverra, ut tempus quam suscipit. Phasellus sed est eu arcu vestibulum auctor. Morbi vitae condimentum libero. Donec maximus hendrerit sapien. Phasellus ultrices tincidunt massa, sed commodo odio condimentum sed. Pellentesque aliquet augue velit, aliquam faucibus metus dignissim et. Fusce condimentum erat in commodo lacinia. Mauris hendrerit lobortis bibendum. Nullam faucibus lectus id aliquet sodales. </p>
+				<p>{{dc.listing.description}} </p>
+				
 			</div>
 			<div class="col-sm-4">
         		<h2>Posted by: John Doe</h2>
