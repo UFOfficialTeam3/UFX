@@ -1,7 +1,7 @@
 'use strict';
 
-app.controller('createListingsController', ['$scope', 'listingsFactory', 
-  function($scope, listingsFactory) {
+app.controller('createListingsController', ['$scope', '$window', 'listingsFactory', 
+  function($scope, $window, listingsFactory) {
     var vm = this;
 
    
@@ -39,6 +39,9 @@ app.controller('createListingsController', ['$scope', 'listingsFactory',
       vm.newListing.payment = vm.newListing.payment.filter(checkPayment);
       // Call Factory method to add newListing to db
       listingsFactory.add(vm.newListing);
+
+      alert('Your listing has been posted')
+      $window.location.href = '/';
  
     }
     vm. doSomething = function() {
