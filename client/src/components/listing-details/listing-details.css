@@ -29,7 +29,9 @@ form{
 }
 #submit-btn{
   margin-top: 30px;
+  justify-content: center;
 }
+#contAC
 
 .modal {
     display: none; /* Hidden by default */
