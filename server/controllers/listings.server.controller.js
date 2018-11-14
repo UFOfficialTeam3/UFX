@@ -12,16 +12,17 @@ const db = require('../config/config.js'),
 
 /* Create a listing */
 exports.createListing = function(req, response) {
-    const listing = req.body;
-    
-    console.log("req.body:", listing);
+    var listing = req.body.listing;
+    console.log(listing);
+
+    listing = JSON.parse(listing);
     
 
     // Josh (WORKING!) attempt at file upload. Used express-fileupload package
     if (Object.keys(req.files).length == 0) {
       return res.status(400).send('No files were uploaded.');
     } else {
-      console.log("req.files", req.files);
+      //console.log("req.files", req.files);
       console.log("req.files.file.data", req.files.file.data);
     }
     //TODO: actually do something with this picture. Only added the code to get
@@ -29,7 +30,7 @@ exports.createListing = function(req, response) {
 
      
     const result = db.query("INSERT INTO listing(title, price, category, item_condition, description, sell, payment, uid, picture) VALUES ($1,$2,$3,$4,$5,$6, $7, $8, $9)",
-     [listing.title, listing.price, listing.category, listing.condition, listing.description, listing.sell, listing.payment, listing.uid, null], 
+     [listing.title, listing.price, listing.category, listing.condition, listing.description, listing.sell, listing.payment, listing.uid, req.files.file.data], 
     (err, res) => {
       if (err) {
       
@@ -119,7 +120,7 @@ exports.list = function(req, response) {
         throw err;
       }
       else{
-        console.log(res.rows);
+        //console.log(res.rows);
         return response.json(res.rows);
       }
     });

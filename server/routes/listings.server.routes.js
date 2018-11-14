@@ -14,7 +14,7 @@ var listings = require('../controllers/listings.server.controller.js'),
 
 router.route('/')
   .get(listings.list) 
-  .post(upload.single('pic'), listings.createListing)
+  .post(listings.createListing)
   .delete(listings.deleteListing)
 
 router.route('/email')

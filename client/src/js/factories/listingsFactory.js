@@ -15,16 +15,17 @@ app.factory('listingsFactory', function($http) {
          * Make http post request
          */
         var payload = new FormData();
-        
-        payload.append('listing', listing);
+        console.log(listing);
+        payload.append('listing', JSON.stringify(listing));
         payload.append('file', file);
 
-        console.log(payload);
+       
          
         return $http({
         url: 'http://localhost:8080/api/listings/',
         method: 'POST',
         data: payload,
+        body: JSON.stringify(listing),
         //assign content-type as undefined, the browser
         //will assign the correct boundary for us
         headers: { 'Content-Type': undefined},

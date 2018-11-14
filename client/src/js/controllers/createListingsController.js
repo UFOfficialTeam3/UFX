@@ -38,7 +38,6 @@ app.controller('createListingsController', ['$scope', '$window', 'listingsFactor
 
       // TODO: Error checking for required fields
       vm.newListing.payment = vm.newListing.payment.filter(checkPayment);
-      
       // Call Factory method to add newListing to db
       listingsFactory.add(vm.newListing, photo)
         .then(function(response) {console.log("res",response)}, function(error) {console.log("err",error)})
