@@ -20,9 +20,6 @@ router.route('/')
 router.route('/email')
   .post(listings.sendEmail)
 
-router.route('/email')
-  .post(listings.sendEmail)
-
 
 router.route('/:lid')  
   .get(listings.listingByID)
