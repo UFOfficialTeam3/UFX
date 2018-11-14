@@ -7,15 +7,33 @@
 		<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.50.0/mapbox-gl.css' rel='stylesheet' />
 		<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.3.0/mapbox-gl-geocoder.min.js'></script>
 		<link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.3.0/mapbox-gl-geocoder.css' type='text/css' />
-      <h1> UFX | Listing Details! </h1>
+      <!---<h1> UFX | Listing Details! </h1> -->
+			<div id="top-section" class="row">
+	       <div class="col-sm-12 topSection">
+	         <div class="logo">
+						 <div class="logo">
+               <a href="/">
+                 <h1>UFX | Listing Details!</h1>
+               </a>
+             </div>
+	         </div>
+	          <div id="nav-btns" ng-controller="authController as authCtrl">
+	            <div class="nav-btns btn-group-vertical">
+	              <a href="/profile" class="btn btn-default" ng-if="authCtrl.isAuthenticated()"><span class="glyphicon glyphicon-user"></span> Profile</a>
+	              <button type="button" class="btn btn-default" ng-if="!authCtrl.isAuthenticated()" ng-click="authCtrl.login()"><span class="glyphicon glyphicon-log-in"></span> Login/Signup</button>
+	              <button type="button" class="btn btn-default" ng-if="authCtrl.isAuthenticated()" ng-click="authCtrl.logout()"><span class="glyphicon glyphicon-log-out"></span> Logout</button>
+	            </div>
+	          </div>
+	       </div>
+	    </div>
 	</head>
-	<body ng-app="app">
-	<div ng-controller="detailsController as dc">
+	<body ng-app="app" ng-controller="detailsController as dc">
+
 		<!--
 			To Frontend:
 			The details Controller has the listing for the page in it.
 			Access it using dc.listing.
-			
+
 		-->
 		<div id ="row"class="row">
 			<div class="col-sm-4">
@@ -57,7 +75,6 @@
 
 
 		</div>
-	</div>
 
 	<!-- Import Scripts -->
     <!-- JS files should be the last thing in the body -->
@@ -70,10 +87,10 @@
     <script src="https://cdn.auth0.com/js/lock-8.1.min.js"></script>
     <script src="https://cdn.auth0.com/js/auth0/9.5.1/auth0.min.js"></script>
     <script type="text/javascript" src="/node_modules/angular-auth0/dist/angular-auth0.js"></script>
-	
+
 	<!-- Angular JS app, modules, services -->
     <script src="/js/app.js"></script>
-    <script src="/js/detailsController.js"></script>    
+    <script src="/js/detailsController.js"></script>
 	<script src="/js/listingsFactory.js"></script>
 	<script src="/js/homeController.js"></script>
     <script src="/js/mapFactory.js"></script>

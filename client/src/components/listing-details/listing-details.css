@@ -29,3 +29,31 @@ body {
     border: 1px solid rgb(11, 11, 12);
     width: 80%;
 }
+
+.topSection h1{
+   margin: none;
+   font-family: 'Bungee Shade', cursive;
+   color: #eee;
+   font-size: 5em;
+   transition: all .5s;
+}
+
+.topSection h1:hover{
+   color: #FA4616;
+}
+
+.topSection h3{
+   color: #FA4616;
+}
+.topSection a:hover{
+  text-decoration: none;
+}
+
+.logo{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  margin: auto;
+  padding-left: 100px;
+}
