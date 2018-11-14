@@ -310,15 +310,15 @@ var methods = {
     confirmLocation: function() {
       var lng = mouseClickLng;
       var lat = mouseClickLat;
-      var coordinates = [lng, lat];
+      var coordinates = lat.toString() + ", " + lng.toString();
       var searchedChoice = searchedLocation;
       var knownChoice = knownLocation;
 
       if(knownChoice != ''){
-        return known;
+        return knownChoice;
       }
       else if(searchedChoice != ''){
-        return searched;
+        return searchedChoice;
       }
       else if(lng != 0 && lat != 0){
         return coordinates;

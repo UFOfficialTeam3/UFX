@@ -63,7 +63,11 @@ app.controller('homeController', ['$scope', '$window', '$state', 'listingsFactor
     $scope.confirmLocation = function(){
 
       var confirmedLocation = mapFactory.confirmLocation();
+      console.log("Location gotten from map: " + confirmedLocation);
 
+      var modal = document.getElementById('myModal');
+      modal.style.display = "none";
+      alert("An email has been sent to the seller with your preferred meeting place")
       listingsFactory.sendEmail(confirmedLocation);
 
 

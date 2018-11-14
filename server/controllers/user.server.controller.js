@@ -31,7 +31,6 @@ exports.userByID = function(req, response) {
           throw err;
         }
         else{
-          //console.log(res.rows[0]);
           return response.json(res.rows[0]);
         }
       })
@@ -39,10 +38,12 @@ exports.userByID = function(req, response) {
 
 /** Updates user info */
 exports.update = function(req, response) {
-      const userID = req.body.userID;
-      const f_name = 'Rick';
+      const uid = req.body.uid;
+      const email = req.body.email;
+      const f_name = req.body.fname;
+      const l_name = req.body.lname;
 
-      db.query('UPDATE users SET f_name=$2 WHERE uid=$1 RETURNING *', [userID, f_name],
+      db.query('UPDATE users SET email=$2, f_name=$3, l_name=$4, WHERE uid=$1 RETURNING *', [uid, email, f_name, l_name],
       (err, res) => {
         if (err) {
           res.status(404)        // HTTP status 404: Not Found

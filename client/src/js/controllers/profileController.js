@@ -17,8 +17,15 @@ angular.module('app').controller('profileController', ['$scope', 'Profile',
     
 
     $scope.editUser = function() {
-      console.log('editUser has been called')
-        Profile.edit().then(function(response){
+      //Variables from edit account form
+      var email = $scope.email
+      var firstname = $scope.firstname
+      var lastname = $scope.lastname
+      
+
+
+
+        Profile.edit(email, firstname, lastname).then(function(response){
           console.log('editUser receieved from http.put: ' + response.data);
           $scope.user = response.data;
         }, function(error) {
