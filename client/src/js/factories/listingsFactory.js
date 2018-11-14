@@ -10,12 +10,28 @@ app.factory('listingsFactory', function($http) {
     var savedLid = undefined;
 
     var methods = {
-      add: function(listing) {
+      add: function(listing, file) {
         /**TODO
          * Make http post request
          */
+        var payload = new FormData();
         
-        return $http.post('http://localhost:8080/api/listings/', listing); 
+        payload.append('listing', listing);
+        payload.append('file', file);
+
+        console.log(payload);
+         
+        return $http({
+        url: 'http://localhost:8080/api/listings/',
+        method: 'POST',
+        data: payload,
+        //assign content-type as undefined, the browser
+        //will assign the correct boundary for us
+        headers: { 'Content-Type': undefined},
+        //prevents serializing payload.  don't do it.
+        transformRequest: angular.identity
+        });
+        
         
       },
 
