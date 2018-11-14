@@ -75,7 +75,7 @@ exports.updateListing = function(req, response) {
          console.log("error in updateListing from listings.server.controller" + err);
          throw err;
        }
-   );
+      });
 };
 
 /* Delete a listing */
@@ -116,8 +116,10 @@ exports.list = function(req, response) {
         then finally call next
  */
 exports.listingByID = function(req, response) {
-    const listing = req.body;
-    const result = db.query("SELECT * FROM listing WHERE lid=$1", [listing.lid], (err,res) => {
+    const lid = req.param('lid');
+    console.log("lid param:", lid);
+     
+    const result = db.query("SELECT * FROM listing WHERE lid=$1", [lid], (err,res) => {
       if (err) {
         res.status(404)        // HTTP status 404: Not Found
         .send('Not found');
@@ -129,6 +131,7 @@ exports.listingByID = function(req, response) {
         return response.json(res.rows[0]);
       }
     });
+    
 };
 
 /* Show all the users listings that are marked as selling */

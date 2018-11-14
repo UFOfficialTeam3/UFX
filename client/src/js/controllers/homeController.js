@@ -1,7 +1,7 @@
 'use strict';
 
-app.controller('homeController', ['$scope', 'listingsFactory', 
-  function($scope, listingsFactory) {
+app.controller('homeController', ['$scope', '$window', '$state', 'listingsFactory',  
+  function($scope, $window, $state,  listingsFactory) {
     var vm = this;
 
     console.log("Hello from home controller!")
@@ -24,7 +24,17 @@ app.controller('homeController', ['$scope', 'listingsFactory',
     }
 
     // initialize controller and home page
-    vm.init()
+    vm.init();
+
+    vm.showDetails = function (listing) {
+      var lid = listing.lid;
+      console.log("showDetails", lid);
+
+      listingsFactory.setLid(lid);
+         
+      // redirect to listing-details page and carry the listing id in url
+      $window.location.href = '/listing-details/?lid=' + lid;
+    };
 
     
     

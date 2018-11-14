@@ -1,16 +1,10 @@
 'use strict';
 
 // Register App
-const app = angular.module('app', ['auth0.auth0'])
+const app = angular.module('app', ['auth0.auth0', 'ui.router']);
 
-/** Configure Authentication */
-.config(config)
-
-config.$inject = [
-    'angularAuth0Provider'
-];
-
-function config(angularAuth0Provider) {
+app.config(['angularAuth0Provider', '$stateProvider',
+function config(angularAuth0Provider, $stateProvider) {
 
     // Initialization for the angular-auth0 library
     angularAuth0Provider.init({
@@ -23,8 +17,16 @@ function config(angularAuth0Provider) {
       //audience: 'https://ufx.auth0.com/userinfo',
       //scope: 'openid profile'
     });
+     
+    // Configure stateProvider stuff for listing-details routing
+    $stateProvider
+        .state('listing-details', {
+            url: '/listing-details/:lid'
+            
+        })
+                
+}])
 
-}
 
 // forced to use auth0 for userInfo(). angularAuth0 apparently doesn't have this function.
 auth0 = new auth0.WebAuth({

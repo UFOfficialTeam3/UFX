@@ -15,5 +15,7 @@ router.route('/')
   .post(listings.addPic)
   .delete(listings.deleteListing)
 
+router.route('/:lid')  
+  .get(listings.listingByID)
 
 module.exports = router;
