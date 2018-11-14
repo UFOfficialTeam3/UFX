@@ -2,10 +2,17 @@
 <html lang = "en">
 	<head>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-		<link rel="stylesheet" href="listing-details.css">
+		<link rel="stylesheet" href="/listing-details.css">
       <h1> UFX | Listing Details! </h1>
 	</head>
-	<body>
+	<body ng-app="app">
+	<div ng-controller="detailsController as dc">
+		<!--
+			To Frontend:
+			The details Controller has the listing for the page in it.
+			Access it using dc.listing.
+			
+		-->
 		<div id ="row"class="row">
 			<div class="col-sm-4">
 	        	<h2>Condition:</h2>
@@ -28,5 +35,24 @@
         		<p>The Hub</p>
 			</div>
 		</div>
+	</div>
+
+	<!-- Import Scripts -->
+    <!-- JS files should be the last thing in the body -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+	<script src="https://code.angularjs.org/1.4.3/angular.js"></script>
+	<script src="//unpkg.com/@uirouter/angularjs/release/angular-ui-router.min.js"></script>
+
+	<!-- Auth0 dependencies -->
+    <script src="https://cdn.auth0.com/js/lock-8.1.min.js"></script>
+    <script src="https://cdn.auth0.com/js/auth0/9.5.1/auth0.min.js"></script>
+    <script type="text/javascript" src="/node_modules/angular-auth0/dist/angular-auth0.js"></script>
+	
+	<!-- Angular JS app, modules, services -->
+    <script src="/js/app.js"></script>
+    <script src="/js/detailsController.js"></script>    
+    <script src="/js/listingsFactory.js"></script>
+
 	</body>
 </html>

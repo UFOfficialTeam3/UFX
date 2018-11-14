@@ -23,7 +23,10 @@ app.controller('authController', ['authService', '$scope', '$timeout',
     if (access_token) {
         auth0.client.userInfo(access_token, function(err, user) {
             if(err){
+                // an error cna happen if access token is expired
                 console.log("userInfo error:", err);
+                // if token is expired, remove from localStorage
+                authService.logout();
             } else {
                 console.log(user); // DEBUG
                 localStorage.setItem('user', JSON.stringify(user));

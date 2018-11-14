@@ -1,6 +1,7 @@
-app.controller('homeController', ['$scope', 'listingsFactory', 'mapFactory', 
-  function($scope, listingsFactory, mapFactory) {
-    
+'use strict';
+
+app.controller('homeController', ['$scope', '$window', '$state', 'listingsFactory', 'mapFactory',  
+  function($scope, $window, $state,  listingsFactory, mapFactory) {
     var vm = this;
     console.log("Hello from home controller!")
     vm.listings = {};
@@ -22,7 +23,17 @@ app.controller('homeController', ['$scope', 'listingsFactory', 'mapFactory',
     }
 
     // initialize controller and home page
-    vm.init()
+    vm.init();
+
+    vm.showDetails = function (listing) {
+      var lid = listing.lid;
+      console.log("showDetails", lid);
+
+      listingsFactory.setLid(lid);
+         
+      // redirect to listing-details page and carry the listing id in url
+      $window.location.href = '/listing-details/?lid=' + lid;
+    };
 
     //Called when the user contacts the seller for a listing
     $scope.contactSeller = function() {

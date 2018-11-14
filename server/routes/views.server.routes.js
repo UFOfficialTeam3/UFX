@@ -1,10 +1,16 @@
 // This router is for the webpages that will be displayed to screen and all of its dependencies.
 
+/** Useful Note:
+ *  app.get('/?debug=true', routes.index); 
+ *  will be treated exactly as app.get('/', routes.index);.
+ * */
+
 /* Dependencies */
 var path = require('path'),
     express = require('express'), 
     router = express.Router();
 
+    
     
     
 /* Home Page & Dependencies */
@@ -40,11 +46,18 @@ router.get('/js/listingsFactory.js', function(req, res){
 
 /* listing-details Page & Dependencies */
 router.get('/listing-details', function(req, res){
+    //console.log(req.param("listingID"));
     res.sendFile(path.resolve(__dirname+'/../../client/src/components/listing-details/listing-details.html'));
 });
-// TODO: send dependency files
-//
-//
+router.get('/listing-details.css', function(req, res){
+    res.sendFile(path.resolve(__dirname+'/../../client/src/components/listing-details/listing-details.css'));
+});
+router.get('/js/detailsController.js', function(req, res){
+    res.sendFile(path.resolve(__dirname+'/../../client/src/js/controllers/detailsController.js'))
+});
+
+
+
 
 /* login Page & Dependencies */
 router.get('/login', function(req, res){
