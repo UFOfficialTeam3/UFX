@@ -23,7 +23,7 @@
    transition: all .5s;
 }
 .topSection h1:hover{
-   color: #333;
+   color: #FA4616;
 }
 .topSection h3{
    color: #FA4616;
@@ -59,9 +59,12 @@
   color: #eee;
 }
 .btn-group>.btn:hover{
-  background: #445dbf;
   color: #eee;
+  background: #FA4616
 }
+
+
+
 .listing{
    display: flex;
    flex-direction: row;

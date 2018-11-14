@@ -70,8 +70,11 @@ app.controller('homeController', ['$scope', '$window', '$state', 'listingsFactor
       
     }
 
+    $scope.isActive = false;
     $scope.setCatButton = function(catName){
-      console.log(catName);
+      console.log($scope.isActive);
+      $scope.isActive = !$scope.isActive;
+      
       if($scope.catButton == catName)
         $scope.catButton = '';
       else
