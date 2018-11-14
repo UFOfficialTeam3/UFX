@@ -44,45 +44,49 @@
 				<form ng-submit="clc.createListing()" enctype="multipart/form-data">
 					<div class="listing-form form-group">
 
-		<div id ="row"class="row">
-			<div class="col-sm-4">
-	        	<h2>Condition:</h2>
-	        	<p>Near Mint</p>
-	        	<h2>Asking Price:</h2>
-	        	<p>$150</p>
-	        	<h2>Price Negotiable:</h2>
-	        	<p>Yes</p>
-	        	<h2>Payment Accepted:</h2>
-	        	<p>Cash</p>
-			</div>
-			<div class="col-sm-4">
-		        <h2>Description:</h2>
-		        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sapien ligula, scelerisque eget ante vitae, sodales vulputate magna. Aenean placerat a tellus ut elementum. Cras at molestie elit. Nunc efficitur eros eget sem viverra, ut tempus quam suscipit. Phasellus sed est eu arcu vestibulum auctor. Morbi vitae condimentum libero. Donec maximus hendrerit sapien. Phasellus ultrices tincidunt massa, sed commodo odio condimentum sed. Pellentesque aliquet augue velit, aliquam faucibus metus dignissim et. Fusce condimentum erat in commodo lacinia. Mauris hendrerit lobortis bibendum. Nullam faucibus lectus id aliquet sodales. </p>
-			</div>
-			<div class="col-sm-4">
-        		<h2>Posted by: John Doe</h2>
-        		<p><strong>User Rating:</strong> 8.5/10</p>
-        		<h2>Proposed Meeting Location:</h2>
-        		<p>The Hub</p>
-			</div>
-			<div ng-controller="homeController">
-			<input type="button" id="myBtn" class="btn btn-default btn-sm" ng-click="contactSeller()" value="Contact Seller">
+			<div id ="row"class="row">
+				<div class="col-sm-4">
+		        	<h2>Condition:</h2>
+		        	<p>Near Mint</p>
+		        	<h2>Asking Price:</h2>
+		        	<p>$150</p>
+		        	<h2>Price Negotiable:</h2>
+		        	<p>Yes</p>
+		        	<h2>Payment Accepted:</h2>
+		        	<p>Cash</p>
+				</div>
+				<div class="col-sm-4">
+			        <h2>Description:</h2>
+			        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sapien ligula, scelerisque eget ante vitae, sodales vulputate magna. Aenean placerat a tellus ut elementum. Cras at molestie elit. Nunc efficitur eros eget sem viverra, ut tempus quam suscipit. Phasellus sed est eu arcu vestibulum auctor. Morbi vitae condimentum libero. Donec maximus hendrerit sapien. Phasellus ultrices tincidunt massa, sed commodo odio condimentum sed. Pellentesque aliquet augue velit, aliquam faucibus metus dignissim et. Fusce condimentum erat in commodo lacinia. Mauris hendrerit lobortis bibendum. Nullam faucibus lectus id aliquet sodales. </p>
+				</div>
+				<div class="col-sm-4">
+	        		<h2>Posted by: John Doe</h2>
+	        		<p><strong>User Rating:</strong> 8.5/10</p>
+	        		<h2>Proposed Meeting Location:</h2>
+	        		<p>The Hub</p>
+				</div>
+				<div ng-controller="homeController">
+				<input type="button" id="myBtn" class="btn btn-default btn-sm" ng-click="contactSeller()" value="Contact Seller">
 
-                    <!-- The Modal -->
-                 <div id="myModal" class="modal">
+	                    <!-- The Modal -->
+	                 <div id="myModal" class="modal">
 
-                   <!-- Modal content -->
-                   <div class="modal-content">
-                 <!--  <span class="close">&times;</span>  -->
-                   <div id='map' style='width: 1050px; height: 400px;'></div>
-                   <input type="button" id="confirmLocation" class="btn btn-default btn-sm" ng-click="confirmLocation()" value="Confirm">
-                <!--   <script src="../../js/controllers/mapController.js"></script> -->
-                   </div>
+	                   <!-- Modal content -->
+	                   <div class="modal-content">
+	                 <!--  <span class="close">&times;</span>  -->
+	                   <div id='map' style='width: 1050px; height: 400px;'></div>
+	                   <input type="button" id="confirmLocation" class="btn btn-default btn-sm" ng-click="confirmLocation()" value="Confirm">
+	                <!--   <script src="../../js/controllers/mapController.js"></script> -->
+	                   </div>
 
-				 </div>
+					 </div>
+				</div>
 			</div>
 		</div>
+	</form>
 	</div>
+	</div>
+		</div>
 
 	<!-- Import Scripts -->
     <!-- JS files should be the last thing in the body -->
