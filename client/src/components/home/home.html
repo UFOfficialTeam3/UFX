@@ -13,22 +13,18 @@
      <div id="page-wrapper">
         <div id="top-section" class="row">
            <div class="col-sm-12 topSection">
+             <div class="logo">
+               <a href="/">
+                 <h1>UFX</h1>
+               </a>
+             </div>
               <div id="nav-btns" ng-controller="authController as authCtrl">
-                 <a href="/profile">
-                    <button type="button" class="btn btn-default" ng-if="authCtrl.isAuthenticated()">
-                      <span class="glyphicon glyphicon-user"></span> Profile
-                    </button>
-                 </a>
-                 <a href="create-listing">
-                   <input type="button" class="btn btn-default" ng-if="authCtrl.isAuthenticated()" value="Post Listing">
-                 </a>
-                 <input type="button" class="btn btn-default" ng-if="!authCtrl.isAuthenticated()" ng-click="authCtrl.login()" value="Login/Signup">
-                 <input type="button" class="btn btn-default" ng-if="authCtrl.isAuthenticated()" ng-click="authCtrl.logout()" value="Logout">
-              </div>
-              <div class="logo">
-                <a href="/">
-                  <h1>UFX</h1>
-                </a>
+                <div class="nav-btns btn-group-vertical">
+                  <a href="/profile" class="btn btn-default" ng-if="authCtrl.isAuthenticated()"><span class="glyphicon glyphicon-user"></span> Profile</a>
+                  <a href="/create-listing" class="btn btn-default" ng-if="authCtrl.isAuthenticated()"><span class="glyphicon glyphicon-th-list"></span> Post Listing</a>
+                  <button type="button" class="btn btn-default" ng-if="!authCtrl.isAuthenticated()" ng-click="authCtrl.login()"><span class="glyphicon glyphicon-log-in"></span> Login/Signup</button>
+                  <button type="button" class="btn btn-default" ng-if="authCtrl.isAuthenticated()" ng-click="authCtrl.logout()"><span class="glyphicon glyphicon-log-out"></span> Logout</button>
+                </div>
               </div>
            </div>
         </div>
@@ -45,14 +41,6 @@
                <button type="button" class="btn btn-primary">Entertainment</button>
                <button type="button" class="btn btn-primary">Other</button>
              </div>
-              <!-- <input type="button" class="col-sm-1 btn btn-default btn-sm" value="Automobiles">
-              <input type="button" class="col-sm-1 btn btn-default btn-sm" value="Bikes">
-              <input type="button" class="col-sm-1 btn btn-default btn-sm" value="Books">
-              <input type="button" class="col-sm-1 btn btn-default btn-sm" value="Cell Phones">
-              <input type="button" class="col-sm-1 btn btn-default btn-sm" value="Clothes">
-              <input type="button" class="col-sm-1 btn btn-default btn-sm" value="Collectibles">
-              <input type="button" class="col-sm-1 btn btn-default btn-sm" value="Electronics">
-              <input type="button" class="col-sm-1 btn btn-default btn-sm" value="Furniture"> -->
            </div>
            <div class="row searchbar">
               <div class="col-sm-4 col-sm-offset-4">
@@ -77,21 +65,7 @@
                     <li><b>Condition</b>: New</li>
                     <li><b>Asking Price</b>: $20</li>
                     <li><b>Payment Types</b>: Cash</li>
-                 </ul>
-                 <input type="button" id="myBtn" class="btn btn-default btn-sm" ng-click="purchase()" value="Purchase">
-                 <!-- Trigger/Open The Modal -->
-                  <!-- The Modal -->
-                <div id="myModal" class="modal">
-
-                  <!-- Modal content -->
-                  <div class="modal-content">
-                <!--  <span class="close">&times;</span>  -->
-                  <div id='map' style='width: 1000px; height: 400px;'></div>
-                  <input type="button" id="confirmLocation" class="btn btn-default btn-sm" ng-click="confirmLocation()" value="Confirm Location">
-			         <!--   <script src="../../js/controllers/mapController.js"></script> -->
-                  </div>
-
-                </div>
+                 </ul>-->
               </div>
            </div>
            <div class="tableWrapper">
@@ -109,6 +83,23 @@
                 <td>{{listing.description}}</td>
                 <td>{{listing.item_condition}}</td>
                 <td>{{listing.price}}</td>
+                <td>
+                    <input type="button" id="myBtn" class="btn btn-default btn-sm" ng-click="contactSeller()" value="Purchase">
+
+                    <!-- The Modal -->
+                 <div id="myModal" class="modal">
+
+                   <!-- Modal content -->
+                   <div class="modal-content">
+                 <!--  <span class="close">&times;</span>  -->
+                   <div id='map' style='width: 900px; height: 400px;'></div>
+                   <input type="button" id="confirmLocation" class="btn btn-default btn-sm" ng-click="confirmLocation()" value="Confirm Location">
+                <!--   <script src="../../js/controllers/mapController.js"></script> -->
+                   </div>
+
+                 </div>
+
+                </td>
 
               </tr>
             </table>

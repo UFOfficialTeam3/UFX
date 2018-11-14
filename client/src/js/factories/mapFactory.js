@@ -1,11 +1,13 @@
 
 app.factory('mapFactory', ['$timeout', '$http', 
 function($timeout, $http) {
-  
-    /**The Controller makes functions available to be called from the html and
-     * updates the view after changes are made to it
-     * Add functions that will be used by the website to make calls to the appropriate Factories
-    */
+
+//Map global variable
+var map;
+//Mouse varibles that constantly track position of the mouse
+var mouseClickLat = 0;
+var mouseClickLng = 0;
+var searchedLocation = '';
 
 var methods = {
   init: function() {
@@ -14,7 +16,7 @@ var methods = {
     mapboxgl.accessToken = 'pk.eyJ1IjoiYXBhcGFyYXp6aTAzMjkiLCJhIjoiY2pudXVoYW9kMThrZDN2bnRxcHE3MzZpbSJ9.3To4lk5RKG_8YBaMKZC4mA';
 
     //The map object
-    var map = new mapboxgl.Map({
+    map = new mapboxgl.Map({
         container: 'map',
         style: 'mapbox://styles/mapbox/streets-v9',
         center: [-82.347950, 29.647900],
@@ -52,11 +54,14 @@ var methods = {
         UIMarker.addTo(map);
         UIMarker.togglePopup();
 
+        //This is a global variable that is used for confirmLocation()
+        searchedLocation = ev.result.place_name;
+
 
     });
 
       //Various popups for pre defined locations
-      var popupHub = new mapboxgl.Popup({closeButton: false, closeOnClick: false})
+      var popupHub = new mapboxgl.Popup({closeButton: false, closeOnClick: false, className: 'Hub'})
       .setText('Hub')
       .addTo(map);
       var popupReitz = new mapboxgl.Popup({closeButton: false, closeOnClick: false})
@@ -143,16 +148,51 @@ var methods = {
 
       });
 
+      //Runs when mouse is clicked
       map.on('click', function(e) {
 
-        var mouseClickLat = e.lngLat.lat;
-        var mouseClickLng = e.lngLat.lng;
+        mouseClickLat = e.lngLat.lat;
+        mouseClickLng = e.lngLat.lng;
 
-        popupUI.setText('Chosen Location');
-        UIMarker.setLngLat([mouseClickLng, mouseClickLat]);
-        UIMarker.setPopup(popupUI);
-        UIMarker.addTo(map);
-        UIMarker.togglePopup();
+        //Rounds lat and lng based on mouse click
+        var mouseClickRoundLat = Math.round(e.lngLat.lat * 10000) / 10000;
+        var mouseClickRoundLng = Math.round(e.lngLat.lng * 10000) / 10000;
+        //Checks for pre defined lat and lng positions
+        var onHub = 29.6482 < mouseClickRoundLat && mouseClickRoundLat < 29.6493 && -82.3459 < mouseClickRoundLng && mouseClickRoundLng < -82.3451;
+        var onReitz = 29.6462 < mouseClickRoundLat && mouseClickRoundLat < 29.6472 && -82.3482 < mouseClickRoundLng && mouseClickRoundLng < -82.3473;
+        var onLib = 29.6509 < mouseClickRoundLat && mouseClickRoundLat < 29.6520 && -82.3433 < mouseClickRoundLng && mouseClickRoundLng < -82.3424;
+        var onGator = 29.6481 < mouseClickRoundLat && mouseClickRoundLat < 29.6491 && -82.3507 < mouseClickRoundLng && mouseClickRoundLng < -82.3497;
+        var onHume = 29.6446 < mouseClickRoundLat && mouseClickRoundLat < 29.6456 && -82.3529 < mouseClickRoundLng && mouseClickRoundLng < -82.3520;
+
+        //Generates popup if mouse is over specified coordinates
+        if(onHub){
+          console.log("Lat: " + mouseClickRoundLat + "Long: " + mouseClickRoundLng)
+          var div = window.document.createElement('div');
+          div.style.backgroundColor = "green";
+          HubMarker.getPopup().setDOMContent(div);
+          //document.getElementsByClassName("Hub")[0].style.backgroundColor = "green";
+        }
+        else if (onReitz){
+          ReitzMarker.getPopup().addTo(map);
+        }
+        else if (onLib){
+          LibMarker.getPopup().addTo(map);
+        }
+        else if (onGator){
+          GatorMarker.getPopup().addTo(map);
+        }
+        else if (onHume){
+          HumeMarker.getPopup().addTo(map);
+        }
+        else{
+          popupUI.setText('Chosen Location');
+          UIMarker.setLngLat([mouseClickLng, mouseClickLat]);
+          UIMarker.setPopup(popupUI);
+          UIMarker.addTo(map);
+          UIMarker.togglePopup();
+        }
+
+        
         
 
 
@@ -163,7 +203,17 @@ var methods = {
     
 
       
+    },
+
+
+    locationChoice: function() {
+      var lng = mouseClickLng;
+      var lat = mouseClickLat;
+      var coordinates = [lng, lat];
+      return coordinates
     }
+
+
   }
 
   return methods;

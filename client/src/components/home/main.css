@@ -23,13 +23,10 @@
    transition: all .5s;
 }
 .topSection h1:hover{
-   color: #aaa;
+   color: #333;
 }
 .topSection h3{
    color: #FA4616;
-}
-.topSection .btn{
-  width: 100px;
 }
 .topSection a:hover{
   text-decoration: none;
@@ -40,8 +37,7 @@
   justify-content: flex-start;
   align-items: center;
   margin: auto;
-  padding-right: 100px;
-  /* margin-left: -45px; */
+  padding-left: 100px;
 }
 #nav-btns{
   display: flex;
@@ -49,6 +45,22 @@
   justify-content: space-around;
   align-items: center;
   height: 100%;
+}
+.btn-group-vertical>.btn{
+  color: #eee;
+  background: #303030;
+}
+.btn-group-vertical>.btn:hover{
+  color: #333;
+  background: #eee;
+}
+.btn-group>.btn{
+  background: #0021A5;
+  color: #eee;
+}
+.btn-group>.btn:hover{
+  background: #445dbf;
+  color: #eee;
 }
 .listing{
    display: flex;
@@ -121,4 +133,11 @@
     padding: 20px;
     border: 1px solid rgb(11, 11, 12);
     width: 80%;
+}
+
+/*Mapbox popup styling*/
+.mapboxgl-popup-content {
+  font: 400 15px/22px 'Source Sans Pro', 'Helvetica Neue', Sans-serif;
+  padding: 0;
+  width: 180px;
 }
