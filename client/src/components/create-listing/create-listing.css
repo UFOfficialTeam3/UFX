@@ -25,35 +25,3 @@ form{
 #submit-btn{
   margin-top: 30px;
 }
-
-
-/* form{
-  color: #eee;
-  background: #303030;
-} */
-
-
-
-
-/* #column {
-  display: flex;
-  flex-direction: column;
-  font-family: Georgia, serif;
-}
-#header{
-  background-color: rgb(226,143,65);
-  font-family: Georgia, serif;
-}
-#radio-butons{
-  display: flex;
-}
-body {
-  background-color: rgb(108,154,195);
-}
-html {
-  background-color: rgb(226,143,65);
-}
-#submit-button{
-  display: flex;
-  justify-content: center;
-} */
