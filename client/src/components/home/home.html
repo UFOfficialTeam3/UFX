@@ -77,7 +77,7 @@
                 <th>Condition</th>
                 <th>Price</th>
               </tr>
-              <tr ng-repeat="listing in homeCtrl.listings | filter: catButton | filter: searchListing">
+              <tr ng-repeat="listing in homeCtrl.listings | filter: catButton | filter: searchListing" ng-click="homeCtrl.showDetails(listing)">
                 <td>{{listing.title}}</td>
                 <td>{{listing.category}}</td>
                 <td>{{listing.description}}</td>
@@ -114,6 +114,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
     <script src="https://code.angularjs.org/1.4.3/angular.js"></script>
     <script src="//unpkg.com/@uirouter/angularjs/release/angular-ui-router.min.js"></script>
+  
 
     <!-- Auth0 dependencies -->
     <script src="https://cdn.auth0.com/js/lock-8.1.min.js"></script>
