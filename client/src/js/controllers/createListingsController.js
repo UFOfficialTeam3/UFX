@@ -41,6 +41,10 @@ app.controller('createListingsController', ['$scope', 'listingsFactory',
       listingsFactory.add(vm.newListing);
  
     }
+    vm. doSomething = function() {
+      console.log("fuuu")
+    }
+    
 
     vm.addItem = function() {
        /**TODO
