@@ -84,22 +84,24 @@ app.controller('authController', ['authService', '$scope', '$timeout',
     }
     
     // Promise isAuthenticated()
-    var willRedirectToLogin = new Promise(
+    var willRedirectToLogin = function() {
+        return new Promise(
         function (resolve, reject) {
             if(!authService.isAuthenticated()) {
                 resolve("Promise resolved. User not logged in");
             } else {
                 var reason = new Error('Promise Rejected. User is already logged in.');
-                reject(reason);
+                reject(reason);               
                 
             }
 
         }
-    );    
+        )
+    }    
     // call our promise
     // implement this function in places where the user clicks a
     vm.askRedirect = function () {
-        willRedirectToLogin
+        willRedirectToLogin()
             .then(function(fulfilled) {
                 // yes, we must redirect to login page
                 console.log(fulfilled);
@@ -113,7 +115,7 @@ app.controller('authController', ['authService', '$scope', '$timeout',
     };
 
     // check login, redirect if necess.
-    //askRedirect();
+    //vm.askRedirect();
 
     vm.areTokens = function() { // used to check that handleAuthentication runs properly on page load.
         

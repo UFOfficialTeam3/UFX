@@ -95,7 +95,14 @@
               <label for="description">Item Description:</label>
               <textarea id="listing-description" class="form-control" placeholder="What are you trying to sell?" ng-model="clc.newListing.description"></textarea>
               <label for="img">Image Upload (Required):</label>
-              <input type="file" name="pic" accept="image/png,image/jpg, image/jpeg" ng-model="clc.newListing.photo" multiple>
+              <img id="blah" alt="preview" width="100" height="100">
+              <input type="file" name="pic" accept="image/png,image/jpg,image/jpeg"  multiple
+                onchange="document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])">
+              
+              
+              
+              </style>
+              
               <input id="submit-btn" type="submit" class="btn btn-default" value="Submit Listing">
             </div>
 
