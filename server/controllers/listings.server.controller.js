@@ -67,7 +67,7 @@ exports.read = function(req, response) {
         throw err;
       }
       else{
-        console.log(res.rows);
+        //console.log(res.rows);
         return response.json(res.rows);
       }
     });
@@ -137,7 +137,7 @@ exports.listingByID = function(req, response) {
         throw err;
       }
       else{
-        console.log(res.rows[0]);
+        //console.log(res.rows[0]);
         return response.json(res.rows[0]);
       }
     });
@@ -155,7 +155,7 @@ exports.usersSellListings = function(req, response) {
       throw err;
     }
     else{
-      console.log(res.rows);
+      //console.log(res.rows);
       return response.json(res.rows);
     }
   });
@@ -172,7 +172,7 @@ exports.usersBuyListings = function(req, response) {
       throw err;
     }
     else{
-      console.log(res.rows);
+      //console.log(res.rows);
       return response.json(res.rows);
     }
   });
@@ -189,7 +189,7 @@ exports.listingByType = function(req, response) {
         throw err;
       }
       else{
-        console.log(res.rows);
+        //console.log(res.rows);
         return response.json(res.rows);
       }
     });

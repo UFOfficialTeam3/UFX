@@ -22,7 +22,7 @@ const fs = require('fs');
 exports.userByID = function(req, response) {
 
       const userID = req.query.id;
-
+      console.log(userID);
       db.query('SELECT * FROM users WHERE uid = $1', [userID], (err, res) => {
         if (err) {
           res.status(404)        // HTTP status 404: Not Found
