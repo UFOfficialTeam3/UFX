@@ -43,7 +43,7 @@ exports.update = function(req, response) {
       const f_name = req.body.fname;
       const l_name = req.body.lname;
 
-      db.query('UPDATE users SET email=$2, f_name=$3, l_name=$4, WHERE uid=$1 RETURNING *', [uid, email, f_name, l_name],
+      db.query('UPDATE users SET email=$2, f_name=$3, l_name=$4 WHERE uid=$1 RETURNING *', [uid, email, f_name, l_name],
       (err, res) => {
         if (err) {
           res.status(404)        // HTTP status 404: Not Found
