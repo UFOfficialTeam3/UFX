@@ -68,9 +68,6 @@
               </select>
               <label for="price">Asking Price:</label>
               <input type="text" id="listing-price" placeholder="How much?" class="form-control" ng-model="clc.newListing.price">
-              <div class="checkbox">
-                <label><input type="checkbox" ng-model="clc.newListing.negotiable">Price Negotiable</label>
-              </div>
               <label for="payment-types">Payment Types:</label>
               <div class="checkbox">
                 <label><input type="checkbox" ng-model="clc.newListing.payment[0]" ng-true-value="'cash'">Cash </label>
@@ -85,13 +82,6 @@
 
 
             <div id="right-side">
-              <label for="location">Proposed Meeting Location:</label>
-              <select id="listing-location" class="form-control" ng-model="clc.newListing.location">
-                <option value="The Hub">The Hub</option>
-                <option value="Marston">Marston Science Library</option>
-                <option value="Library West">Library West</option>
-                <option value="Reitz Union">Reitz Union</option>
-              </select>
               <label for="description">Item Description:</label>
               <textarea id="listing-description" class="form-control" placeholder="What are you trying to sell?" ng-model="clc.newListing.description"></textarea>
               <label for="img">Image Upload (Required):</label>
