@@ -58,4 +58,13 @@ app.controller('homeController', ['$scope', 'listingsFactory', 'mapFactory',
 
       
     }
+
+    $scope.setCatButton = function(catName){
+      console.log(catName);
+      if($scope.catButton == catName)
+        $scope.catButton = '';
+      else
+        $scope.catButton = catName;
+
+    }
 }]);

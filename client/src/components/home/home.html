@@ -31,15 +31,15 @@
         <div id="search-section">
            <div class="row categories-section">
              <div class="col-sm-12 btn-group category-btns">
-               <button type="button" class="btn btn-primary">Cars</button>
-               <button type="button" class="btn btn-primary">Housing</button>
-               <button type="button" class="btn btn-primary">Services</button>
-               <button type="button" class="btn btn-primary">Electronics</button>
-               <button type="button" class="btn btn-primary">Home & Garden</button>
-               <button type="button" class="btn btn-primary">Other Vehicle</button>
-               <button type="button" class="btn btn-primary">Fashion</button>
-               <button type="button" class="btn btn-primary">Entertainment</button>
-               <button type="button" class="btn btn-primary">Other</button>
+               <button type="button" class="btn btn-primary" ng-click="setCatButton('cars')">Cars</button>
+               <button type="button" class="btn btn-primary" ng-click="setCatButton('housing')">Housing</button>
+               <button type="button" class="btn btn-primary" ng-click="setCatButton('services')">Services</button>
+               <button type="button" class="btn btn-primary" ng-click="setCatButton('electronics')">Electronics</button>
+               <button type="button" class="btn btn-primary" ng-click="setCatButton('home and garden')">Home & Garden</button>
+               <button type="button" class="btn btn-primary" ng-click="setCatButton('other vehicle')">Other Vehicle</button>
+               <button type="button" class="btn btn-primary" ng-click="setCatButton('fashion')">Fashion</button>
+               <button type="button" class="btn btn-primary" ng-click="setCatButton('entertainment')">Entertainment</button>
+               <button type="button" class="btn btn-primary" ng-click="setCatButton('other')">Other</button>
              </div>
            </div>
            <div class="row searchbar">
@@ -77,7 +77,7 @@
                 <th>Condition</th>
                 <th>Price</th>
               </tr>
-              <tr ng-repeat="listing in homeCtrl.listings">
+              <tr ng-repeat="listing in homeCtrl.listings | filter: catButton | filter: searchListing">
                 <td>{{listing.title}}</td>
                 <td>{{listing.category}}</td>
                 <td>{{listing.description}}</td>
