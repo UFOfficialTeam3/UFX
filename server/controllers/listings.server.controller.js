@@ -197,7 +197,6 @@ exports.listingByType = function(req, response) {
 
 exports.sendEmail = function(request, response){
   var meetingPlace = request.body.location;
-  console.log(meetingPlace);
   var nodemailer = require('nodemailer');
       
       var transporter = nodemailer.createTransport({
@@ -212,7 +211,7 @@ exports.sendEmail = function(request, response){
         from: 'papa0398@gmail.com',
         to: 'papa0398@gmail.com',
         subject: 'A Buyer is Interested in Your Item!',
-        text: 'This should work'
+        text: "The buyer would like to meet you at: " + meetingPlace
       };
 
       transporter.sendMail(mailOptions, function(error, info){

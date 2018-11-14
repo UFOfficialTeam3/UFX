@@ -5,17 +5,20 @@ angular.module('app', []).factory('Profile', function($http) {
 
         // get user id
         var uid = user.sub;
-
+        console.log("profileFactory getUser has been called")
         return $http.get('http://localhost:8080/api/user', {params: { id: uid }});
       },
             
-      edit: function() {
+      edit: function(email, firstname, lastname) {
         var user = JSON.parse(localStorage.getItem('user'));
+        
 
         // get user id
         var uid = user.sub;
+        var userInfo = {uid: uid, email: email, fname: firstname, lname: lastname}
+        console.log("This is the userid from profileFactory: " + uid);
 
-        return $http.put('http://localhost:8080/api/user', uid);
+        return $http.put('http://localhost:8080/api/user', userInfo);
       }, 
   
       delete: function(id) {
