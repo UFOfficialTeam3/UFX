@@ -1,3 +1,13 @@
+html, body{
+  background: #333;
+}
+form{
+  background: #eee;
+  border-radius: 5px;
+}
+#createListing{
+  margin-top: 5%;
+}
 .listing-form{
   display: flex;
 }
