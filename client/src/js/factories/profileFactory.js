@@ -1,13 +1,21 @@
 angular.module('app', []).factory('Profile', function($http) {
     var methods = {
       getUser: function() {
-        var userID = 1;
-        return $http.get('http://localhost:8080/api/user', {params: { id: 1 }});
+        var user = JSON.parse(localStorage.getItem('user'));
+
+        // get user id
+        var uid = user.sub;
+
+        return $http.get('http://localhost:8080/api/user', {params: { id: uid }});
       },
             
       edit: function() {
-        var userID = {userID: 1};
-        return $http.put('http://localhost:8080/api/user', userID);
+        var user = JSON.parse(localStorage.getItem('user'));
+
+        // get user id
+        var uid = user.sub;
+
+        return $http.put('http://localhost:8080/api/user', uid);
       }, 
   
       delete: function(id) {
