@@ -2,7 +2,8 @@
 /* Dependencies */
 // connect to database (technically)
 const db = require('../config/config.js'),
-  fs = require('fs');
+  fs = require('fs'),
+  fileUpload = require('express-fileupload');
 /*
   In this file, you should use SQL queries in order to retrieve/add/remove/update Free&4Sale listings.
   On an error you should send a 404 status code, as well as the error message.
@@ -11,17 +12,23 @@ const db = require('../config/config.js'),
 
 /* Create a listing */
 exports.createListing = function(req, response) {
-     const listing = req.body;
-    //var image = new Image();
-    //image.img.data = req.file.buffer;
-    //image.img.contentType = req.file.mimetype;
-    console.log(req.file);
-    //  fs.readFile('/mnt/c/Users/paul/Pictures/pic2.jpg', (err, imgData) => {
-    //    console.log(err);
-    //    //console.log(imgData.toString('hex'));
-    //   });
+    const listing = req.body;
+    
+    console.log("req.body:", listing);
+    
 
-     const result = db.query("INSERT INTO listing(title, price, category, item_condition, description, sell, payment, uid, picture) VALUES ($1,$2,$3,$4,$5,$6, $7, $8, $9)",
+    // Josh (WORKING!) attempt at file upload. Used express-fileupload package
+    if (Object.keys(req.files).length == 0) {
+      return res.status(400).send('No files were uploaded.');
+    } else {
+      console.log("req.files", req.files);
+      console.log("req.files.file.data", req.files.file.data);
+    }
+    //TODO: actually do something with this picture. Only added the code to get
+    //      picture up to this point. I will leave putting it into database to you Paul
+
+     
+    const result = db.query("INSERT INTO listing(title, price, category, item_condition, description, sell, payment, uid, picture) VALUES ($1,$2,$3,$4,$5,$6, $7, $8, $9)",
      [listing.title, listing.price, listing.category, listing.condition, listing.description, listing.sell, listing.payment, listing.uid, null], 
     (err, res) => {
       if (err) {
@@ -32,7 +39,7 @@ exports.createListing = function(req, response) {
         // throw err;
       }
     })
-
+    
 };
 
 /* Upload a Picture */

@@ -20,30 +20,31 @@ app.controller('createListingsController', ['$scope', 'listingsFactory',
  
     vm.createListing = function() {
 
-      //console.log("file?", $scope.file);
-
-      // var photo = document.getElementById('file_upload').files[0];
-      // console.log(photo);
+      // assumes picture has been input.. Needs error checking
+      var photo = document.getElementById('file_upload').files[0];
+      console.log("photo: " + photo);
       //vm.newListing.photo = photo;
+      
+      // get user profile
       var user = JSON.parse(localStorage.getItem('user'));
 
       // get user id
       vm.newListing.uid = user.sub;
 
       function checkPayment(payment) {
-        console.log(payment);
+        //console.log(payment);
         return payment != false;
       }
 
       // TODO: Error checking for required fields
       vm.newListing.payment = vm.newListing.payment.filter(checkPayment);
+      
       // Call Factory method to add newListing to db
-      listingsFactory.add(vm.newListing);
+      listingsFactory.add(vm.newListing, photo)
+        .then(function(response) {console.log("res",response)}, function(error) {console.log("err",error)})
  
     }
-    vm. doSomething = function() {
-      console.log("fuuu")
-    }
+    
     
 
     vm.addItem = function() {

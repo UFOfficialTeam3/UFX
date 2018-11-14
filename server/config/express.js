@@ -2,6 +2,7 @@ var path = require('path'),
     express = require('express'), 
     morgan = require('morgan'),
     bodyParser = require('body-parser'),
+    fileUpload = require('express-fileupload'),
     config = require('./config'),
     viewsRouter = require('../routes/views.server.routes'),
     listingsRouter = require('../routes/listings.server.routes'),
@@ -20,6 +21,9 @@ module.exports.init = function() {
 
   //body parsing middleware 
   app.use(bodyParser.json());
+
+  //fileupload middleware
+  app.use(fileUpload());
 
   
   /** Serve static files */
