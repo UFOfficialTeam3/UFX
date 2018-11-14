@@ -18,9 +18,13 @@ angular.module('app').controller('profileController', ['$scope', 'Profile',
 
     $scope.editUser = function() {
       //Variables from edit account form
+      console.log("edituser is called")
       var email = $scope.email
       var firstname = $scope.firstname
       var lastname = $scope.lastname
+      console.log(email)
+      console.log(firstname)
+      console.log(lastname)
       
 
 
@@ -31,6 +35,16 @@ angular.module('app').controller('profileController', ['$scope', 'Profile',
         }, function(error) {
           console.log('Unable to update user:', error);
         });
+    }
+    $scope.showEditForm = function() { //when the user clicks the edit profile button, the modal form should appear
+      console.log("modal should pop up")
+      var modal = document.getElementById('editProfileModal')
+      modal.style.display ="block";
+      window.onclick = function(event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      }
     }
 
     $scope.loginUser = function(UserId) {

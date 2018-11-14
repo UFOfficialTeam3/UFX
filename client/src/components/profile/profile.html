@@ -26,11 +26,25 @@
                <li class="user-info-item">First Name: {{user.f_name}}</li>
                <li class="user-info-item">Last Name: {{user.l_name}}</li>
                <li class="user-info-item">Email: {{user.email}}</li>
-               <li class="user-info-item">Username: {{user.username}}</li>
             </ul>
           </div>
           <div class="profile-btns col-sm-6">
-            <input type="button" ng-click="editUser()" value="Edit Account Info" class="btn btn-default">
+            <input type="button" id="myBtn" class="btn btn-default" ng-click="showEditForm()" value="Edit Profile">
+            <!-- The Modal -->
+            <div id="editProfileModal" class="modal">
+                  <!-- Modal content -->
+                  <div class="modal-content">
+                     <form ng-submit ="editUser()">
+                        <label for="first name">First Name:</label>
+                        <input type ="text" ng-model="firstname">
+                        <label for="last name">Last Name:</label>
+                        <input type = "text" ng-model="lastname">
+                        <label for ="email">Email:</label>
+                        <input type= "text" ng-model="email">
+                        <input id="submit-btn" type="submit" class="btn btn-default" value="Submit Changes">
+                     </form>
+                  </div>
+               </div>
             <input type="button" value="Reset Password" class="btn btn-default">
           </div>
         </div>
