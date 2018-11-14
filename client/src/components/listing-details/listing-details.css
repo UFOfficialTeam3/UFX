@@ -29,7 +29,23 @@ body {
     border: 1px solid rgb(11, 11, 12);
     width: 80%;
 }
-
+#top-section{
+   border-bottom: 1px solid black;
+   height: 250px;
+}
+.topSection{
+   display: flex;
+   flex-direction: row;
+   height: 100%;
+   justify-content: space-between;
+   align-items: center;
+   background-image: url("https://images.unsplash.com/photo-1541256942802-7b29531f0df8?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=28e4dc5bc17175cb7c786a7d838a8eaa&auto=format&fit=crop&w=1350&q=80");
+   background-size: cover;
+   background-repeat: no-repeat;
+   background-position: center;
+   background-attachment: fixed;
+   padding: 40px;
+}
 .topSection h1{
    margin: none;
    font-family: 'Bungee Shade', cursive;
