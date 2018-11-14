@@ -12,7 +12,7 @@ app.controller('createListingsController', ['$scope', 'listingsFactory',
       sell: null, //TODO: change html code for this
       category: null, //TODO: replace type with category
       condition: null,
-      payment: ['false', 'false', 'false'],  // This field not in table.
+      payment: [false, false, false],  // This field not in table.
       description: null, // This field not in table.
       uid: null,
       photo: null,
@@ -31,7 +31,8 @@ app.controller('createListingsController', ['$scope', 'listingsFactory',
       vm.newListing.uid = user.sub;
 
       function checkPayment(payment) {
-        return payment != 'false';
+        console.log(payment);
+        return payment != false;
       }
 
       // TODO: Error checking for required fields
