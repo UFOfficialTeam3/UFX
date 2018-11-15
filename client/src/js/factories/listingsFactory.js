@@ -20,7 +20,7 @@ app.factory('listingsFactory', function($http) {
         payload.append('file', file);
 
        
-         
+        //  console.log("printing file from factory: " + JSON.stringify(file));
         return $http({
         url: 'http://localhost:8080/api/listings/',
         method: 'POST',

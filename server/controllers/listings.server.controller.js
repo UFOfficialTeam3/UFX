@@ -23,14 +23,11 @@ exports.createListing = function(req, response) {
       return res.status(400).send('No files were uploaded.');
     } else {
       //console.log("req.files", req.files);
-      //console.log("req.files.file.data", req.files.file.data);
+      //console.log("req.files.file.data", req.files.file.data.toString('base64'));
     }
-    //TODO: actually do something with this picture. Only added the code to get
-    //      picture up to this point. I will leave putting it into database to you Paul
-
      
     const result = db.query("INSERT INTO listing(title, price, category, item_condition, description, sell, payment, uid, picture) VALUES ($1,$2,$3,$4,$5,$6, $7, $8, $9)",
-     [listing.title, listing.price, listing.category, listing.condition, listing.description, listing.sell, listing.payment, listing.uid, req.files.file.data], 
+     [listing.title, listing.price, listing.category, listing.condition, listing.description, listing.sell, listing.payment, listing.uid, req.files.file.data.toString('base64')], 
     (err, res) => {
       if (err) {
       

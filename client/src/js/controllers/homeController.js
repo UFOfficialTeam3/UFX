@@ -10,11 +10,7 @@ app.controller('homeController', ['$scope', '$window', '$state', 'listingsFactor
       listingsFactory.getAll()
         .then(
           function(response) {
-            // if http request called successfully
-            //console.log("getAll response", response);
             vm.listings = response.data;
-            console.log(vm.listings);
-            
 
           }, function(error) {
             // if there was an error with the http request
@@ -74,10 +70,7 @@ app.controller('homeController', ['$scope', '$window', '$state', 'listingsFactor
       
     }
 
-    $scope.isActive = false;
     $scope.setCatButton = function(catName){
-      console.log($scope.isActive);
-      $scope.isActive = !$scope.isActive;
       
       if($scope.catButton == catName)
         $scope.catButton = '';

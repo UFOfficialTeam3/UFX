@@ -73,12 +73,14 @@
                 <th>Condition</th>
                 <th>Price</th>
               </tr>
-              <tr ng-repeat="listing in homeCtrl.listings | filter: catButton | filter: searchListing" ng-click="homeCtrl.showDetails(listing)">
+              <tr ng-repeat="listing in homeCtrl.listings | orderBy: title| filter: catButton | filter: searchListing" ng-click="homeCtrl.showDetails(listing)">
                 <td>{{listing.title}}</td>
                 <td>{{listing.category}}</td>
                 <td>{{listing.description}}</td>
                 <td>{{listing.item_condition}}</td>
                 <td>${{listing.price}}</td>
+                <!-- <td>${{listing.picture.data}}</td> -->
+                <td><img src="data:image/png;base64,{{listing.picture}}" width="100" height="100"></td>
               </tr>
             </table>
           </div>
