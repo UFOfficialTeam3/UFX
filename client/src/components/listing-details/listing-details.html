@@ -2,8 +2,8 @@
 <html lang = "en">
 	<head>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-		<link rel="stylesheet" href="/listing-details.css">
 		<link rel="stylesheet" href="/main.css">
+		<link rel="stylesheet" href="/listing-details.css">
     <link href="https://fonts.googleapis.com/css?family=Bungee+Shade" rel="stylesheet">
 		<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.50.0/mapbox-gl.js'></script>
 		<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.50.0/mapbox-gl.css' rel='stylesheet' />
@@ -39,31 +39,35 @@
 			Access it using dc.listing.
 
 		-->
-		<div id ="row"class="row">
-			<h1 >{{dc.listing.title}}</h1>
-			<div class="col-sm-4">
-	        	<h2>Condition:</h2>
-				<p>{{dc.listing.item_condition}}</p>
-				
-	        	<h2>Asking Price:</h2>
-	        	<p>{{dc.listing.price}}</p>
-	        	
-	        	<h2>Payment Accepted:</h2>
-	        	<p ng-model="dc.listing.payment">Cash</p>
+		<div id ="listingDetails">
+			<div style="display:inline-block;vertical-align:top;">
+    		<img src="data:image/png;base64,{{dc.listing.picture}}" width="500" height="500">
 			</div>
-			<div class="col-sm-4">
-		        <h2>Description:</h2>
-				<p>{{dc.listing.description}} </p>
-				
+			<div style="display:inline-block;">
+				<h1 align="center">{{dc.listing.title}}</h1>
+				<div class="col-sm-6">
+		        	<h2>Condition:</h2>
+					<p>{{dc.listing.item_condition}}</p>
+
+		        	<h2>Asking Price:</h2>
+		        	<p>{{dc.listing.price}}</p>
+
+		        	<h2>Payment Accepted:</h2>
+		        	<p ng-model="dc.listing.payment">Cash</p>
+
+							<h2>Posted by: John Doe</h2>
+	        		<p><strong>User Rating:</strong> 8.5/10</p>
+
+	        		<h2>Proposed Meeting Location:</h2>
+	        		<p>The Hub</p>
+				</div>
+				<div class="col-sm-6">
+			        <h2>Description:</h2>
+					<p>{{dc.listing.description}} </p>
+				</div>
 			</div>
-			<div class="col-sm-4">
-        		<h2>Posted by: John Doe</h2>
-        		<p><strong>User Rating:</strong> 8.5/10</p>
-        		<h2>Proposed Meeting Location:</h2>
-        		<p>The Hub</p>
 			</div>
 		</div>
-
 		<div ng-controller="homeController">
 			<input type="button" id="myBtn" class="btn btn-default btn-sm" ng-click="contactSeller()" value="Contact Seller">
 								 <!-- The Modal -->

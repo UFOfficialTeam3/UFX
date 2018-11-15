@@ -1,7 +1,7 @@
-#row {
-    background-color: rgb(108,154,195);
-
-}
+/*#row {
+    /* background-color: rgb(108,154,195);
+    background-color: rgb(250,70,22);
+}*/
 
 html, body{
   background: #333;
@@ -9,6 +9,15 @@ html, body{
 form{
   background: #eee;
   border-radius: 5px;
+}
+h1 {
+  color: #fff;
+}
+h2 {
+  color: #fff;
+}
+p {
+  color: #fff;
 }
 #listingDetails{
   margin-top: 5%;
@@ -26,6 +35,7 @@ form{
 }
 .row{
   margin: 0;
+  height: 200%; /* Full height */
 }
 #submit-btn{
   margin-top: 30px;
@@ -52,10 +62,11 @@ form{
     background-color: #e6d7d7;
     margin: auto;
     padding: 20px;
-    
+
     border: 1px solid rgb(11, 11, 12);
     width: 80%;
 }
+
 #top-section{
    border-bottom: 1px solid black;
    height: 250px;
