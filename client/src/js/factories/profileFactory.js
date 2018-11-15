@@ -1,4 +1,5 @@
-angular.module('app', []).factory('Profile', function($http) {
+app.factory('Profile', ['$http', 
+function($http) {
     var methods = {
       getUser: function() {
         var user = JSON.parse(localStorage.getItem('user'));
@@ -30,5 +31,5 @@ angular.module('app', []).factory('Profile', function($http) {
     };
   
     return methods;
-  });
+  }]);
   

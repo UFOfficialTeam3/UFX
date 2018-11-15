@@ -1,4 +1,4 @@
-angular.module('app').controller('profileController', ['$scope', 'Profile', 
+app.controller('profileController', ['$scope', 'Profile', 
   function($scope, Profile) {
     
     /**The Controller makes functions available to be called from the html and
