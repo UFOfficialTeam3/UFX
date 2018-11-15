@@ -13,7 +13,7 @@ const db = require('../config/config.js'),
 /* Create a listing */
 exports.createListing = function(req, response) {
     var listing = req.body.listing;
-    console.log(listing);
+    //console.log(listing);
 
     listing = JSON.parse(listing);
     
@@ -23,7 +23,7 @@ exports.createListing = function(req, response) {
       return res.status(400).send('No files were uploaded.');
     } else {
       //console.log("req.files", req.files);
-      console.log("req.files.file.data", req.files.file.data);
+      //console.log("req.files.file.data", req.files.file.data);
     }
     //TODO: actually do something with this picture. Only added the code to get
     //      picture up to this point. I will leave putting it into database to you Paul
@@ -34,42 +34,22 @@ exports.createListing = function(req, response) {
     (err, res) => {
       if (err) {
       
-        // res.status(404)        // HTTP status 404: Not Found
-        // .send('Not found');
+         response.status(404).send('Not found');
          console.log("error from createListing in listing.server.controller: " + err);
         // throw err;
       }
+      else
+       response.status(200).send('Success');
     })
     
 };
-
-/* Upload a Picture */
-exports.addPic= function(req, response) {
-  fs.readFile('/mnt/c/Users/paul/Pictures/pic2.jpg', (err, imgData) => {
-    console.log(imgData);
-    console.log(err);
-
-    // inserting data into column 'img' of type 'bytea':
-    db.query('INSERT INTO pictures(picture) VALUES($1)', [imgData], 
-    (err,response)=> {
-          if(err){
-            console.log("fuuuuck" + err);
-          }
-          else {
-            console.log("YYYAAAAAS");
-          }
-        })
-  });
-};
-
-
 
 /* Show the current listing */
 exports.read = function(req, response) {
   /* send back the listing as json from the request */
     const result = db.query("SELECT * FROM listing", (err, res) => {
       if (err) {
-        res.status(404)        // HTTP status 404: Not Found
+        response.status(404)        // HTTP status 404: Not Found
         .send('Not found');
         console.log("error in read from listings.server.controller: " + err);
         throw err;

@@ -39,16 +39,17 @@
 
             <div id="left-side">
               <label for="title">Title:</label>
-              <input type="text" class="form-control" id="listing-title" placeholder="What are we trading?" name="title" ng-model="clc.newListing.title">
+              <input type="text" class="form-control" id="listing-title" placeholder="What are we trading?" name="title" ng-model="clc.newListing.title" required>
               <!-- <label for="buy-sell">Buying or Selling:</label> -->
               <div class="radio">
-                <label><input type="radio" name="optradio" ng-model="clc.newListing.sell" value="false">Buying</label>
+                <label><input type="radio" name="optradio" ng-model="clc.newListing.sell" value="false" required>Buying</label>
               </div>
               <div class="radio">
-                <label><input type="radio" name="optradio" ng-model="clc.newListing.sell" value="true">Selling</label>
+                <label><input type="radio" name="optradio" ng-model="clc.newListing.sell" value="true" required>Selling</label>
               </div>
               <label for="item-type">Item Type:</label>
-              <select id="listing-item-type" class="form-control" ng-model="clc.newListing.category">
+              <select id="listing-item-type" class="form-control" ng-model="clc.newListing.category" required>
+                <option value="">Please select an option</option>>
                 <option value="cars"> Cars </option>
                 <option value="housing"> Housing </option>
                 <option value="services"> Services </option>
@@ -60,14 +61,15 @@
                 <option value="other"> Other </option>
               </select>
               <label for="condition">Condition:</label>
-              <select id="listing-condition" class="form-control" ng-model="clc.newListing.condition">
+              <select id="listing-condition" class="form-control" ng-model="clc.newListing.condition" required>
+                <option value="">Please select an option</option>>
                 <option value="new"> New </option>
                 <option value="slightly used"> Slightly Used </option>
                 <option value="used"> Used </option>
                 <option value="beater"> Beater </option>
               </select>
               <label for="price">Asking Price:</label>
-              <input type="text" id="listing-price" placeholder="How much?" class="form-control" ng-model="clc.newListing.price">
+              <input type="text" id="listing-price" placeholder="How much?" class="form-control" ng-model="clc.newListing.price" required>
               <label for="payment-types">Payment Types:</label>
               <div class="checkbox">
                 <label><input type="checkbox" ng-model="clc.newListing.payment[0]" ng-true-value="'cash'">Cash </label>
@@ -83,11 +85,11 @@
 
             <div id="right-side">
               <label for="description">Item Description:</label>
-              <textarea id="listing-description" class="form-control" placeholder="What are you trying to sell?" ng-model="clc.newListing.description"></textarea>
+              <textarea id="listing-description" class="form-control" placeholder="What are you trying to sell?" ng-model="clc.newListing.description" required></textarea>
               <label for="img">Image Upload (Required):</label>
-              <img id="blah" alt="preview" width="100" height="100">
+              <img id="blah" alt="preview" width="300" height="300">
               <input type="file" name="pic" accept="image/png,image/jpg,image/jpeg"  id="file_upload" multiple
-                onchange="document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])">
+                onchange="document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])" required>
 
 
 

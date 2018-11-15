@@ -19,12 +19,11 @@ app.controller('createListingsController', ['$scope', '$window', 'listingsFactor
     }
  
     vm.createListing = function() {
+      
 
       // assumes picture has been input.. Needs error checking
       var photo = document.getElementById('file_upload').files[0];
-      console.log("photo: " + photo);
-      //vm.newListing.photo = photo;
-      
+
       // get user profile
       var user = JSON.parse(localStorage.getItem('user'));
 
@@ -38,12 +37,17 @@ app.controller('createListingsController', ['$scope', '$window', 'listingsFactor
 
       // TODO: Error checking for required fields
       vm.newListing.payment = vm.newListing.payment.filter(checkPayment);
+      if(vm.newListing.payment.length == 0){
+        alert('Please select a payment type!');
+        return false;
+      }
       // Call Factory method to add newListing to db
       listingsFactory.add(vm.newListing, photo)
-        .then(function(response) {console.log("res",response)}, function(error) {console.log("err",error)})
+        .then(function(response) {
+          alert('Your listing has been posted');
+          $window.location.href = '/'; }, function(error) {alert('Your listing failed to post, please try again'); $window.location.href = '/create-listing';})
 
-      alert('Your listing has been posted')
-      $window.location.href = '/';
+
       
  
     }
