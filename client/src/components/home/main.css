@@ -149,7 +149,27 @@ html, body{
   vertical-align: baseline;
   font-size: 1.3em;
 }
+.card {
+  display:inline-block;
+  float:left;
+  width:400px;
+  height:500px;
+  margin:15px;
+  padding-top:5%;
+  text-align:center;
+  border: 1px solid grey;
+  background-color:#575594;
+  color:white;
+  font-family:'Helvetica';
+  cursor:pointer;
+}
 
+.card:hover {
+  background-color:rgba(87, 85, 148, 0.75);
+  color:black;
+  transition: 0.5s ease all;
+  -webkit-transition: 0.5s ease all;
+}
 /*Mapbox popup styling
 .mapboxgl-popup-content {
   font: 400 15px/22px 'Source Sans Pro', 'Helvetica Neue', Sans-serif;
