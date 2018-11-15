@@ -22,7 +22,8 @@ app.factory('listingsFactory', function($http) {
        
         //  console.log("printing file from factory: " + JSON.stringify(file));
         return $http({
-        url: 'http://localhost:8080/api/listings/',
+        //url: 'http://localhost:8080/api/listings/',
+        url: herokuUrl + 'api/listings/',
         method: 'POST',
         data: payload,
         body: JSON.stringify(listing),
@@ -37,7 +38,8 @@ app.factory('listingsFactory', function($http) {
       },
 
       findByID: function(listingId) {
-        return $http.get('http://localhost:8080/api/listings/' + listingId)
+        //return $http.get('http://localhost:8080/api/listings/' + listingId)
+        return $http.get(herokuUrl + 'api/listings/' + listingId)
         
       },
 
@@ -46,13 +48,15 @@ app.factory('listingsFactory', function($http) {
          * Make http get request to retrieve all listings in database
          */
         console.log("Calling factory.getAll()");
-        return $http.get('http://localhost:8080/api/listings/');
+        //return $http.get('http://localhost:8080/api/listings/');
+        return $http.get(herokuUrl + 'api/listings/');
       
       },
 
       sendEmail: function(confirmedLocation){
         var confirmedLocationJSON = {location: confirmedLocation}
-        return $http.post('http://localhost:8080/api/listings/email', confirmedLocationJSON);
+        //return $http.post('http://localhost:8080/api/listings/email', confirmedLocationJSON);
+        return $http.post(herokuUrl + 'api/listings/email', confirmedLocationJSON);
 
       },
       

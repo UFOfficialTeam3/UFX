@@ -1,4 +1,6 @@
 'use strict';
+// heroku url
+const herokuUrl = 'https://free-and-for-sale-team3.herokuapp.com/';
 
 // Register App
 const app = angular.module('app', ['auth0.auth0', 'ui.router']);
@@ -11,11 +13,11 @@ function config(angularAuth0Provider, $stateProvider) {
       clientID: '1oXEUQBPzfcr2q6R0Z5GQgWydPOtymlf',
       domain: 'ufx.auth0.com',
       responseType: 'token id_token',
-      redirectUri: 'http://localhost:8080/',
+      //redirectUri: 'http://localhost:8080/',
+      redirectUri: herokuUrl,      
       audience: 'https://ufx.com/api',
       scope: "openid profile crud:db"
-      //audience: 'https://ufx.auth0.com/userinfo',
-      //scope: 'openid profile'
+      
     });
      
     // Configure stateProvider stuff for listing-details routing
@@ -33,9 +35,9 @@ auth0 = new auth0.WebAuth({
     clientID: '1oXEUQBPzfcr2q6R0Z5GQgWydPOtymlf',
     domain: 'ufx.auth0.com',
     responseType: 'token id_token',
-    redirectUri: 'http://localhost:8080/',
+    //redirectUri: 'http://localhost:8080/',
+    redirectUri: herokuUrl,
     audience: 'https://ufx.com/api',
     scope: "openid profile crud:db"
-    //audience: 'https://ufx.auth0.com/userinfo',
-    //scope: 'openid profile'
+    
   })

@@ -1,9 +1,5 @@
 'use strict';
 
-// TODO: change returnTo to redirect to homepage
-// TODO: add redirect code to handleAuthentication
-
-
 app.factory('authService', ['$timeout', 'angularAuth0', '$http', 
 function($timeout, angularAuth0, $http) {
 
@@ -21,7 +17,8 @@ function($timeout, angularAuth0, $http) {
         console.log("Running authFactory's sendjwt().");
         return $http({
             method: 'POST',
-            url: 'http://localhost:8080/api/testjwt',
+            //url: 'http://localhost:8080/api/testjwt',
+            url: herokuUrl + 'api/testjwt',
             headers: {'Authorization': 'Bearer ' + jwt}
         })
     }
@@ -72,19 +69,22 @@ function($timeout, angularAuth0, $http) {
 
         // logout user from auth0 session        
         angularAuth0.logout({
-            returnTo: 'http://localhost:8080/',
+            //returnTo: 'http://localhost:8080/',
+            returnTo: herokuUrl,
             client_id: '1oXEUQBPzfcr2q6R0Z5GQgWydPOtymlf'
         });
     }
 
     // This function communicates with database
     function findByID (userID) {
-        return $http.get('http://localhost:8080/api/user', {params: { id: userID }})
+        //return $http.get('http://localhost:8080/api/user', {params: { id: userID }})
+        return $http.get(herokuUrl + 'api/user', {params: { id: userID }})
     }
 
     // This function communicates with database
     function createUser (userID) {
-        return $http.post('http://localhost:8080/api/user', {id: userID});
+        //return $http.post('http://localhost:8080/api/user', {id: userID});
+        return $http.post(herokuUrl + 'api/user', {id: userID});
     }
 
     
