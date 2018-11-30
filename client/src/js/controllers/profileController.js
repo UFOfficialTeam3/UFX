@@ -5,7 +5,14 @@ app.controller('profileController', ['$scope', 'Profile',
      * updates the view if necessary
      * Add functions that will be used by the website to make calls to the appropriate Factories
     */
+    
+    $scope.page = undefined; 
 
+    var init = function() {
+      $scope.page = 'profile'
+    } 
+
+    init();
 
     Profile.getUser().then(function(response) {
       
@@ -66,7 +73,7 @@ app.controller('profileController', ['$scope', 'Profile',
         */
     }
 
-    
+       
 
   }
 ]);

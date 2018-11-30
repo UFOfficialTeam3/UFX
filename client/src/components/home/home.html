@@ -16,10 +16,10 @@
              </div>
               <div id="nav-btns" ng-controller="authController as authCtrl">
                 <div class="nav-btns btn-group-vertical">
-                  <a href="/profile" class="btn btn-default" ng-if="authCtrl.isAuthenticated()"><span class="glyphicon glyphicon-user"></span> Profile</a>
-                  <a href="/create-listing" class="btn btn-default" ng-if="authCtrl.isAuthenticated()"><span class="glyphicon glyphicon-th-list"></span> Post Listing</a>
-                  <button type="button" class="btn btn-default" ng-if="!authCtrl.isAuthenticated()" ng-click="authCtrl.login()"><span class="glyphicon glyphicon-log-in"></span> Login/Signup</button>
-                  <button type="button" class="btn btn-default" ng-if="authCtrl.isAuthenticated()" ng-click="authCtrl.logout()"><span class="glyphicon glyphicon-log-out"></span> Logout</button>
+                  <a href="/profile" class="btn btn-default" ng-cloak ng-if="authCtrl.isAuthenticated()"><span class="glyphicon glyphicon-user"></span> Profile</a>
+                  <a href="/create-listing" class="btn btn-default" ng-cloak ng-if="authCtrl.isAuthenticated()"><span class="glyphicon glyphicon-th-list"></span> Post Listing</a>
+                  <button type="button" class="btn btn-default" ng-cloak ng-if="!authCtrl.isAuthenticated()" ng-click="authCtrl.login()"><span class="glyphicon glyphicon-log-in"></span> Login/Signup</button>
+                  <button type="button" class="btn btn-default" ng-cloak ng-if="authCtrl.isAuthenticated()" ng-click="authCtrl.logout()"><span class="glyphicon glyphicon-log-out"></span> Logout</button>
                 </div>
               </div>
            </div>
