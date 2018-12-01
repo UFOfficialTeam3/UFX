@@ -26,6 +26,9 @@ router.get('/js/app.js', function(req, res){
 router.get('/js/homeController.js', function(req, res){
     res.sendFile(path.resolve(__dirname+'/../../client/src/js/controllers/homeController.js'));
 });
+router.get('/img/century-tower-orange.png', function(req, res){
+    res.sendFile(path.resolve(__dirname+'/../../client/img/century-tower-orange.png'));
+});
 
 
 
