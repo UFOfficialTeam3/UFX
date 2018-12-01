@@ -45,6 +45,9 @@ router.get('/js/createListingsController.js', function(req, res){
 router.get('/js/listingsFactory.js', function(req, res){
     res.sendFile(path.resolve(__dirname+'/../../client/src/js/factories/listingsFactory.js'))
 });
+router.get('/img/img-placeholder.png', function(req, res){
+    res.sendFile(path.resolve(__dirname+'/../../client/img/img-placeholder.png'))
+});
 
 
 /* listing-details Page & Dependencies */
