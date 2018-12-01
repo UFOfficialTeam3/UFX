@@ -22,6 +22,12 @@ p {
 #listingDetails{
   margin-top: 5%;
 }
+#listingInfo{
+  margin: 10px;
+}
+#buttonRow{
+  align-items: center;
+}
 .listing-form{
   display: flex;
 }
@@ -37,11 +43,6 @@ p {
   margin: 0;
   height: 200%; /* Full height */
 }
-#submit-btn{
-  margin-top: 30px;
-  justify-content: center;
-}
-
 
 .modal {
     display: none; /* Hidden by default */

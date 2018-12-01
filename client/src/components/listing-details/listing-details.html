@@ -39,48 +39,52 @@
 			Access it using dc.listing.
 
 		-->
-		<div id ="listingDetails">
-			<div style="display:inline-block;vertical-align:top;">
+		<div class="row" id ="listingDetails">
+			<div class="col-md-4">				
     		<img src="data:image/png;base64,{{dc.listing.picture}}" width="500" height="500">
 			</div>
-			<div style="display:inline-block;">
 				<h1 align="center">{{dc.listing.title}}</h1>
-				<div class="col-sm-6">
-		        	<h2>Condition:</h2>
-					<p>{{dc.listing.item_condition}}</p>
+				<div class="col-md-8">
+					<div class="row">
+						<div class="col-md-5">
+									<h2>Condition:</h2>
+							<p>{{dc.listing.item_condition}}</p>
 
-		        	<h2>Asking Price:</h2>
-		        	<p>{{dc.listing.price}}</p>
+									<h2>Asking Price:</h2>
+									<p>{{dc.listing.price}}</p>
 
-		        	<h2>Payment Accepted:</h2>
-		        	<p ng-model="dc.listing.payment">Cash</p>
-
-							<h2>Posted by: John Doe</h2>
-	        		<p><strong>User Rating:</strong> 8.5/10</p>
-
-	        		<h2>Proposed Meeting Location:</h2>
-	        		<p>The Hub</p>
-				</div>
-				<div class="col-sm-6">
-			        <h2>Description:</h2>
-					<p>{{dc.listing.description}} </p>
-				</div>
-			</div>
-			</div>
-		</div>
-		<div ng-controller="homeController">
-			<input type="button" id="myBtn" class="btn btn-default btn-sm" ng-click="contactSeller()" value="Contact Seller">
-								 <!-- The Modal -->
-						 <div id="myModal" class="modal">
-								<!-- Modal content -->
-							 <div class="modal-content">
-						 <!--  <span class="close">&times;</span>  -->
-							 <div id='map' style='width: 1050px; height: 400px;'></div>
-							 <input type="button" id="confirmLocation" class="btn btn-default btn-sm" ng-click="confirmLocation()" value="Confirm">
-						<!--   <script src="../../js/controllers/mapController.js"></script> -->
-							 </div>
+									<h2>Payment Accepted:</h2>
+									<p ng-model="dc.listing.payment">Cash</p>
+									<!-- TODO: make a function that can take the objects uid-->
+									<h2>Posted by: Dat Boi</h2>
+									<p><strong>User Rating:</strong> 8.5/10</p>
+						</div>
+						<div class="col-md-5" id="listingInfo">
+								<h2>Proposed Meeting Location:</h2>
+								<p>The Hub</p>
+									<h2>Description:</h2>
+							<p>{{dc.listing.description}} </p>	
 						</div>
 					</div>
+					<div class="row" id="buttonRow">
+							<div ng-controller="homeController">
+									<input type="button" id="myBtn" class="btn btn-default btn-sm" ng-click="contactSeller()" value="Contact Seller">
+												<!-- The Modal -->
+										<div id="myModal" class="modal">
+											<!-- Modal content -->
+											<div class="modal-content">
+										<!--  <span class="close">&times;</span>  -->
+											<div id='map' style='width: 1050px; height: 400px;'></div>
+											<input type="button" id="confirmLocation" class="btn btn-default btn-sm" ng-click="confirmLocation()" value="Confirm">
+									<!--   <script src="../../js/controllers/mapController.js"></script> -->
+											</div>
+									</div>
+								</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	
 
 	<!-- Import Scripts -->
     <!-- JS files should be the last thing in the body -->
