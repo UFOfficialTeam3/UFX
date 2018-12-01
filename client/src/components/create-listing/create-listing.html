@@ -16,9 +16,9 @@
 
     <div id="top-section" class="row">
        <div class="col-sm-12 topSection">
-         <div class="logo">
-           <a href="/">
-             <h1>UFX</h1>
+         <div >
+           <a id="logo-link" href="/">
+             <h1 class="logo">UFX</h1>
            </a>
          </div>
           <div id="nav-btns" ng-controller="authController as authCtrl">
@@ -32,7 +32,7 @@
     </div>
 
     <div id="createListing" class="row">
-      <div id="form" class="col-sm-6 col-sm-offset-3">
+      <div id="form" class="col-sm-12">
         <form ng-submit="clc.createListing()" enctype="multipart/form-data">
           <div class="listing-form form-group">
 
@@ -87,7 +87,7 @@
               <label for="description">Item Description:</label>
               <textarea id="listing-description" class="form-control" placeholder="What are you trying to sell?" ng-model="clc.newListing.description" required></textarea>
               <label for="img">Image Upload (Required):</label>
-              <img id="blah" alt="preview" width="300" height="300">
+              <img id="blah" src="/img/img-placeholder.png" alt="preview" width="300" height="300">
               <input type="file" name="pic" accept="image/png,image/jpg,image/jpeg"  id="file_upload" multiple
                 onchange="document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])" required>
 

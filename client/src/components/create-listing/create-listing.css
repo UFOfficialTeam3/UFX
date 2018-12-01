@@ -25,3 +25,19 @@ form{
 #submit-btn{
   margin-top: 30px;
 }
+
+/* Logo */
+.logo{
+  margin: none;
+  font-family: 'Bungee Shade', cursive;
+  color: #eee;
+  font-size: 5em;
+  transition: all .5s;
+}
+.logo:hover{
+  color: #FA4616;
+  
+}
+#logo-link:hover{
+  text-decoration: none;
+}
