@@ -6,21 +6,25 @@ app.controller('profileController', ['$scope', 'Profile',
      * Add functions that will be used by the website to make calls to the appropriate Factories
     */
     
-    $scope.page = undefined; 
+    $scope.page = undefined;
+    $scope.user = undefined; 
 
     var init = function() {
       $scope.page = 'profile'
-    } 
 
-    init();
-
-    Profile.getUser().then(function(response) {
+      Profile.getUser().then(function(response) {
       
         $scope.user = response.data;
         console.log(response.data);
       }, function(error) {
         console.log('Unable to retrieve user:', error);
       });
+
+    } 
+
+    init();
+
+    
     
 
     $scope.editUser = function() {
@@ -60,10 +64,18 @@ app.controller('profileController', ['$scope', 'Profile',
       }
     }
 
-    $scope.loginUser = function(UserId) {
-     /**TODO
-     * Calls userFactory to login the user
-     */
+    //Gets a user's listings for the profile page
+    $scope.getUserListings = function(uid) {
+      console.log("The uid is: " + uid)
+      $scope.page = 'listings'
+
+      Profile.getListingsByUser(uid).then(function(response){
+        console.log('Data recieved from profileFactory: ' + response.data);
+        $scope.listings = response.data;
+      }, function(error) {
+          console.log('Could not get user listings:', error);
+         });
+         
     }
 
     $scope.rateSeller = function(SellerObject_or_SellerId) {

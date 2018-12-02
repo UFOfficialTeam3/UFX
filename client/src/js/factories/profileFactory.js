@@ -20,7 +20,7 @@ function($http) {
 
         var userInfo = {uid: uid, email: email, fname: firstname, lname: lastname}
 
-        //Ready photo for request
+        //Ready photo and user for request
         var payload = new FormData();
         payload.append('user', JSON.stringify(userInfo));
         payload.append('photo', photo);
@@ -40,6 +40,11 @@ function($http) {
         });
 
       }, 
+
+      getListingsByUser: function(uid){
+        /* Gets listings by user id */
+        return $http.get('http://localhost:8080/api/listings/profile/' + uid)
+      },
   
       delete: function(id) {
          /**TODO

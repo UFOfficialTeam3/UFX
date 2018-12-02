@@ -24,4 +24,7 @@ router.route('/email')
 router.route('/:lid')  
   .get(listings.listingByID)
 
+router.route('/profile/:uid')
+  .get(listings.listingsByUID)
+
 module.exports = router;

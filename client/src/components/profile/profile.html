@@ -22,7 +22,7 @@
 
       <div>
          <button ng-click="page='profile'">Profile</button>
-         <button ng-click="page='listings'">Your Listings</button>
+         <button ng-click="getUserListings(user.uid)">Your Listings</button>
       </div>
      
      <div ng-show="page == 'profile'" id="page-wrapper">
@@ -66,9 +66,28 @@
         </div>
      </div>
 
-     <!-- Users listings page -->
+     <!-- User's listings in profile page -->
      <div ng-show="page == 'listings'" id="page-wrapper">
         This page show users listings
+        <div class="container">
+            <div class="row" ng-repeat="listing in listings | orderBy: title">        
+            <div class="col-2"></div>
+            <div class="col-8">
+            <div class="card bg-light zoom" style="width: 100%; height: auto">
+                <div class="card-img-container">
+                <img class="card-img-top" src="data:image/png;base64,{{listing.picture}}" alt="ufx listing">
+                </div>
+                <div class="card-body">
+                  <h3 class="card-title text-dark">{{listing.title}}</h3>
+                  <p class="card-text text-dark">{{listing.description}}</p>
+                  <h6 class="card-subtitle mb-2 text-muted">category: {{listing.category}}</h6>
+                  <h6 class="card-subtitle mb-2 text-muted">condition: {{listing.item_condition}}</h6>
+                  <h6 class="card-subtitle mb-2 text-muted">$ {{listing.price}}</p>
+                </div>
+              </div>
+            </div>
+            </div>
+          </div>
      </div>
 
 

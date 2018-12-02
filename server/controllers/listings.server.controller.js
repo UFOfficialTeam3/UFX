@@ -129,6 +129,23 @@ exports.listingByID = function(req, response) {
     
 };
 
+exports.listingsByUID = function(req, response) {
+  const uid = req.param('uid');
+   
+  const result = db.query("SELECT * FROM listing WHERE uid=$1", [uid], (err,res) => {
+    if (err) {
+      res.status(404)        // HTTP status 404: Not Found
+      .send('Not found');
+      console.log("error in listingsByUID from listings.server.controller: " + err);
+      throw err;
+    }
+    else{
+      return response.json(res.rows);
+    }
+  });
+  
+};
+
 /* Show all the users listings that are marked as selling */
 exports.usersSellListings = function(req, response) {
   const listing = req.body;
