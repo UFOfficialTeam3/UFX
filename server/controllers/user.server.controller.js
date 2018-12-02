@@ -38,13 +38,27 @@ exports.userByID = function(req, response) {
 
 /** Updates user info */
 exports.update = function(req, response) {
-  console.log(req.body)
-      const uid = req.body.uid;
-      const email = req.body.email;
-      const f_name = req.body.fname;
-      const l_name = req.body.lname;
+      var user =  req.body.user;
+      console.log("user: " + user)
+      user = JSON.parse(user);
+      
 
-      db.query('UPDATE users SET email=$2, f_name=$3, l_name=$4 WHERE uid=$1 RETURNING *', [uid, email, f_name, l_name],
+      const uid = user.uid;
+      const email = user.email;
+      const f_name = user.fname;
+      const l_name = user.lname;
+      const photo = req.files.photo.data.toString('base64')
+
+      if (Object.keys(req.files).length == 0) {
+        return res.status(400).send('No files were uploaded.');
+      } else {
+        //console.log("req.files", req.files);
+        //console.log("req.files.file.data", req.files.file.data.toString('base64'));
+      }
+
+      
+
+      db.query('UPDATE users SET email=$2, f_name=$3, l_name=$4, picture=$5 WHERE uid=$1 RETURNING *', [uid, email, f_name, l_name, photo],
       (err, res) => {
         if (err) {
           console.log('Error while trying to update user: ' + err);

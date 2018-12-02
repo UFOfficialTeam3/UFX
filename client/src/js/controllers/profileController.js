@@ -29,12 +29,17 @@ app.controller('profileController', ['$scope', 'Profile',
       var email = $scope.email
       var firstname = $scope.firstname
       var lastname = $scope.lastname
+      // assumes picture has been input.. Needs error checking
+      var photo = document.getElementById('file_upload').files[0]
+      
+
       var modal = document.getElementById('editProfileModal')
+
       
       
       
 
-      Profile.edit(email, firstname, lastname).then(function(response){
+      Profile.edit(email, firstname, lastname, photo).then(function(response){
         console.log('editUser receieved from http.put: ' + response.data);
         $scope.user = response.data;
       }, function(error) {
