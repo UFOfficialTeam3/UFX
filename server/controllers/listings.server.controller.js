@@ -65,7 +65,7 @@ exports.updateListing = function(req, response) {
      [listing.lid, listing.Title, listing.Price, listing.type, listing.condition, listing.payment, listing.description],
      null, (err,res) => {
        if (err) {
-         res.status(404)        // HTTP status 404: Not Found
+         response.status(404)        // HTTP status 404: Not Found
          .send('Not found');
          console.log("error in updateListing from listings.server.controller" + err);
          throw err;
@@ -79,7 +79,7 @@ exports.deleteListing = function(req, response) {
     [req.body.lid],
     (err, res) => {
       if (err) {
-        res.status(404)        // HTTP status 404: Not Found
+        response.status(404)        // HTTP status 404: Not Found
         .send('Not found');
         console.log("error from listing.server: " + err);
         throw err;
@@ -91,7 +91,7 @@ exports.deleteListing = function(req, response) {
 exports.list = function(req, response) {
     const result = db.query("SELECT * FROM listing", null, (err, res) => {
       if (err) {
-        res.status(404)        // HTTP status 404: Not Found
+        response.status(404)        // HTTP status 404: Not Found
         .send('Not found');
         console.log("error in list from listings.server.controller: " + err);
         throw err;
@@ -116,14 +116,14 @@ exports.listingByID = function(req, response) {
      
     const result = db.query("SELECT * FROM listing WHERE lid=$1", [lid], (err,res) => {
       if (err) {
-        res.status(404)        // HTTP status 404: Not Found
+        response.status(404)        // HTTP status 404: Not Found
         .send('Not found');
         console.log("error in listingByID from listings.server.controller: " + err);
         throw err;
       }
       else{
 
-        var uid = res.rows[0].uid
+        var uid = response.rows[0].uid
         db.query("SELECT * FROM users WHERE uid=$1", [uid], (err,ures) => {
           if (err) {
 
@@ -131,7 +131,7 @@ exports.listingByID = function(req, response) {
           else{
             //res.rows[0] contains the listing
             //res.rows[1] contains the user to pull owner of listing
-            res.rows.push(ures.rows[0])
+            response.rows.push(ures.rows[0])
             console.log("This is res.rows: " + res.rows)
             return response.json(res.rows);
           }
