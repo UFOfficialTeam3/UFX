@@ -54,14 +54,12 @@
 									<p>{{dc.listing.price}}</p>
 
 									<h2>Payment Accepted:</h2>
-									<p ng-model="dc.listing.payment">Cash</p>
+									<p ng-model="dc.listing.payment">{{payment}}</p>
 									<!-- TODO: make a function that can take the objects uid-->
-									<h2>Posted by: Dat Boi</h2>
+									<h2>Posted by: {{dc.user.f_name}} {{dc.user.l_name}} </h2>
 									<p><strong>User Rating:</strong> 8.5/10</p>
 						</div>
 						<div class="col-md-5" id="listingInfo">
-								<h2>Proposed Meeting Location:</h2>
-								<p>The Hub</p>
 									<h2>Description:</h2>
 							<p>{{dc.listing.description}} </p>	
 						</div>
@@ -74,9 +72,10 @@
 											<!-- Modal content -->
 											<div class="modal-content">
 										<!--  <span class="close">&times;</span>  -->
-											<div id='map' style='width: 1050px; height: 400px;'></div>
+											<div id='map'></div>
 											<input type="button" id="confirmLocation" class="btn btn-default btn-sm" ng-click="confirmLocation()" value="Confirm">
-									<!--   <script src="../../js/controllers/mapController.js"></script> -->
+											
+									
 											</div>
 									</div>
 								</div>

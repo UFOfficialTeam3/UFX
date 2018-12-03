@@ -122,8 +122,21 @@ exports.listingByID = function(req, response) {
         throw err;
       }
       else{
-        //console.log(res.rows[0]);
-        return response.json(res.rows[0]);
+
+        var uid = res.rows[0].uid
+        db.query("SELECT * FROM users WHERE uid=$1", [uid], (err,ures) => {
+          if (err) {
+
+          }
+          else{
+            //res.rows[0] contains the listing
+            //res.rows[1] contains the user to pull owner of listing
+            res.rows.push(ures.rows[0])
+            console.log("This is res.rows: " + res.rows)
+            return response.json(res.rows);
+          }
+        })
+        
       }
     });
     
