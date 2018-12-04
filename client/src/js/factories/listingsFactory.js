@@ -61,7 +61,8 @@ app.factory('listingsFactory', function($http) {
       },
       
       delete: function(listingId) {
-        return $http.delete('http://localhost:8080/api/listings/' + listingId)
+        //return $http.delete('http://localhost:8080/api/listings/' + listingId)
+        return $http.delete(herokuUrl + 'api/listings/' + listingId)
         
       }, 
 
