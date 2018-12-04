@@ -5,6 +5,27 @@
    align-items: center;
    padding: 40px;
 }
+#nav-btns>.btn{
+  border: none;
+  color: #eee;
+  background: #303030;
+}
+#nav-btns>.btn:hover{
+  color: #333;
+  background: #eee;
+}
+#profile-btns{
+  margin-left: 40px;
+  margin-bottom: -30px;
+}
+#profile-btns>.btn{
+  background: #eee;
+  border-radius: 3px 3px 0 0;
+  outline: none;
+}
+.profile-clicked{
+  border-bottom: none;
+}
 #profile-pic{
   border-radius: 3px;
   margin: 0px;

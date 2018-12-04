@@ -5,6 +5,11 @@
     <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="profile.css">
     <link href="https://fonts.googleapis.com/css?family=Bungee+Shade" rel="stylesheet">
+    <script>
+      // function myFunction() {
+      //     console.log('myFunction');
+      // }
+    </script>
   </head>
   <body ng-app="app" ng-controller="profileController">
 
@@ -22,9 +27,9 @@
          </div>
       </div>
 
-      <div>
-         <button ng-click="page='profile'">Profile</button>
-         <button ng-click="getUserListings(user.uid)">Your Listings</button>
+      <div id="profile-btns">
+         <button ng-click="page='profile'" class="btn btn-default profile-btn profile-clicked" onclick="myFunction($(this));">Profile</button>
+         <button ng-click="getUserListings(user.uid)" class="btn btn-default profile-btn" onclick="myFunction($(this));">Your Listings</button>
       </div>
 
      <div ng-show="page == 'profile'" id="page-wrapper">
@@ -159,7 +164,14 @@
     <script src="/js/authController.js"></script>
 
 
-
+    <script>
+      function myFunction(btn) {
+        if(!btn.hasClass('profile-clicked')){
+          $('.profile-btn').removeClass('profile-clicked');
+          btn.addClass('profile-clicked');
+        }
+      }
+    </script>
 
 
   </body>
