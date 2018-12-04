@@ -1,5 +1,5 @@
-app.controller('profileController', ['$scope', 'Profile', 
-  function($scope, Profile) {
+app.controller('profileController', ['$scope', '$window', 'Profile', 'listingsFactory', 
+  function($scope, $window, Profile, listingsFactory) {
     
     /**The Controller makes functions available to be called from the html and
      * updates the view if necessary
@@ -78,10 +78,16 @@ app.controller('profileController', ['$scope', 'Profile',
          
     }
 
-    $scope.rateSeller = function(SellerObject_or_SellerId) {
-        /**TODO
-        * Calls userFactory to rate the seller
-        */
+
+    $scope.deleteListing = function(uid, lid) {
+      console.log("uid and lid: " + uid + " " + lid)
+
+      listingsFactory.delete(lid).then(function(response){
+        
+        $window.location.href = '/profile'
+      }, function(error) {
+          console.log('Could not delete user listing:', error);
+         });
     }
 
     $scope.rateBuyer = function(BuyerObject_or_BuyerId) {

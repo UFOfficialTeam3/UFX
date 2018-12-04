@@ -75,14 +75,16 @@ exports.updateListing = function(req, response) {
 
 /* Delete a listing */
 exports.deleteListing = function(req, response) {
-    const result = db.query("DELETE FROM listing WHERE lid=$1",
-    [req.body.lid],
-    (err, res) => {
+    const lid = req.param('lid')
+    const result = db.query("DELETE FROM listing WHERE lid=$1", [lid], (err, res) => {
       if (err) {
         res.status(404)        // HTTP status 404: Not Found
         .send('Not found');
         console.log("error from listing.server: " + err);
         throw err;
+      }
+      else{
+        response.status(200)
       }
     });
 };
@@ -224,7 +226,7 @@ exports.sendEmail = function(request, response){
 
       var mailOptions = {
         from: 'papa0398@gmail.com',
-        to: 'papa0398@gmail.com',
+        to: 'apaparazzi0329@ufl.edu',
         subject: 'A Buyer is Interested in Your Item!',
         text: "The buyer would like to meet you at: " + meetingPlace
       };

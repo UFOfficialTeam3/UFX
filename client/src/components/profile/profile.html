@@ -75,6 +75,10 @@
             <div class="col-8">
             <div class="card bg-light zoom" style="width: 100%; height: auto">
                 <div class="card-img-container">
+
+                <!--Delete Button-->
+                <button ng-click="deleteListing(user.uid, listing.lid)">Delete this listing</button>
+
                 <img class="card-img-top" src="data:image/png;base64,{{listing.picture}}" alt="ufx listing">
                 </div>
                 <div class="card-body">
@@ -105,6 +109,7 @@
     <script src="../../js/app.js"></script>
     <script src="js/factories/profileFactory.js"></script>
     <script src="js/controllers/profileController.js"></script>
+    <script src="/js/listingsFactory.js"></script>
     <script src="/js/authFactory.js"></script>
     <script src="/js/authController.js"></script>
 

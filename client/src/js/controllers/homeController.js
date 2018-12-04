@@ -66,7 +66,6 @@ app.controller('homeController', ['$scope', '$window', '$state', 'listingsFactor
       alert("An email has been sent to the seller with your preferred meeting place")
       listingsFactory.sendEmail(confirmedLocation);
 
-
       
     }
 
