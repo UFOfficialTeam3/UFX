@@ -75,7 +75,7 @@ exports.updateListing = function(req, response) {
 
 /* Delete a listing */
 exports.deleteListing = function(req, response) {
-    const lid = req.body.lid;
+    const lid = req.param('lid')
     const result = db.query("DELETE FROM listing WHERE lid=$1", [lid], (err, res) => {
       if (err) {
         response.status(404)        // HTTP status 404: Not Found
@@ -113,7 +113,7 @@ exports.list = function(req, response) {
         then finally call next
  */
 exports.listingByID = function(req, response) {
-    const lid = req.body.lid;
+    const lid = req.param('lid');
     console.log("lid param:", lid);
      
     const result = db.query("SELECT * FROM listing WHERE lid=$1", [lid], (err,res) => {
@@ -145,7 +145,7 @@ exports.listingByID = function(req, response) {
 };
 
 exports.listingsByUID = function(req, response) {
-  const uid = req.body.uid;
+  const uid = req.param('uid');
    
   const result = db.query("SELECT * FROM listing WHERE uid=$1", [uid], (err,res) => {
     if (err) {

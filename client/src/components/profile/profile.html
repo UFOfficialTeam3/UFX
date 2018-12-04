@@ -97,6 +97,7 @@
                    <h6 class="card-subtitle mb-2 text-muted">condition: {{listing.item_condition}}</h6>
                    <h6 class="card-subtitle mb-2 text-muted">$ {{listing.price}}</p>
                    <a ng-click="homeCtrl.showDetails(listing)" class="btn btn-primary text-dark">Show Details</a>
+                   <a ng-click="deleteListing(user.uid, listing.lid)" class="btn btn-primary text-dark">Delete this listing</a>
                  </div>
              </div>
            </div>
@@ -121,7 +122,7 @@
                 <div class="card-img-container">
 
                 <!--Delete Button-->
-                <button ng-click="deleteListing(user.uid, listing.lid)">Delete this listing</button>
+                <!-- <button ng-click="deleteListing(user.uid, listing.lid)">Delete this listing</button>
 
                 <img class="card-img-top" src="data:image/png;base64,{{listing.picture}}" alt="ufx listing">
                 </div>
@@ -131,7 +132,7 @@
                   <h6 class="card-subtitle mb-2 text-muted">category: {{listing.category}}</h6>
                   <h6 class="card-subtitle mb-2 text-muted">condition: {{listing.item_condition}}</h6>
                   <h6 class="card-subtitle mb-2 text-muted">$ {{listing.price}}</p>
-                </div>
+                </div> -->
               </div>
             </div>
             </div>
