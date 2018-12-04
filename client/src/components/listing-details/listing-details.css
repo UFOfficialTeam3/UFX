@@ -115,7 +115,7 @@ p {
    margin: none;
    font-family: 'Bungee Shade', cursive;
    color: #eee;
-   font-size: 5em;
+   font-size:  1em;
    transition: all .5s;
 }
 
@@ -128,13 +128,4 @@ p {
 }
 .topSection a:hover{
   text-decoration: none;
-}
-
-.logo{
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  margin: auto;
-  padding-left: 100px;
 }
