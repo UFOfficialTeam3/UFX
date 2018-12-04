@@ -65,7 +65,7 @@ exports.updateListing = function(req, response) {
      [listing.lid, listing.Title, listing.Price, listing.type, listing.condition, listing.payment, listing.description],
      null, (err,res) => {
        if (err) {
-         res.status(404)        // HTTP status 404: Not Found
+         response.status(404)        // HTTP status 404: Not Found
          .send('Not found');
          console.log("error in updateListing from listings.server.controller" + err);
          throw err;
@@ -78,7 +78,7 @@ exports.deleteListing = function(req, response) {
     const lid = req.param('lid')
     const result = db.query("DELETE FROM listing WHERE lid=$1", [lid], (err, res) => {
       if (err) {
-        res.status(404)        // HTTP status 404: Not Found
+        response.status(404)        // HTTP status 404: Not Found
         .send('Not found');
         console.log("error from listing.server: " + err);
         throw err;
@@ -94,7 +94,7 @@ exports.deleteListing = function(req, response) {
 exports.list = function(req, response) {
     const result = db.query("SELECT * FROM listing", null, (err, res) => {
       if (err) {
-        res.status(404)        // HTTP status 404: Not Found
+        response.status(404)        // HTTP status 404: Not Found
         .send('Not found');
         console.log("error in list from listings.server.controller: " + err);
         throw err;
@@ -119,7 +119,7 @@ exports.listingByID = function(req, response) {
      
     const result = db.query("SELECT * FROM listing WHERE lid=$1", [lid], (err,res) => {
       if (err) {
-        res.status(404)        // HTTP status 404: Not Found
+        response.status(404)        // HTTP status 404: Not Found
         .send('Not found');
         console.log("error in listingByID from listings.server.controller: " + err);
         throw err;

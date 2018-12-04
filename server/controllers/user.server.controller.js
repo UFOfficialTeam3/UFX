@@ -25,7 +25,7 @@ exports.userByID = function(req, response) {
       console.log(userID);
       db.query('SELECT * FROM users WHERE uid = $1', [userID], (err, res) => {
         if (err) {
-          res.status(404)        // HTTP status 404: Not Found
+          response.status(404)        // HTTP status 404: Not Found
           .send('Not found');
           console.log('Error while trying to read a user by ID');
           throw err;
@@ -50,7 +50,7 @@ exports.update = function(req, response) {
       const photo = req.files.photo.data.toString('base64')
 
       if (Object.keys(req.files).length == 0) {
-        return res.status(400).send('No files were uploaded.');
+        return response.status(400).send('No files were uploaded.');
       } else {
         //console.log("req.files", req.files);
         //console.log("req.files.file.data", req.files.file.data.toString('base64'));
@@ -61,28 +61,12 @@ exports.update = function(req, response) {
       db.query('UPDATE users SET email=$2, f_name=$3, l_name=$4, picture=$5 WHERE uid=$1 RETURNING *', [uid, email, f_name, l_name, photo],
       (err, res) => {
         if (err) {
-          console.log('Error while trying to update user: ' + err);
           return err;
         }
-        console.log('this is what server controller is returning: ' + res.rows[0]);
         return response.json(res.rows[0]);
       })
 };
 
-exports.addPic= function(req, response) {
-  fs.readFile('C:\\Users\\paul\\Pictures\\pic2.jpg', (err, imgData) => {
-    // inserting data into column 'img' of type 'bytea':
-    db.query('INSERT INTO pictures(pid, picture) VALUES(2 , $1)', [imgData],
-    (err,res)=> {
-          if(err){
-            console.log("fuuuuck");
-          }
-          else {
-            console.log("YYYAAAAAS");
-          }
-        })
-  });
-}
 
 //create a user
 exports.createUser = function(req, response) {
@@ -92,13 +76,12 @@ exports.createUser = function(req, response) {
   db.query('INSERT INTO users (uid) VALUES($1)', [userID],
     (err, res) => {
       if (err) {
-        res.status(404)        // HTTP status 404: Not Found
+        response.status(404)        // HTTP status 404: Not Found
         .send('Not found');
         console.log('Error while trying to create user');
         throw err;
       }
       else {
-        console.log('this is what server controller is returning: ' + res.rows[0]);
         //res.send('User', userID, 'added to database'); // untested
         return response.json(res.rows[0]);
       }
