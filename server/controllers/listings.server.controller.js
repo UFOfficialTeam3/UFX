@@ -123,7 +123,7 @@ exports.listingByID = function(req, response) {
       }
       else{
 
-        var uid = response.rows[0].uid
+        var uid = res.rows[0].uid
         db.query("SELECT * FROM users WHERE uid=$1", [uid], (err,ures) => {
           if (err) {
 
