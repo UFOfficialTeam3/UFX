@@ -21,7 +21,7 @@ var methods = {
         container: 'map',
         style: 'mapbox://styles/mapbox/streets-v9',
         center: [-82.347950, 29.647900],
-        zoom: 14.5,
+        zoom: 14,
         minZoom: 8
       });
 

@@ -85,6 +85,7 @@ exports.deleteListing = function(req, response) {
       }
       else{
         response.status(200)
+        .send('Deleted')
       }
     });
 };

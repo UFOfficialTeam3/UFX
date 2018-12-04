@@ -78,9 +78,17 @@ p {
   width:auto;
 }
 #confirmLocation{
-  position:relative;
-  top: 85%;
-  left: 90%;
+  position:absolute; 
+  top:0; 
+  bottom:0;
+  right: 0;
+  left: 0;
+  height:auto; 
+  width:auto;
+  background-color: darkorange;
+
+  
+  
 
 }
 

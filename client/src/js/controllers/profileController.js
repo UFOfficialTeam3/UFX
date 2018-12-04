@@ -81,13 +81,19 @@ app.controller('profileController', ['$scope', '$window', 'Profile', 'listingsFa
 
     $scope.deleteListing = function(uid, lid) {
       console.log("uid and lid: " + uid + " " + lid)
+      
 
       listingsFactory.delete(lid).then(function(response){
         
-        $window.location.href = '/profile'
+        $scope.getUserListings(uid);
+        console.log("The .then is executed")
+        
+
       }, function(error) {
           console.log('Could not delete user listing:', error);
          });
+
+      $scope.page = 'listings'
     }
 
     $scope.rateBuyer = function(BuyerObject_or_BuyerId) {
