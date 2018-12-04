@@ -1,10 +1,10 @@
 'use strict';
 
-app.controller('homeController', ['$scope', '$window', '$state', 'listingsFactory', 'mapFactory',  
+app.controller('homeController', ['$scope', '$window', '$state', 'listingsFactory', 'mapFactory',
   function($scope, $window, $state,  listingsFactory, mapFactory) {
     var vm = this;
     console.log("Hello from home controller!")
-    vm.listings = {};
+    vm.listings = [];
 
     vm.init = function() {
       listingsFactory.getAll()
@@ -26,7 +26,7 @@ app.controller('homeController', ['$scope', '$window', '$state', 'listingsFactor
       console.log("showDetails", lid);
 
       listingsFactory.setLid(lid);
-         
+
       // redirect to listing-details page and carry the listing id in url
       $window.location.href = '/listing-details/?lid=' + lid;
     };
@@ -37,8 +37,8 @@ app.controller('homeController', ['$scope', '$window', '$state', 'listingsFactor
       console.log("modal should pop up")
       var modal = document.getElementById('myModal');
 
-      // When the user clicks on the button, open the modal 
-      
+      // When the user clicks on the button, open the modal
+
       modal.style.display = "block";
 
       // When the user clicks on <span> (x), close the modal
@@ -67,11 +67,10 @@ app.controller('homeController', ['$scope', '$window', '$state', 'listingsFactor
       listingsFactory.sendEmail(confirmedLocation);
 
 
-      
     }
 
     $scope.setCatButton = function(catName){
-      
+
       if($scope.catButton == catName)
         $scope.catButton = '';
       else

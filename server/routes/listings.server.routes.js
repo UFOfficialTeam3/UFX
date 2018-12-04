@@ -15,7 +15,7 @@ var listings = require('../controllers/listings.server.controller.js'),
 router.route('/')
   .get(listings.list) 
   .post(listings.createListing)
-  .delete(listings.deleteListing)
+  
 
 router.route('/email')
   .post(listings.sendEmail)
@@ -23,5 +23,9 @@ router.route('/email')
 
 router.route('/:lid')  
   .get(listings.listingByID)
+  .delete(listings.deleteListing)
+
+router.route('/profile/:uid')
+  .get(listings.listingsByUID)
 
 module.exports = router;

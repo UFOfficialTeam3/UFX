@@ -6,8 +6,85 @@ html, body{
   background-attachment: fixed;
   overflow-x: hidden;
 }
+/* Header Video and Video Text */
+header .jumbotron{
+  position: relative;
+    overflow: hidden;
+    height: 300px;
+
+}
+header .container {
+  position: relative; /*left: 35%;*/
+  color: #ffffff;
+  z-index: 2;
+}
+
+#video-background{
+  position: absolute;
+  height: auto;
+  width: auto;
+  min-height: 100%;
+  min-width: 100%;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate3d(-50%, -50%, 0);
+  transform: translate3d(-50%, -50%, 0);
+  z-index: 1;
+}
+/* Logo that displays over video */
+.logo{
+  margin: none;
+  font-family: 'Bungee Shade', cursive;
+  color: #eee;
+  font-size: 5em;
+  transition: all .5s;
+}
+.logo:hover{
+  color: #FA4616;
+
+}
+#logo-link:hover{
+  text-decoration: none;
+}
+
+/* Nav buttons that display over video */
+#nav-btns{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 100%;
+}
+
+/* Listing cards */
+.grid-container{
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+.card{
+  margin-top: 20px;
+  margin-bottom: 5px;
+}
+.card-img-container{
+  padding: 5px;
+}
+.card-img-top{
+  max-height: 100%;
+  width: 100%;
+  height: 240px;
+}
+.zoom{
+  transition: transform .2s;
+}
+.zoom:hover{
+  transform: scale(1.05);
+  position: relative;
+  z-index: 2;
+}
+
+
 #top-section{
-   border-bottom: 1px solid black;
    height: 250px;
 }
 .topSection{
@@ -23,37 +100,12 @@ html, body{
    background-attachment: fixed;
    padding: 40px;
 }
-.topSection h1{
-   margin: none;
-   font-family: 'Bungee Shade', cursive;
-   color: #eee;
-   font-size: 5em;
-   transition: all .5s;
-}
-.topSection h1:hover{
-   color: #FA4616;
-}
+
 .topSection h3{
    color: #FA4616;
 }
-.topSection a:hover{
-  text-decoration: none;
-}
-.logo{
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  margin: auto;
-  padding-left: 100px;
-}
-#nav-btns{
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  height: 100%;
-}
+
+
 .btn-group-vertical>.btn{
   color: #eee;
   background: #303030;
@@ -99,8 +151,7 @@ html, body{
    margin: 5px;
 }
 #search-section{
-   margin-top: 100px;
-   margin: 0;
+   margin-top: -30px;
    background: #303030;
 }
 .categories-section input{
@@ -149,31 +200,9 @@ html, body{
   vertical-align: baseline;
   font-size: 1.3em;
 }
-.card {
-  display:inline-block;
-  float:left;
-  width:400px;
-  height:500px;
-  margin:15px;
-  padding-top:5%;
-  text-align:center;
-  border: 1px solid grey;
-  background-color:#575594;
-  color:white;
-  font-family:'Helvetica';
-  cursor:pointer;
+footer{
+  background-color: #303030;
+  padding-top: 15px;
+  padding-bottom: 10px;
+  margin-top: 30px;
 }
-
-.card:hover {
-  background-color:rgba(87, 85, 148, 0.75);
-  color:black;
-  transition: 0.5s ease all;
-  -webkit-transition: 0.5s ease all;
-}
-/*Mapbox popup styling
-.mapboxgl-popup-content {
-  font: 400 15px/22px 'Source Sans Pro', 'Helvetica Neue', Sans-serif;
-  padding: 0;
-  width: 180px;
-}
-*/

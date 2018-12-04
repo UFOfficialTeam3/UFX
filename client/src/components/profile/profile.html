@@ -7,101 +7,144 @@
     <link href="https://fonts.googleapis.com/css?family=Bungee+Shade" rel="stylesheet">
   </head>
   <body ng-app="app" ng-controller="profileController">
-     
-     <div id="page-wrapper">
-        <div id="top-section" class="row">
-           <div class="topSection col-sm-12">
-               <a href="/"><h1>UFX</h1></a>
-               <div ng-controller="authController as authCtrl">
+
+      <!-- UFX logo and nav-->
+      <div id="top-section" class="row">
+         <div class="topSection col-sm-12">
+              <a id="logo-link" href="/">
+                <h1 class="logo">UFX</h1>
+              </a>
+            <div ng-controller="authController as authCtrl">
                <div id="nav-btns">
                   <input ng-if="authCtrl.isAuthenticated()" ng-click="authCtrl.logout()" type="button" value="Logout" class="btn btn-default">
                </div>
-               </div>
-           </div>
-        </div>
-        <div id="user-info" class="row">
-          <div class="col-sm-3">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfNbcFM1HkR6NJBLM8NfpDoZdH2sqgaBh1dRRv1h8W35sHIcAX3g" alt="" class="profile-img">
-          </div>
-          <div class="col-sm-3">
-            <ul id="user-info-list">
-               <li class="user-info-item">First Name: {{user.f_name}}</li>
-               <li class="user-info-item">Last Name: {{user.l_name}}</li>
-               <li class="user-info-item">Email: {{user.email}}</li>
-            </ul>
-          </div>
-          <div class="profile-btns col-sm-6">
-            <input type="button" id="myBtn" class="btn btn-default" ng-click="showEditForm()" value="Edit Profile">
-            <!-- The Modal -->
-            <div id="editProfileModal" class="modal">
-                  <!-- Modal content -->
-                  <div class="modal-content">
-                     <form ng-submit ="editUser()">
-                        <label for="first name">First Name:</label>
-                        <input type ="text" ng-model="firstname">
-                        <label for="last name">Last Name:</label>
-                        <input type = "text" ng-model="lastname">
-                        <label for ="email">Email:</label>
-                        <input type= "text" ng-model="email">
-                        <input id="submit-btn" type="submit" class="btn btn-default" value="Submit Changes">
-                     </form>
-                  </div>
-               </div>
-            <!-- input type="button" value="Reset Password" class="btn btn-default" --->
-          </div>
-        </div>
-        <div class="row">
-           <div class="history-title col-sm-12">
-              <h2>Listing History</h2>
-           </div>
-        </div>
-        <div id= "listing-details" class="listing row">
-           <div class="col-sm-2">
-              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfNbcFM1HkR6NJBLM8NfpDoZdH2sqgaBh1dRRv1h8W35sHIcAX3g" alt="">
-           </div>
-           <div class="col-sm-6">
-               <h4>Listing Title</h4>
-               <pid="listing-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pharetra orci et ante imperdiet, nec lobortis sem lobortis. Pellentesque feugiat turpis ac tellus auctor, in cursus massa dictum. Nullam posuere purus sed neque dictum feugiat. Proin quis velit a nulla dapibus facilisis non in nulla. Vestibulum accumsan urna nec nunc vulputate, congue lobortis sem ultrices. Pellentesque sed leo nec lectus feugiat efficitur. Ut at metus ut neque laoreet placerat eget ac lacus. Nunc dui sem, interdum ut tempor ac, faucibus ut orci. Maecenas lacinia pellentesque finibus. Suspendisse potenti.</p>
-           </div>
-           <div class="col-sm-4">
-              <ul id="listing-info">
-                 <li><b>Seller/Buyer</b>: Seller</li>
-                 <li><b>Category</b>: Other</li>
-                 <li><b>Condition</b>: New</li>
-                 <li><b>Asking Price</b>: $20</li>
-                 <li><b>Payment Types</b>: Cash</li>
-              </ul>
-           </div>
-        </div>
-        <!-- <div class="listings row">
-         <div class="listing-img col-sm-2">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfNbcFM1HkR6NJBLM8NfpDoZdH2sqgaBh1dRRv1h8W35sHIcAX3g" alt="">
-         </div>
-         <div class="col-sm-10"></div>
-        </div> -->
-         <!-- <h2>Listing History</h2>
-         <div class="listing" ng-repeat="x in a">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfNbcFM1HkR6NJBLM8NfpDoZdH2sqgaBh1dRRv1h8W35sHIcAX3g" alt="" class="listing-img">
-            <div id="listing-text">
-               <h5>Listing Title</h5>
-               <p id="listing-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pharetra orci et ante imperdiet, nec lobortis sem lobortis. Pellentesque feugiat turpis ac tellus auctor, in cursus massa dictum. Nullam posuere purus sed neque dictum feugiat. Proin quis velit a nulla dapibus facilisis non in nulla. Vestibulum accumsan urna nec nunc vulputate, congue lobortis sem ultrices. Pellentesque sed leo nec lectus feugiat efficitur. Ut at metus ut neque laoreet placerat eget ac lacus. Nunc dui sem, interdum ut tempor ac, faucibus ut orci. Maecenas lacinia pellentesque finibus. Suspendisse potenti.</p>
             </div>
-            <ul id="listing-info">
-               <li><b>Seller/Buyer</b>: Seller</li>
-               <li><b>Category</b>: Other</li>
-               <li><b>Condition</b>: New</li>
-               <li><b>Asking Price</b>: $20</li>
-               <li><b>Payment Types</b>: Cash</li>
-            </ul>
-         </div> -->
+         </div>
+      </div>
+
+      <div>
+         <button ng-click="page='profile'">Profile</button>
+         <button ng-click="getUserListings(user.uid)">Your Listings</button>
+      </div>
+
+     <div ng-show="page == 'profile'" id="page-wrapper">
+        <div id="profile-row" class="row">
+          <div id="profile-section" class="col-sm-12">
+            <div id="top-row">
+                 <img src="data:image/png;base64,{{user.picture}}" id="profile-picture" width="250" height="250">
+            </div>
+            <div>
+              <h2>{{user.f_name}} {{user.l_name}}</h2>
+            </div>
+            <div>
+              <ul id="user-info-list">
+                 <li class="user-info-item"><b>First Name:</b> {{user.f_name}}</li>
+                 <li class="user-info-item"><b>Last Name:</b> {{user.l_name}}</li>
+                 <li class="user-info-item"><b>Email:</b> {{user.email}}</li>
+              </ul>
+            </div>
+            <div>
+              <input type="button" id="myBtn" class="btn btn-default" ng-click="showEditForm()" value="Edit Profile">
+              <!-- The Modal -->
+              <div id="editProfileModal" class="modal">
+                    <!-- Modal content -->
+                    <div class="modal-content">
+                       <form ng-submit ="editUser()">
+                          <label for="first name">First Name:</label>
+                          <input type ="text" ng-model="firstname">
+                          <label for="last name">Last Name:</label>
+                          <input type = "text" ng-model="lastname">
+                          <label for ="email">Email:</label>
+                          <input type= "text" ng-model="email">
+                          <!-- Image upload -->
+                          <label for="img">Image Upload (Required):</label>
+                          <img id="blah" src="/img/img-placeholder.png" alt="preview" width="300" height="300">
+                          <input type="file" name="pic" accept="image/png,image/jpg,image/jpeg"  id="file_upload" multiple
+                              onchange="document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])" required>
+                          <input id="submit-btn" type="submit" class="btn btn-default" value="Submit Changes">
+                       </form>
+                    </div>
+                 </div>
+              <!-- input type="button" value="Reset Password" class="btn btn-default" --->
+            </div>
+          </div>
+        </div>
      </div>
+
+     <!-- User's listings in profile page -->
+     <div ng-show="page == 'listings'" id="page-wrapper">
+       <div id="profile-row" class="row">
+         <div id="profile-section" class="col-sm-12">
+           <div id="top-row">
+                <img src="data:image/png;base64,{{user.picture}}" id="profile-picture" width="250" height="250">
+           </div>
+           <div>
+             <h2>{{user.f_name}} {{user.l_name}}</h2>
+             <h4>Listing History</h4>
+           </div>
+           <div class="container">
+           <div class="row">
+           <div class="grid-container">
+             <div class="card bg-light zoom" style="width: 23%; height: auto; margin: 5px; background: #fff;
+             display: flex; flex-direction: column; border-radius: 3px; align-items: center;" ng-repeat="listing in listings | orderBy: title">
+                 <div class="card-img-container">
+                 <img class="card-img-top" src="data:image/png;base64,{{listing.picture}}" alt="ufx listing">
+                 </div>
+                 <div class="card-body">
+                   <h3 class="card-title text-dark">{{listing.title}}</h3>
+                   <p class="card-text text-dark">{{listing.description}}</p>
+                   <h6 class="card-subtitle mb-2 text-muted">category: {{listing.category}}</h6>
+                   <h6 class="card-subtitle mb-2 text-muted">condition: {{listing.item_condition}}</h6>
+                   <h6 class="card-subtitle mb-2 text-muted">$ {{listing.price}}</p>
+                   <a ng-click="homeCtrl.showDetails(listing)" class="btn btn-primary text-dark">Show Details</a>
+                   <a ng-click="deleteListing(user.uid, listing.lid)" class="btn btn-primary text-dark">Delete this listing</a>
+                 </div>
+             </div>
+           </div>
+         </div>
+       </div>
+
+
+
+
+         </div>
+       </div>
+     </div>
+
+
+     <!-- <div ng-show="page == 'listings'" id="page-wrapper">
+        This page show users listings
+        <div class="container">
+            <div class="row" ng-repeat="listing in listings | orderBy: title">
+            <div class="col-2"></div>
+            <div class="col-8">
+            <div class="card bg-light zoom" style="width: 100%; height: auto">
+                <div class="card-img-container">
+
+                <!--Delete Button-->
+                <!-- <button ng-click="deleteListing(user.uid, listing.lid)">Delete this listing</button>
+
+                <img class="card-img-top" src="data:image/png;base64,{{listing.picture}}" alt="ufx listing">
+                </div>
+                <div class="card-body">
+                  <h3 class="card-title text-dark">{{listing.title}}</h3>
+                  <p class="card-text text-dark">{{listing.description}}</p>
+                  <h6 class="card-subtitle mb-2 text-muted">category: {{listing.category}}</h6>
+                  <h6 class="card-subtitle mb-2 text-muted">condition: {{listing.item_condition}}</h6>
+                  <h6 class="card-subtitle mb-2 text-muted">$ {{listing.price}}</p>
+                </div> -->
+              </div>
+            </div>
+            </div>
+          </div>
+     </div> -->
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
     <script src="https://code.angularjs.org/1.4.3/angular.js"></script>
     <script src="//unpkg.com/@uirouter/angularjs/release/angular-ui-router.min.js"></script>
-    
+
      <!-- Auth0 dependencies -->
     <script src="https://cdn.auth0.com/js/lock-8.1.min.js"></script>
     <script src="https://cdn.auth0.com/js/auth0/9.5.1/auth0.min.js"></script>
@@ -111,17 +154,13 @@
     <script src="../../js/app.js"></script>
     <script src="js/factories/profileFactory.js"></script>
     <script src="js/controllers/profileController.js"></script>
+    <script src="/js/listingsFactory.js"></script>
     <script src="/js/authFactory.js"></script>
     <script src="/js/authController.js"></script>
 
 
-    
+
 
 
   </body>
-  <footer class="page-footer font-small">
-    <!-- Copyright -->
-    <div class="text-center">© 2018 Copyright: Skilled & 4 Hire</div>
-    <!-- Copyright. -->
-  </footer>
 </html>

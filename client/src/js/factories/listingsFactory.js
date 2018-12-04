@@ -61,16 +61,9 @@ app.factory('listingsFactory', function($http) {
       },
       
       delete: function(listingId) {
-        /**TODO
-         * Make http delete request
-         */
-        //Example: return $http.delete('http://localhost:8080/api/listings/' + id);
+        return $http.delete('http://localhost:8080/api/listings/' + listingId)
         
       }, 
-
-      hello: function() {
-        console.log('hello');
-      },
 
       setLid: function(listingId) {
         savedLid = listingId;

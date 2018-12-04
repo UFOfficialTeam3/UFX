@@ -1,30 +1,43 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="app">
   <head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="main.css">
     <link href="https://fonts.googleapis.com/css?family=Bungee+Shade" rel="stylesheet">
   </head>
-  <body ng-app="app" ng-controller="homeController as homeCtrl">
-     <div id="page-wrapper">
-        <div id="top-section" class="row">
-           <div class="col-sm-12 topSection">
-             <div class="logo">
-               <a href="/">
-                 <h1>UFX</h1>
-               </a>
-             </div>
-              <div id="nav-btns" ng-controller="authController as authCtrl">
-                <div class="nav-btns btn-group-vertical">
-                  <a href="/profile" class="btn btn-default" ng-if="authCtrl.isAuthenticated()"><span class="glyphicon glyphicon-user"></span> Profile</a>
-                  <a href="/create-listing" class="btn btn-default" ng-if="authCtrl.isAuthenticated()"><span class="glyphicon glyphicon-th-list"></span> Post Listing</a>
-                  <button type="button" class="btn btn-default" ng-if="!authCtrl.isAuthenticated()" ng-click="authCtrl.login()"><span class="glyphicon glyphicon-log-in"></span> Login/Signup</button>
-                  <button type="button" class="btn btn-default" ng-if="authCtrl.isAuthenticated()" ng-click="authCtrl.logout()"><span class="glyphicon glyphicon-log-out"></span> Logout</button>
+
+  <header>
+    <!-- Video Display -->
+    <div class="jumbotron" style="margin:0px;">
+        <video id="video-background" preload muted autoplay loop poster="/img/century-tower-orange.png">
+            <source src="https://storage.googleapis.com/coverr-main/mp4/Mt_Baker.mp4" type="video/mp4">
+        </video>
+        <div class="container">
+          <div class="row">
+            <div class="col-md">
+              <a id="logo-link" href="/">
+                <h1 class="logo">UFX</h1>
+              </a>
+            </div>
+            <div class="col-lg">
+              <div id="nav-btns" class="float-right" ng-controller="authController as authCtrl">
+                  <div class="btn-group-vertical">
+                    <a href="/profile" class="btn btn-default" ng-cloak ng-if="authCtrl.isAuthenticated()"><span class="glyphicon glyphicon-user"></span> Profile</a>
+                    <a href="/create-listing" class="btn btn-default" ng-cloak ng-if="authCtrl.isAuthenticated()"><span class="glyphicon glyphicon-th-list"></span> Post Listing</a>
+                    <button type="button" class="btn btn-default" ng-cloak ng-if="!authCtrl.isAuthenticated()" ng-click="authCtrl.login()"><span class="glyphicon glyphicon-log-in"></span> Login/Signup</button>
+                    <button type="button" class="btn btn-default" ng-cloak ng-if="authCtrl.isAuthenticated()" ng-click="authCtrl.logout()"><span class="glyphicon glyphicon-log-out"></span> Logout</button>
+                  </div>
                 </div>
-              </div>
-           </div>
+            </div>
+          </div>
         </div>
+      </div>
+  </header>
+
+
+  <body ng-controller="homeController as homeCtrl">
         <div id="search-section">
+            <!-- Search Tags -->
            <div class="row categories-section">
              <div class="col-sm-12 btn-group category-btns">
                <button type="button" class="btn btn-primary" ng-click="setCatButton('cars')">Cars</button>
@@ -38,57 +51,47 @@
                <button type="button" class="btn btn-primary" ng-click="setCatButton('other')">Other</button>
              </div>
            </div>
+           <!-- Seach Bar -->
            <div class="row searchbar">
+             <div class="col-sm-4"></div>
               <div class="col-sm-4 col-sm-offset-4">
                 <input type="text" id="searchBar" class="form-control" placeholder="Search" ng-model="searchListing">
               </div>
            </div>
         </div>
-        <!--
-        <div id="listings-section" class="row">
-           <div class="listing">
-               <div class="col-sm-2">
-                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfNbcFM1HkR6NJBLM8NfpDoZdH2sqgaBh1dRRv1h8W35sHIcAX3g" alt="" class="listing-img">
-              </div>
-              <div id="listing-text" class="col-sm-7">
-                 <h3>Listing Title</h3>
-                 <p id="listing-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pharetra orci et ante imperdiet, nec lobortis sem lobortis. Pellentesque feugiat turpis ac tellus auctor, in cursus massa dictum. Nullam posuere purus sed neque dictum feugiat. Proin quis velit a nulla dapibus facilisis non in nulla. Vestibulum accumsan urna nec nunc vulputate, congue lobortis sem ultrices. Pellentesque sed leo nec lectus feugiat efficitur. Ut at metus ut neque laoreet placerat eget ac lacus. Nunc dui sem, interdum ut tempor ac, faucibus ut orci. Maecenas lacinia pellentesque finibus. Suspendisse potenti.</p>
-              </div>
-              <div class="col-sm-3">
-                 <ul id="listing-info">
-                    <li><b>Seller/Buyer</b>: Seller</li>
-                    <li><b>Category</b>: Other</li>
-                    <li><b>Condition</b>: New</li>
-                    <li><b>Asking Price</b>: $20</li>
-                    <li><b>Payment Types</b>: Cash</li>
-                 </ul>-->
-              </div>
-           </div>
+      </div>
 
-          
+      <!-- New Listing Display -->
+      <div class="container">
+      <div class="jumbotron" style="margin-top:25px;" >
+        <h1 class="text-center"> A Marketplace for Local Gainesville Residents</h1>
+      </div>
+      </div>
 
-           <div class="tableWrapper">
-            <table class="table table-striped table-hover">
-              <tr>
-                <th>Name</th>
-                <th>Category</th>
-                <th>Description</th>
-                <th>Condition</th>
-                <th>Price</th>
-              </tr>
-              <tr ng-repeat="listing in homeCtrl.listings | orderBy: title| filter: catButton | filter: searchListing" ng-click="homeCtrl.showDetails(listing)">
-                <td>{{listing.title}}</td>
-                <td>{{listing.category}}</td>
-                <td>{{listing.description}}</td>
-                <td>{{listing.item_condition}}</td>
-                <td>${{listing.price}}</td>
-
-                <td><img src="data:image/png;base64,{{listing.picture}}" width="100" height="100"></td>
-              </tr>
-            </table>
+      <div class="container">
+      <div class="row">
+        <div class="grid-container" style="margin-left: 45px;">
+          <div class="card bg-light zoom" style="width: 23%; height: auto; margin: 5px" ng-repeat="listing in homeCtrl.listings | orderBy: title| filter: catButton | filter: searchListing">
+              <div class="card-img-container">
+              <img class="card-img-top" src="data:image/png;base64,{{listing.picture}}" alt="ufx listing">
+              </div>
+              <div class="card-body">
+                <h3 class="card-title text-dark">{{listing.title}}</h3>
+                <p class="card-text text-dark">{{listing.description}}</p>
+                <h6 class="card-subtitle mb-2 text-muted">category: {{listing.category}}</h6>
+                <h6 class="card-subtitle mb-2 text-muted">condition: {{listing.item_condition}}</h6>
+                <h6 class="card-subtitle mb-2 text-muted">$ {{listing.price}}</p>
+                <a ng-click="homeCtrl.showDetails(listing)" class="btn btn-primary text-dark">Show Details</a>
+              </div>
           </div>
         </div>
-     </div>
+      </div>
+    </div>
+
+
+
+
+
 
 
     <!-- Import Scripts -->
@@ -116,9 +119,10 @@
     <script src="https://cdn.auth0.com/js/lock/11.11.0/lock.min.js"></script>
 
   </body>
-  <footer class="page-footer font-small">
-    <!-- Copyright -->
-    <div class="text-center">© 2018 Copyright: Skilled & 4 Hire</div>
-    <!-- Copyright. -->
-  </footer>
+
+<footer class="page-footer font-small">
+  <!-- Copyright -->
+  <div class="footer-copyright text-center text-light">© 2018 Copyright: Skilled 4 Hire</div>
+</footer>
+
 </html>

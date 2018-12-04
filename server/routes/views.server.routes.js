@@ -26,6 +26,9 @@ router.get('/js/app.js', function(req, res){
 router.get('/js/homeController.js', function(req, res){
     res.sendFile(path.resolve(__dirname+'/../../client/src/js/controllers/homeController.js'));
 });
+router.get('/img/century-tower-orange.png', function(req, res){
+    res.sendFile(path.resolve(__dirname+'/../../client/img/century-tower-orange.png'));
+});
 
 
 
@@ -41,6 +44,9 @@ router.get('/js/createListingsController.js', function(req, res){
 });
 router.get('/js/listingsFactory.js', function(req, res){
     res.sendFile(path.resolve(__dirname+'/../../client/src/js/factories/listingsFactory.js'))
+});
+router.get('/img/img-placeholder.png', function(req, res){
+    res.sendFile(path.resolve(__dirname+'/../../client/img/img-placeholder.png'))
 });
 
 
