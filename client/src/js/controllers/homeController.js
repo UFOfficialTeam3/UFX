@@ -15,11 +15,17 @@ app.controller('homeController', ['$scope', '$window', '$state', 'listingsFactor
         then(function(response) {
 
           profile = response.data;
-          //console.log('Hello?', response.data);
+          console.log('User Profile: ', profile);
+          //console.log(profile.email == null);
+          //console.log(profile.f_name == null);
+          //console.log(profile.l_name == null);
 
           // redirect to profile page if prfile out filled out.
-          if( profile.email == null || profile.fname == null || profile.lname == null){
+          if( profile.email == null || profile.f_name == null || profile.l_name == null){
+            console.log("something ain't right...")
             window.location.href = window.location.origin + "/profile";
+          } else {
+            console.log("Profile filled out!")
           }
 
         }, function(error) {
@@ -43,7 +49,7 @@ app.controller('homeController', ['$scope', '$window', '$state', 'listingsFactor
             console.log("getAll error", error);
           });
 
-       vm.checkProfile();   
+      vm.checkProfile();   
     }
 
     // initialize controller and home page
