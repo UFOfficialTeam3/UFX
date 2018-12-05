@@ -56,7 +56,7 @@
 					<h3 ng-model="dc.listing.payment">{{payment}}</h3>
 				   <!-- <h2>Condition:</h2> -->
 					<h3>{{dc.listing.item_condition}}</h3>
-					<div ng-controller="homeController">
+					
 						<input type="button" id="myBtn" class="btn btn-default btn-sm" ng-click="contactSeller()" value="Contact Seller">
 						<!-- The Modal -->
 						<div id="myModal" class="modal">
@@ -64,10 +64,10 @@
 							<div class="modal-content">
 								<!--  <span class="close">&times;</span>  -->
 								<div id='map'></div>
-								<input type="button" id="confirmLocation" class="btn btn-default btn-sm" ng-click="confirmLocation()" value="Confirm">
+								<input type="button" id="confirmLocation" class="btn btn-default btn-sm" ng-click="confirmLocation(dc.user.email)" value="Confirm">
 							</div>
 						</div>
-					</div>
+					
            </div>
         </div>
       </div>

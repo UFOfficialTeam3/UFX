@@ -246,7 +246,7 @@ exports.sendEmail = function(request, response){
           response.status(403).send('Anti-Virus is blocking me');
         } else {
           console.log('Email sent: ' + info.response);
-          response.end;
+          response.status(200).send('All is good');;
         }
       });
 

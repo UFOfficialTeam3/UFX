@@ -78,7 +78,7 @@ function($scope, $window, listingsFactory, mapFactory, Profile) {
   
         //Modal Stuff
         var modal = document.getElementById('myModal');
-        modal.style.display = "none";
+        
         
   
         Profile.getUser().then(function(response) {
@@ -89,8 +89,10 @@ function($scope, $window, listingsFactory, mapFactory, Profile) {
           
 
           listingsFactory.sendEmail(confirmedLocation, currentuserInfo, listingsuserEmail).then(function(res){
+            modal.style.display = "none";
             alert("An email has been sent to the seller with your preferred meeting place")
           },function(error){
+            modal.style.display = "none";
             alert("Your computer's anti virus is likely preventing us from sending an email to the listing's owner. Please turn off your anti virus's mail shield temporaryily to allow us to send it. Promise we aren't hacking your computer <3")
           })
               

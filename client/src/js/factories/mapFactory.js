@@ -54,19 +54,19 @@ var methods = {
 
       //Various popups for pre defined locations
       var popupHub = new mapboxgl.Popup({closeButton: false, closeOnClick: false})
-      .setText('Hub')
+      .setText('The Hub')
       .addTo(map);
       var popupReitz = new mapboxgl.Popup({closeButton: false, closeOnClick: false})
-      .setText('Reitz')
+      .setText('Reitz Union')
       .addTo(map);
       var popupLib = new mapboxgl.Popup({closeButton: false, closeOnClick: false})
-      .setText('Lib')
+      .setText('Library West')
       .addTo(map);
       var popupGator = new mapboxgl.Popup({closeButton: false, closeOnClick: false})
-      .setText('Gator')
+      .setText('Gator Dining')
       .addTo(map);
       var popupHume = new mapboxgl.Popup({closeButton: false, closeOnClick: false})
-      .setText('Hume')
+      .setText('Hume Hall')
       .addTo(map);
 
       
@@ -314,7 +314,7 @@ var methods = {
     confirmLocation: function() {
       var lng = mouseClickLng;
       var lat = mouseClickLat;
-      var coordinates = lat.toString() + ", " + lng.toString();
+      var coordinates = "latitude: " + lat.toString() + ", " + "longitude: " + lng.toString();
       var searchedChoice = searchedLocation;
       var knownChoice = knownLocation;
 
