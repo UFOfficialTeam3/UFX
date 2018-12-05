@@ -128,13 +128,16 @@
       function highlight(btn) {
         if(btn.hasClass('highlight')){
           btn.removeClass('highlight');
-          btn.css('background', '#0021A5');
+          btn.css('background', '#eee');
+          btn.css('color', '#303030');
         }
         else{
           $('.category-btns').find('.btn').removeClass('highlight');
-          $('.category-btns').find('.btn').css('background', '#0021A5');
+          $('.category-btns').find('.btn').css('background', '#eee');
+          $('.category-btns').find('.btn').css('color', '#303030');
           btn.addClass('highlight');
           btn.css('background', '#FA4616');
+          btn.css('color', '#eee');
         }
       }
     </script>
