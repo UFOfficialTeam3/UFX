@@ -29,6 +29,9 @@ router.get('/js/homeController.js', function(req, res){
 router.get('/img/century-tower-orange.png', function(req, res){
     res.sendFile(path.resolve(__dirname+'/../../client/img/century-tower-orange.png'));
 });
+router.get('/img/ufx-video.mp4', function(req, res){
+    res.sendFile(path.resolve(__dirname+'/../../client/img/ufx-video.mp4'));
+});
 
 
 
