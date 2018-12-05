@@ -213,30 +213,49 @@ exports.listingByType = function(req, response) {
 };
 
 exports.sendEmail = function(request, response){
-  var meetingPlace = request.body.location;
-  var nodemailer = require('nodemailer');
-      
-      var transporter = nodemailer.createTransport({
-        service: 'gmail',
-        auth: {
-          user: 'papa0398@gmail.com',
-          pass: 'gmailkingdom'
-        }
-      });
+  const meetingPlace = request.body.location;
+  const currentUser = request.body.user;
+  const fname = currentUser.f_name
+  const lname = currentUser.l_name
+  const userEmail = currentUser.email
+  console.log("This is the currentUserInfo: ", currentUser)
 
-      var mailOptions = {
+  const lemail = request.body.lemail;
+  const emailText = "The buyer would like to meet you at: " + meetingPlace + ".\nHis name and email are: " + fname + " " + lname + " " + userEmail
+  console.log("The emailText is: " + emailText) 
+
+  var nodemailer = require('nodemailer');
+
+  var transporter = nodemailer.createTransport({
+     service: 'gmail',
+     auth: {
+       user: 'papa0398@gmail.com',
+      pass: 'gmailkingdom'
+     }
+   });
+
+  var mailOptions = {
         from: 'papa0398@gmail.com',
-        to: 'apaparazzi0329@ufl.edu',
+        to: lemail,
         subject: 'A Buyer is Interested in Your Item!',
-        text: "The buyer would like to meet you at: " + meetingPlace
-      };
+        text: emailText
+  };
 
       transporter.sendMail(mailOptions, function(error, info){
         if (error) {
-          console.log(error);
+          response.status(403).send('Anti-Virus is blocking me');
         } else {
           console.log('Email sent: ' + info.response);
           response.end;
         }
       });
-}
+
+
+     
+  }
+
+
+  
+      
+      
+

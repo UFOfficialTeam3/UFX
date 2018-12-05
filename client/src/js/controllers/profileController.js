@@ -66,12 +66,17 @@ app.controller('profileController', ['$scope', '$window', 'Profile', 'listingsFa
 
     //Gets a user's listings for the profile page
     $scope.getUserListings = function(uid) {
-      console.log("The uid is: " + uid)
+      
+      //Used for loading screen purposes
       $scope.page = 'listings'
+      $scope.loading=true;
 
       Profile.getListingsByUser(uid).then(function(response){
-        console.log('Data recieved from profileFactory: ' + response.data);
+        
         $scope.listings = response.data;
+        
+        //Used for loading gif
+        $scope.loading=false;
       }, function(error) {
           console.log('Could not get user listings:', error);
          });
@@ -86,7 +91,7 @@ app.controller('profileController', ['$scope', '$window', 'Profile', 'listingsFa
       listingsFactory.delete(lid).then(function(response){
 
         $scope.getUserListings(uid);
-        console.log("The .then is executed")
+        
 
 
       }, function(error) {

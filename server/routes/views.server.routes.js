@@ -29,6 +29,12 @@ router.get('/js/homeController.js', function(req, res){
 router.get('/img/century-tower-orange.png', function(req, res){
     res.sendFile(path.resolve(__dirname+'/../../client/img/century-tower-orange.png'));
 });
+router.get('/img/alligatorgif.gif', function(req, res){
+    res.sendFile(path.resolve(__dirname+'/../../client/img/alligatorgif.gif'));
+});
+router.get('/js/profileFactory.js', function(req, res){
+    res.sendFile(path.resolve(__dirname+'/../../client/src/js/factories/profileFactory.js'));
+});
 router.get('/img/ufx-video.mp4', function(req, res){
     res.sendFile(path.resolve(__dirname+'/../../client/img/ufx-video.mp4'));
 });
@@ -107,6 +113,8 @@ router.get('/js/controllers/profileController.js', function(req, res){
 router.get('/js/factories/profileFactory.js', function(req, res){
     res.sendFile(path.resolve(__dirname+'/../../client/src/js/factories/profileFactory.js'));
 });
+
+
 
 
 /* Routes for map integration*/

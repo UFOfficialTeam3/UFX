@@ -37,6 +37,7 @@
 
 
   <body ng-controller="homeController as homeCtrl">
+
         <div id="search-section">
             <!-- Search Tags -->
            <div class="row categories-section">
@@ -67,6 +68,11 @@
         <h1 class="text-center"> A Marketplace for Local Gainesville Residents</h1>
       </div>
       </div>
+    
+    <!--This is the loading gif-->
+    <div class="alert alert-info" ng-show="loading">
+        <img src="/img/alligatorgif.gif" height=50% width=50%>
+    </div>
 
       <div class="container">
       <div class="row">
@@ -113,7 +119,7 @@
     <script src="/js/authController.js"></script>
     <script src="/js/homeController.js"></script>
     <script src="/js/listingsFactory.js"></script>
-    <script src="/js/mapFactory.js"></script>
+    
 
     <!-- Latest patch release (recommended for production) -->
     <script src="https://cdn.auth0.com/js/lock/11.11.0/lock.min.js"></script>
