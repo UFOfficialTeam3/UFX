@@ -213,8 +213,17 @@ exports.listingByType = function(req, response) {
 };
 
 exports.sendEmail = function(request, response){
-  var meetingPlace = request.body.location;
-  var userEmail = request.body.email;
+  const meetingPlace = request.body.location;
+  const currentUser = request.body.user;
+  const fname = currentUser.f_name
+  const lname = currentUser.l_name
+  const userEmail = currentUser.email
+  console.log("This is the currentUserInfo: ", currentUser)
+
+  const lemail = request.body.lemail;
+  const emailText = "The buyer would like to meet you at: " + meetingPlace + ".\nHis name and email are: " + fname + " " + lname + " " + userEmail
+  console.log("The emailText is: " + emailText) 
+
   var nodemailer = require('nodemailer');
 
   var transporter = nodemailer.createTransport({
@@ -227,9 +236,9 @@ exports.sendEmail = function(request, response){
 
   var mailOptions = {
         from: 'papa0398@gmail.com',
-        to: userEmail,
+        to: lemail,
         subject: 'A Buyer is Interested in Your Item!',
-        text: "The buyer would like to meet you at: " + meetingPlace
+        text: emailText
   };
 
       transporter.sendMail(mailOptions, function(error, info){

@@ -50,8 +50,8 @@ app.factory('listingsFactory', function($http) {
       
       },
 
-      sendEmail: function(confirmedLocation, useremail){
-        var confirmedLocationJSON = {location: confirmedLocation, email: useremail}
+      sendEmail: function(confirmedLocation, currentUser, listingsuserEmail){
+        var confirmedLocationJSON = {location: confirmedLocation, user: currentUser, lemail: listingsuserEmail}
         return $http.post('http://localhost:8080/api/listings/email', confirmedLocationJSON);
 
       },

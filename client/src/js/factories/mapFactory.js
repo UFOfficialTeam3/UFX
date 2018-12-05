@@ -324,7 +324,7 @@ var methods = {
         return coordinates;
       }
       else{
-        return 'You must choose a preferred location to meet'
+        return 'Nope'
       }
     }
 
