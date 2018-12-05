@@ -40,15 +40,15 @@
             <!-- Search Tags -->
            <div class="row categories-section">
              <div class="col-sm-12 btn-group category-btns">
-               <button type="button" class="btn btn-primary" ng-click="setCatButton('cars')">Cars</button>
-               <button type="button" class="btn btn-primary" ng-click="setCatButton('housing')">Housing</button>
-               <button type="button" class="btn btn-primary" ng-click="setCatButton('services')">Services</button>
-               <button type="button" class="btn btn-primary" ng-click="setCatButton('electronics')">Electronics</button>
-               <button type="button" class="btn btn-primary" ng-click="setCatButton('home and garden')">Home & Garden</button>
-               <button type="button" class="btn btn-primary" ng-click="setCatButton('other vehicle')">Other Vehicle</button>
-               <button type="button" class="btn btn-primary" ng-click="setCatButton('fashion')">Fashion</button>
-               <button type="button" class="btn btn-primary" ng-click="setCatButton('entertainment')">Entertainment</button>
-               <button type="button" class="btn btn-primary" ng-click="setCatButton('other')">Other</button>
+               <button type="button" class="btn btn-primary" ng-click="setCatButton('cars')" onclick="highlight($(this))">Cars</button>
+               <button type="button" class="btn btn-primary" ng-click="setCatButton('housing')" onclick="highlight($(this))">Housing</button>
+               <button type="button" class="btn btn-primary" ng-click="setCatButton('services')" onclick="highlight($(this))">Services</button>
+               <button type="button" class="btn btn-primary" ng-click="setCatButton('electronics')" onclick="highlight($(this))">Electronics</button>
+               <button type="button" class="btn btn-primary" ng-click="setCatButton('home and garden')" onclick="highlight($(this))">Home & Garden</button>
+               <button type="button" class="btn btn-primary" ng-click="setCatButton('other vehicle')" onclick="highlight($(this))">Other Vehicle</button>
+               <button type="button" class="btn btn-primary" ng-click="setCatButton('fashion')" onclick="highlight($(this))">Fashion</button>
+               <button type="button" class="btn btn-primary" ng-click="setCatButton('entertainment')" onclick="highlight($(this))">Entertainment</button>
+               <button type="button" class="btn btn-primary" ng-click="setCatButton('other')" onclick="highlight($(this))">Other</button>
              </div>
            </div>
            <!-- Seach Bar -->
@@ -116,6 +116,23 @@
 
     <!-- Latest patch release (recommended for production) -->
     <script src="https://cdn.auth0.com/js/lock/11.11.0/lock.min.js"></script>
+
+    <script>
+      function highlight(btn) {
+        btn.css('background', 'red');
+        if(btn.hasClass('highlight')){
+          btn.removeClass('highlight');
+          btn.css('background', '#0021A5');
+        }
+        else{
+          $('.category-btns').find('.btn').removeClass('highlight');
+          $('.category-btns').find('.btn').css('background', '#0021A5');
+          btn.addClass('highlight');
+          btn.css('background', '#FA4616');
+        }
+      }
+    </script>
+
 
   </body>
 

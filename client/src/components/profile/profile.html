@@ -23,8 +23,8 @@
       </div>
 
       <div id="profile-btns">
-         <button ng-click="page='profile'" class="btn btn-default profile-btn profile-clicked" onclick="myFunction($(this));">Profile</button>
-         <button ng-click="getUserListings(user.uid)" class="btn btn-default profile-btn" onclick="myFunction($(this));">Your Listings</button>
+         <button ng-click="page='profile'" class="btn btn-default profile-btn profile-clicked" onclick="profileBtn($(this));">Profile</button>
+         <button ng-click="getUserListings(user.uid)" class="btn btn-default profile-btn" onclick="profileBtn($(this));">Your Listings</button>
       </div>
 
      <div ng-show="page == 'profile'" id="page-wrapper">
@@ -79,7 +79,7 @@
            </div>
            <div>
              <h2>{{user.f_name}} {{user.l_name}}</h2>
-             <h4>Listing History</h4>
+             <h4 style="text-align: center;">Listing History</h4>
            </div>
            <div class="container">
              <div class="row">
@@ -127,7 +127,7 @@
 
 
     <script>
-      function myFunction(btn) {
+      function profileBtn(btn) {
         if(!btn.hasClass('profile-clicked')){
           $('.profile-btn').removeClass('profile-clicked');
           btn.addClass('profile-clicked');
