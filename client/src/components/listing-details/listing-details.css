@@ -93,7 +93,13 @@ header .container {
   align-items: center;
   height: 100%;
 }
-
+.nav-btns .btn{
+   border: none;
+   transition: all .15s ease-in-out 0s;
+   width: 100px;
+   padding: 8px;
+   border-radius: .25rem;
+}
 
 #map{
   position:absolute;
@@ -113,12 +119,7 @@ header .container {
   height:auto;
   width:auto;
   background-color: darkorange;
-
   border-radius: 5px;
-
-
-
-
 }
 
 #top-section{

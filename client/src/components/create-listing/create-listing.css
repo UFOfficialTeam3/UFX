@@ -1,6 +1,13 @@
 html, body{
   background: #333;
 }
+.nav-btns .btn{
+   border: none;
+   transition: all .15s ease-in-out 0s;
+   width: 100px;
+   padding: 8px;
+   border-radius: .25rem;
+}
 form{
   background: #eee;
   border-radius: 5px;
