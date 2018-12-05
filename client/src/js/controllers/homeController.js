@@ -1,16 +1,37 @@
 'use strict';
 
-app.controller('homeController', ['$scope', '$window', '$state', 'listingsFactory',
-  function($scope, $window, $state,  listingsFactory) {
+app.controller('homeController', ['$scope', '$window', '$state', 'listingsFactory', 'authService', 'Profile',
+  function($scope, $window, $state,  listingsFactory, authService, Profile) {
     var vm = this;
     
     vm.listings = [];
 
-    
+    vm.checkProfile = function() {
+      // if there is user logged in
+      if(authService.isAuthenticated()) {        
+        // check if user has filled out profile
+        var profile;
+        Profile.getUser().
+        then(function(response) {
+
+          profile = response.data;
+          //console.log('Hello?', response.data);
+
+          // redirect to profile page if prfile out filled out.
+          if( profile.email == null || profile.fname == null || profile.lname == null){
+            window.location.href = window.location.origin + "/profile";
+          }
+
+        }, function(error) {
+          console.log('Unable to retrieve user:', error);
+        });
+      }
+
+    }   
 
     vm.init = function() {
       $scope.loading=true;
-      
+
       listingsFactory.getAll()
         .then(
           function(response) {
@@ -20,7 +41,9 @@ app.controller('homeController', ['$scope', '$window', '$state', 'listingsFactor
           }, function(error) {
             // if there was an error with the http request
             console.log("getAll error", error);
-          })
+          });
+
+       vm.checkProfile();   
     }
 
     // initialize controller and home page

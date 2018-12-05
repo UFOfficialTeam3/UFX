@@ -44,6 +44,8 @@ app.controller('authController', ['authService', '$scope', '$timeout',
                                     .then(
                                         function(result){
                                             console.log("createUser result",result);
+                                            // redirect to profile page so that they can fill out their profile
+                                            window.location.href = window.location.origin + "/profile";                                            
                                         }, 
                                         function(error){console.log("createUser error",error)})
                             }
