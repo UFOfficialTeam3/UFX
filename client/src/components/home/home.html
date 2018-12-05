@@ -9,8 +9,9 @@
   <header>
     <!-- Video Display -->
     <div class="jumbotron" style="margin:0px;">
-        <video id="video-background" preload muted autoplay loop poster="/img/century-tower-orange.png">
-            <source src="https://storage.googleapis.com/coverr-main/mp4/Mt_Baker.mp4" type="video/mp4">
+        <video id="video-background" preload muted autoplay loop>
+            <!-- <source src="https://storage.googleapis.com/coverr-main/mp4/Mt_Baker.mp4" type="video/mp4"> -->
+            <source src="/img/ufx-video.mp4" type="video/mp4">
         </video>
         <div class="container">
           <div class="row">
@@ -36,19 +37,20 @@
 
 
   <body ng-controller="homeController as homeCtrl">
+
         <div id="search-section">
             <!-- Search Tags -->
            <div class="row categories-section">
              <div class="col-sm-12 btn-group category-btns">
-               <button type="button" class="btn btn-primary" ng-click="setCatButton('cars')">Cars</button>
-               <button type="button" class="btn btn-primary" ng-click="setCatButton('housing')">Housing</button>
-               <button type="button" class="btn btn-primary" ng-click="setCatButton('services')">Services</button>
-               <button type="button" class="btn btn-primary" ng-click="setCatButton('electronics')">Electronics</button>
-               <button type="button" class="btn btn-primary" ng-click="setCatButton('home and garden')">Home & Garden</button>
-               <button type="button" class="btn btn-primary" ng-click="setCatButton('other vehicle')">Other Vehicle</button>
-               <button type="button" class="btn btn-primary" ng-click="setCatButton('fashion')">Fashion</button>
-               <button type="button" class="btn btn-primary" ng-click="setCatButton('entertainment')">Entertainment</button>
-               <button type="button" class="btn btn-primary" ng-click="setCatButton('other')">Other</button>
+               <button type="button" class="btn btn-primary" ng-click="setCatButton('cars')" onclick="highlight($(this))">Cars</button>
+               <button type="button" class="btn btn-primary" ng-click="setCatButton('housing')" onclick="highlight($(this))">Housing</button>
+               <button type="button" class="btn btn-primary" ng-click="setCatButton('services')" onclick="highlight($(this))">Services</button>
+               <button type="button" class="btn btn-primary" ng-click="setCatButton('electronics')" onclick="highlight($(this))">Electronics</button>
+               <button type="button" class="btn btn-primary" ng-click="setCatButton('home and garden')" onclick="highlight($(this))">Home & Garden</button>
+               <button type="button" class="btn btn-primary" ng-click="setCatButton('other vehicle')" onclick="highlight($(this))">Other Vehicle</button>
+               <button type="button" class="btn btn-primary" ng-click="setCatButton('fashion')" onclick="highlight($(this))">Fashion</button>
+               <button type="button" class="btn btn-primary" ng-click="setCatButton('entertainment')" onclick="highlight($(this))">Entertainment</button>
+               <button type="button" class="btn btn-primary" ng-click="setCatButton('other')" onclick="highlight($(this))">Other</button>
              </div>
            </div>
            <!-- Seach Bar -->
@@ -59,7 +61,6 @@
               </div>
            </div>
         </div>
-      </div>
 
       <!-- New Listing Display -->
       <div class="container">
@@ -67,6 +68,11 @@
         <h1 class="text-center"> A Marketplace for Local Gainesville Residents</h1>
       </div>
       </div>
+    
+    <!--This is the loading gif-->
+    <div class="alert alert-info" ng-show="loading">
+        <img src="/img/alligatorgif.gif" height=50% width=50%>
+    </div>
 
       <div class="container">
       <div class="row">
@@ -80,7 +86,7 @@
                 <p class="card-text text-dark">{{listing.description}}</p>
                 <h6 class="card-subtitle mb-2 text-muted">category: {{listing.category}}</h6>
                 <h6 class="card-subtitle mb-2 text-muted">condition: {{listing.item_condition}}</h6>
-                <h6 class="card-subtitle mb-2 text-muted">$ {{listing.price}}</p>
+                <h6 class="card-subtitle mb-2 text-muted">$ {{listing.price}}</h6>
                 <a ng-click="homeCtrl.showDetails(listing)" class="btn btn-primary text-dark">Show Details</a>
               </div>
           </div>
@@ -113,10 +119,27 @@
     <script src="/js/authController.js"></script>
     <script src="/js/homeController.js"></script>
     <script src="/js/listingsFactory.js"></script>
-    <script src="/js/mapFactory.js"></script>
+    <script src="/js/profileFactory.js"></script>
+    
 
     <!-- Latest patch release (recommended for production) -->
     <script src="https://cdn.auth0.com/js/lock/11.11.0/lock.min.js"></script>
+
+    <script>
+      function highlight(btn) {
+        if(btn.hasClass('highlight')){
+          btn.removeClass('highlight');
+          btn.css('background', '#0021A5');
+        }
+        else{
+          $('.category-btns').find('.btn').removeClass('highlight');
+          $('.category-btns').find('.btn').css('background', '#0021A5');
+          btn.addClass('highlight');
+          btn.css('background', '#FA4616');
+        }
+      }
+    </script>
+
 
   </body>
 

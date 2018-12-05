@@ -22,9 +22,9 @@
          </div>
       </div>
 
-      <div>
-         <button ng-click="page='profile'">Profile</button>
-         <button ng-click="getUserListings(user.uid)">Your Listings</button>
+      <div id="profile-btns">
+         <button ng-click="page='profile'" class="btn btn-default profile-btn profile-clicked" onclick="profileBtn($(this));">Profile</button>
+         <button ng-click="getUserListings(user.uid)" class="btn btn-default profile-btn" onclick="profileBtn($(this));">Your Listings</button>
       </div>
 
      <div ng-show="page == 'profile'" id="page-wrapper">
@@ -47,25 +47,24 @@
               <input type="button" id="myBtn" class="btn btn-default" ng-click="showEditForm()" value="Edit Profile">
               <!-- The Modal -->
               <div id="editProfileModal" class="modal">
-                    <!-- Modal content -->
-                    <div class="modal-content">
-                       <form ng-submit ="editUser()">
-                          <label for="first name">First Name:</label>
-                          <input type ="text" ng-model="firstname">
-                          <label for="last name">Last Name:</label>
-                          <input type = "text" ng-model="lastname">
-                          <label for ="email">Email:</label>
-                          <input type= "text" ng-model="email">
-                          <!-- Image upload -->
-                          <label for="img">Image Upload (Required):</label>
-                          <img id="blah" src="/img/img-placeholder.png" alt="preview" width="300" height="300">
-                          <input type="file" name="pic" accept="image/png,image/jpg,image/jpeg"  id="file_upload" multiple
-                              onchange="document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])" required>
-                          <input id="submit-btn" type="submit" class="btn btn-default" value="Submit Changes">
-                       </form>
-                    </div>
-                 </div>
-              <!-- input type="button" value="Reset Password" class="btn btn-default" --->
+                  <!-- Modal content -->
+                  <div class="modal-content">
+                     <form ng-submit ="editUser()">
+                        <label for="first name">First Name:</label>
+                        <input type ="text" ng-model="firstname">
+                        <label for="last name">Last Name:</label>
+                        <input type = "text" ng-model="lastname">
+                        <label for ="email">Email:</label>
+                        <input type= "text" ng-model="email">
+                        <!-- Image upload -->
+                        <label for="img">Image Upload (Required):</label>
+                        <img id="blah" src="/img/img-placeholder.png" alt="preview" width="300" height="300">
+                        <input type="file" name="pic" accept="image/png,image/jpg,image/jpeg"  id="file_upload" multiple
+                            onchange="document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])" required>
+                        <input id="submit-btn" type="submit" class="btn btn-default" value="Submit Changes">
+                     </form>
+                  </div>
+               </div>
             </div>
           </div>
         </div>
@@ -73,6 +72,9 @@
 
      <!-- User's listings in profile page -->
      <div ng-show="page == 'listings'" id="page-wrapper">
+
+       
+
        <div id="profile-row" class="row">
          <div id="profile-section" class="col-sm-12">
            <div id="top-row">
@@ -80,64 +82,38 @@
            </div>
            <div>
              <h2>{{user.f_name}} {{user.l_name}}</h2>
-             <h4>Listing History</h4>
+             <h4 style="text-align: center;">Listing History</h4>
            </div>
+
+           <!--This is the loading gif-->
+          <div class="alert alert-info" ng-show="loading">
+            <img src="/img/alligatorgif.gif" height=50% width=50%>
+          </div>
+
            <div class="container">
-           <div class="row">
-           <div class="grid-container">
-             <div class="card bg-light zoom" style="width: 23%; height: auto; margin: 5px; background: #fff;
+             <div class="row">
+               <div class="grid-container">
+                 <div class="card bg-light zoom" style="width: 23%; height: auto; margin: 5px; background: #fff;
              display: flex; flex-direction: column; border-radius: 3px; align-items: center;" ng-repeat="listing in listings | orderBy: title">
-                 <div class="card-img-container">
-                 <img class="card-img-top" src="data:image/png;base64,{{listing.picture}}" alt="ufx listing">
+                   <div class="card-img-container">
+                     <img class="card-img-top" src="data:image/png;base64,{{listing.picture}}" alt="ufx listing">
+                   </div>
+                   <div class="card-body">
+                     <h3 class="card-title text-dark">{{listing.title}}</h3>
+                     <p class="card-text text-dark">{{listing.description}}</p>
+                     <h6 class="card-subtitle mb-2 text-muted">category: {{listing.category}}</h6>
+                     <h6 class="card-subtitle mb-2 text-muted">condition: {{listing.item_condition}}</h6>
+                     <h6 class="card-subtitle mb-2 text-muted">$ {{listing.price}}</p>
+                     <a ng-click="homeCtrl.showDetails(listing)" class="btn btn-primary text-dark">Show Details</a>
+                     <a ng-click="deleteListing(user.uid, listing.lid)" class="btn btn-primary text-dark">Delete this listing</a>
+                   </div>
                  </div>
-                 <div class="card-body">
-                   <h3 class="card-title text-dark">{{listing.title}}</h3>
-                   <p class="card-text text-dark">{{listing.description}}</p>
-                   <h6 class="card-subtitle mb-2 text-muted">category: {{listing.category}}</h6>
-                   <h6 class="card-subtitle mb-2 text-muted">condition: {{listing.item_condition}}</h6>
-                   <h6 class="card-subtitle mb-2 text-muted">$ {{listing.price}}</p>
-                   <a ng-click="homeCtrl.showDetails(listing)" class="btn btn-primary text-dark">Show Details</a>
-                   <a ng-click="deleteListing(user.uid, listing.lid)" class="btn btn-primary text-dark">Delete this listing</a>
-                 </div>
+               </div>
              </div>
            </div>
          </div>
        </div>
-
-
-
-
-         </div>
-       </div>
      </div>
-
-
-     <!-- <div ng-show="page == 'listings'" id="page-wrapper">
-        This page show users listings
-        <div class="container">
-            <div class="row" ng-repeat="listing in listings | orderBy: title">
-            <div class="col-2"></div>
-            <div class="col-8">
-            <div class="card bg-light zoom" style="width: 100%; height: auto">
-                <div class="card-img-container">
-
-                <!--Delete Button-->
-                <!-- <button ng-click="deleteListing(user.uid, listing.lid)">Delete this listing</button>
-
-                <img class="card-img-top" src="data:image/png;base64,{{listing.picture}}" alt="ufx listing">
-                </div>
-                <div class="card-body">
-                  <h3 class="card-title text-dark">{{listing.title}}</h3>
-                  <p class="card-text text-dark">{{listing.description}}</p>
-                  <h6 class="card-subtitle mb-2 text-muted">category: {{listing.category}}</h6>
-                  <h6 class="card-subtitle mb-2 text-muted">condition: {{listing.item_condition}}</h6>
-                  <h6 class="card-subtitle mb-2 text-muted">$ {{listing.price}}</p>
-                </div> -->
-              </div>
-            </div>
-            </div>
-          </div>
-     </div> -->
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
@@ -159,7 +135,14 @@
     <script src="/js/authController.js"></script>
 
 
-
+    <script>
+      function profileBtn(btn) {
+        if(!btn.hasClass('profile-clicked')){
+          $('.profile-btn').removeClass('profile-clicked');
+          btn.addClass('profile-clicked');
+        }
+      }
+    </script>
 
 
   </body>

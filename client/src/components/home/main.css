@@ -74,6 +74,11 @@ header .container {
   width: 100%;
   height: 240px;
 }
+.card-body{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 .zoom{
   transition: transform .2s;
 }
@@ -120,7 +125,11 @@ header .container {
 }
 .btn-group>.btn:hover{
   color: #eee;
-  background: #FA4616
+  background: #FA4616;
+}
+.highlight{
+  color: #eee;
+  background: #FA4616;
 }
 .listing{
    display: flex;
@@ -134,9 +143,11 @@ header .container {
   justify-content: center;
   align-items: center;
 }
-.category-btns btn{
-  width: 100px;
-  height: 100px;
+.category-btns .btn{
+  border: none;
+}
+.btn{
+  outline: 0 !important;
 }
 #listing-text{
    margin-left: 20px;
@@ -151,7 +162,6 @@ header .container {
    margin: 5px;
 }
 #search-section{
-   margin-top: -30px;
    background: #303030;
 }
 .categories-section input{
