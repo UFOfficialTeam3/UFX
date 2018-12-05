@@ -243,7 +243,7 @@ exports.sendEmail = function(request, response){
 
       transporter.sendMail(mailOptions, function(error, info){
         if (error) {
-          console.log(error);
+          response.status(403).send('Anti-Virus is blocking me');
         } else {
           console.log('Email sent: ' + info.response);
           response.end;

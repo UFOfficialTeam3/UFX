@@ -68,6 +68,7 @@ function($scope, $window, listingsFactory, mapFactory, Profile) {
     //Called after the user confirms location for meet up and will email seller
     $scope.confirmLocation = function(listingsuserEmail){
         var confirmedLocation = mapFactory.confirmLocation();
+        console.log("This is confirmed location: " + confirmedLocation)
          if(confirmedLocation == 'Nope'){
              alert('You must choose a preferred location to meet')
              return     //If they didnt pick a location
@@ -83,11 +84,17 @@ function($scope, $window, listingsFactory, mapFactory, Profile) {
         Profile.getUser().then(function(response) {
           var currentUser = response.data;
           var currentuserInfo = {f_name: currentUser.f_name, l_name: currentUser.l_name, email: currentUser.email}
-          alert("An email has been sent to the seller with your preferred meeting place")
+          
 
           
 
-          listingsFactory.sendEmail(confirmedLocation, currentuserInfo, listingsuserEmail);
+          listingsFactory.sendEmail(confirmedLocation, currentuserInfo, listingsuserEmail).then(function(res){
+            alert("An email has been sent to the seller with your preferred meeting place")
+          },function(error){
+            alert("Your computer's anti virus is likely preventing us from sending an email to the listing's owner. Please turn off your anti virus's mail shield temporaryily to allow us to send it. Promise we aren't hacking your computer <3")
+          })
+              
+        
   
         }, function(error) {
           // if there was an error with the http request

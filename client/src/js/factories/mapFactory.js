@@ -12,6 +12,10 @@ var searchedLocation = '';
 
 var methods = {
   init: function() {
+    mouseClickLat = 0;
+    mouseClickLng = 0;
+    knownLocation = '';
+    searchedLocation = '';
 
     //Access token associated with account
     mapboxgl.accessToken = 'pk.eyJ1IjoiYXBhcGFyYXp6aTAzMjkiLCJhIjoiY2pudXVoYW9kMThrZDN2bnRxcHE3MzZpbSJ9.3To4lk5RKG_8YBaMKZC4mA';
