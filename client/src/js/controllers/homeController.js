@@ -1,7 +1,7 @@
 'use strict';
 
-app.controller('homeController', ['$scope', '$window', '$state', 'listingsFactory', 'mapFactory',
-  function($scope, $window, $state,  listingsFactory, mapFactory) {
+app.controller('homeController', ['$scope', '$window', '$state', 'listingsFactory', 'mapFactory', 'Profile',
+  function($scope, $window, $state,  listingsFactory, mapFactory, Profile) {
     var vm = this;
     
     vm.listings = [];
@@ -38,8 +38,9 @@ app.controller('homeController', ['$scope', '$window', '$state', 'listingsFactor
 
     //Called when the user contacts the seller for a listing
     $scope.contactSeller = function() {
-      mapFactory.init();
       console.log("modal should pop up")
+      mapFactory.init();
+      
       var modal = document.getElementById('myModal');
 
       // When the user clicks on the button, open the modal
@@ -62,14 +63,23 @@ app.controller('homeController', ['$scope', '$window', '$state', 'listingsFactor
 
     //Called after the user confirms location for meet up and will email seller
     $scope.confirmLocation = function(){
-
+      console.log("Hello?")
       var confirmedLocation = mapFactory.confirmLocation();
-      console.log("Location gotten from map: " + confirmedLocation);
 
       var modal = document.getElementById('myModal');
       modal.style.display = "none";
       alert("An email has been sent to the seller with your preferred meeting place")
-      listingsFactory.sendEmail(confirmedLocation);
+
+      Profile.getUser().then(function(response) {
+        var currentuserEmail = response.data.email;
+        console.log("The uid from homeController is: ", currentuserEmail)
+        listingsFactory.sendEmail(confirmedLocation, currentuserEmail);
+
+      }, function(error) {
+        // if there was an error with the http request
+        console.log("Error from homeController: ", error);
+      })
+      
 
 
     }

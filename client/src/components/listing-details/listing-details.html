@@ -56,7 +56,8 @@
 								<p>{{dc.listing.item_condition}}</p>
 						<!-- TODO: make a function that can take the objects uid-->
 						<h2>Posted by: {{dc.user.f_name}} {{dc.user.l_name}} </h2>
-								<p><strong>User Rating:</strong> 8.5/10</p>
+						
+								
 								<div class="row" id="buttonRow" style="margin: 5px">
 										<div ng-controller="homeController">
 												<input type="button" id="myBtn" class="btn btn-default btn-sm" ng-click="contactSeller()" value="Contact Seller">
@@ -72,10 +73,10 @@
 											</div>
 										</div>
 						</div>
-				<div id="product-description">
-					<h2>Description:</h2>
-					<p>{{dc.listing.description}} </p>
-				</div>
+						<div id="product-description">
+								<h2>Description:</h2>
+								<p>{{dc.listing.description}} </p>
+						</div>
 		</div>
 	</div>
 </div>
@@ -99,6 +100,8 @@
 		<script src="/js/mapFactory.js"></script>
 		<script src="/js/authController.js"></script>
 		<script src="/js/authFactory.js"></script>
+		<script src="/js/profileFactory.js"></script>
+		
 
 	</body>
 </html>

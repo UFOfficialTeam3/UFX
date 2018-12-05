@@ -32,6 +32,9 @@ router.get('/img/century-tower-orange.png', function(req, res){
 router.get('/img/alligatorgif.gif', function(req, res){
     res.sendFile(path.resolve(__dirname+'/../../client/img/alligatorgif.gif'));
 });
+router.get('/js/profileFactory.js', function(req, res){
+    res.sendFile(path.resolve(__dirname+'/../../client/src/js/factories/profileFactory.js'));
+});
 
 
 
@@ -107,6 +110,8 @@ router.get('/js/controllers/profileController.js', function(req, res){
 router.get('/js/factories/profileFactory.js', function(req, res){
     res.sendFile(path.resolve(__dirname+'/../../client/src/js/factories/profileFactory.js'));
 });
+
+
 
 
 /* Routes for map integration*/

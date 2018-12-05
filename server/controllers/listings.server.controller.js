@@ -214,22 +214,23 @@ exports.listingByType = function(req, response) {
 
 exports.sendEmail = function(request, response){
   var meetingPlace = request.body.location;
+  var userEmail = request.body.email;
   var nodemailer = require('nodemailer');
-      
-      var transporter = nodemailer.createTransport({
-        service: 'gmail',
-        auth: {
-          user: 'papa0398@gmail.com',
-          pass: 'gmailkingdom'
-        }
-      });
 
-      var mailOptions = {
+  var transporter = nodemailer.createTransport({
+     service: 'gmail',
+     auth: {
+       user: 'papa0398@gmail.com',
+      pass: 'gmailkingdom'
+     }
+   });
+
+  var mailOptions = {
         from: 'papa0398@gmail.com',
-        to: 'apaparazzi0329@ufl.edu',
+        to: userEmail,
         subject: 'A Buyer is Interested in Your Item!',
         text: "The buyer would like to meet you at: " + meetingPlace
-      };
+  };
 
       transporter.sendMail(mailOptions, function(error, info){
         if (error) {
@@ -239,4 +240,13 @@ exports.sendEmail = function(request, response){
           response.end;
         }
       });
-}
+
+
+     
+  }
+
+
+  
+      
+      
+
