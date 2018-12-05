@@ -9,8 +9,9 @@
   <header>
     <!-- Video Display -->
     <div class="jumbotron" style="margin:0px;">
-        <video id="video-background" preload muted autoplay loop poster="/img/century-tower-orange.png">
-            <source src="https://storage.googleapis.com/coverr-main/mp4/Mt_Baker.mp4" type="video/mp4">
+        <video id="video-background" preload muted autoplay loop>
+            <!-- <source src="https://storage.googleapis.com/coverr-main/mp4/Mt_Baker.mp4" type="video/mp4"> -->
+            <source src="/img/ufx-video.mp4" type="video/mp4">
         </video>
         <div class="container">
           <div class="row">
@@ -125,7 +126,6 @@
 
     <script>
       function highlight(btn) {
-        btn.css('background', 'red');
         if(btn.hasClass('highlight')){
           btn.removeClass('highlight');
           btn.css('background', '#0021A5');

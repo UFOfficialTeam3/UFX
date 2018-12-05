@@ -9,6 +9,10 @@
   border: none;
   color: #eee;
   background: #303030;
+  transition: all .15s ease-in-out 0s;
+  width: 100px;
+  padding: 8px;
+  border-radius: .25rem;
 }
 #nav-btns>.btn:hover{
   color: #333;
