@@ -8,10 +8,10 @@ html, body{
 }
 /* Header Video and Video Text */
 header .jumbotron{
-  position: relative;
-    overflow: hidden;
-    height: 300px;
-
+   position: relative;
+   overflow: hidden;
+   height: 300px;
+   border-radius: 0px;
 }
 header .container {
   position: relative; /*left: 35%;*/
