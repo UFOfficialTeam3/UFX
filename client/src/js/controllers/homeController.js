@@ -3,14 +3,19 @@
 app.controller('homeController', ['$scope', '$window', '$state', 'listingsFactory', 'mapFactory',
   function($scope, $window, $state,  listingsFactory, mapFactory) {
     var vm = this;
-    console.log("Hello from home controller!")
+    
     vm.listings = [];
 
+    
+
     vm.init = function() {
+      $scope.loading=true;
+      
       listingsFactory.getAll()
         .then(
           function(response) {
             vm.listings = response.data;
+            $scope.loading=false
 
           }, function(error) {
             // if there was an error with the http request

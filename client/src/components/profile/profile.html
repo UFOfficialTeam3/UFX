@@ -72,6 +72,9 @@
 
      <!-- User's listings in profile page -->
      <div ng-show="page == 'listings'" id="page-wrapper">
+
+       
+
        <div id="profile-row" class="row">
          <div id="profile-section" class="col-sm-12">
            <div id="top-row">
@@ -81,6 +84,12 @@
              <h2>{{user.f_name}} {{user.l_name}}</h2>
              <h4 style="text-align: center;">Listing History</h4>
            </div>
+
+           <!--This is the loading gif-->
+          <div class="alert alert-info" ng-show="loading">
+            <img src="/img/alligatorgif.gif" height=50% width=50%>
+          </div>
+
            <div class="container">
              <div class="row">
                <div class="grid-container">
